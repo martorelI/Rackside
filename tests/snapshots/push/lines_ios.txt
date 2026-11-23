@@ -1,0 +1,139 @@
+show | lldp run | (?i)Global LLDP|Status:\s*ACTIVE|LLDP advertisements | default=False isdefault=False | show lldp |  |  | 
+regex | banner login | (?s)(?:^|\n)banner login [^\n]*.*?\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*.*?RESTRICTED\ ACCESS:\ authorized\ personnel\ only\..*?Activity\ is\ logged\..*?\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\*\* | default=False isdefault=False |  |  |  | 
+absent | no banner motd | (?m)^banner motd\b | default=False isdefault=False |  |  |  | 
+show | vtp mode transparent | (?im)^\s*VTP Operating Mode\s*:\s*transparent\b | default=False isdefault=False | show vtp status |  |  | 
+show | vtp domain LAB | (?im)^\s*VTP Domain Name\s*:\s*LAB\s*$ | default=False isdefault=False | show vtp status |  |  | 
+show | vtp version 2 | (?im)^\s*VTP version running\s*:\s*2\b|running VTP\s*2 | default=False isdefault=False | show vtp status |  |  | 
+hidden | vtp password ******** |  | default=False isdefault=False |  |  |  | 
+regex | snmp-server location Building 2 IDF1 | (?m)^snmp-server\ location\ Building\ 2\ IDF1\s*$ | default=False isdefault=False |  |  |  | 
+regex | snmp-server contact IT Support ext 1234 | (?m)^snmp-server\ contact\ IT\ Support\ ext\ 1234\s*$ | default=False isdefault=False |  |  |  | 
+regex | snmp-server community ******** RO MANAGEMENT | (?m)^snmp-server\ community\ ********\ RO\ MANAGEMENT\s*$ | default=False isdefault=False |  |  |  | 
+regex | snmp-server group GRPRO v3 priv | (?m)^snmp-server\ group\ GRPRO\ v3\ priv\b | default=False isdefault=False |  |  |  | 
+show | snmp-server user monitor GRPRO v3 auth sha ******** priv aes 128 ******** | (?im)^\s*User name:\s*monitor\s*$ | default=False isdefault=False | show snmp user |  |  | 
+regex | snmp-server host 10.0.0.50 version 2c ******** | (?m)^snmp-server host 10\.0\.0\.50 ******** )?version 2c ********(\s|$) | default=False isdefault=False |  |  |  | 
+regex | snmp-server enable traps | (?m)^snmp-server enable traps\b | default=False isdefault=False |  |  |  | 
+absent | no snmp-server community ******** | (?m)^snmp-server community ******** | default=False isdefault=False |  |  |  | 
+absent | no snmp-server community ******** | (?m)^snmp-server community ******** | default=False isdefault=False |  |  |  | 
+absent | no snmp-server host 10.0.0.50 version 2c ******** | (?m)^snmp-server\ host\ 10\.0\.0\.50\ version\ 2c\ public\s*$ | default=False isdefault=False |  |  |  | 
+absent | no snmp-server host 192.0.2.20 traps version 2c ******** | (?m)^snmp-server\ host\ 192\.0\.2\.20\ traps\ version\ 2c\ OldRW\s*$ | default=False isdefault=False |  |  |  | 
+regex | clock timezone PST -8 0 | (?m)^clock timezone PST -8( 0)?\s*$ | default=False isdefault=False |  |  |  | 
+regex | clock summer-time PDT recurring | (?m)^clock summer-time PDT recurring\b | default=False isdefault=False |  |  |  | 
+regex | ntp server 10.0.0.5 | (?m)^ntp server (?:vrf \S+ )?10\.0\.0\.5(\s|$) | default=False isdefault=False |  |  |  | 
+regex | ntp server 10.0.0.6 | (?m)^ntp server (?:vrf \S+ )?10\.0\.0\.6(\s|$) | default=False isdefault=False |  |  |  | 
+absent | no ntp server vrf Mgmt-vrf 192.0.2.30 | (?m)^ntp server (?:vrf \S+ )?192\.0\.2\.30(\s|$) | default=False isdefault=False |  |  |  | 
+absent | no ntp server 192.0.2.31 | (?m)^ntp server (?:vrf \S+ )?192\.0\.2\.31(\s|$) | default=False isdefault=False |  |  |  | 
+regex | logging trap warnings | (?m)^logging trap warnings\s*$ | default=False isdefault=False |  |  |  | 
+regex | logging buffered 64000 | (?m)^logging buffered 64000\b | default=True isdefault=False |  |  |  | 
+regex | logging host 10.0.0.8 | (?m)^logging (?:host )?10\.0\.0\.8(\s|$) | default=False isdefault=False |  |  |  | 
+absent | no logging 192.0.2.10 | (?m)^logging (?:host )?192\.0\.2\.10(\s|$) | default=False isdefault=False |  |  |  | 
+absent | no logging host 192.0.2.11 | (?m)^logging (?:host )?192\.0\.2\.11(\s|$) | default=False isdefault=False |  |  |  | 
+regex | ip domain-name lab.local | (?m)^ip domain[ -]name lab\.local\s*$ | default=False isdefault=False |  |  |  | 
+regex | ip name-server 10.0.0.2 | (?m)^ip name-server (?:vrf \S+ )?(?:\S+ )*10\.0\.0\.2(\s|$) | default=False isdefault=False |  |  |  | 
+regex | ip name-server 10.0.0.3 | (?m)^ip name-server (?:vrf \S+ )?(?:\S+ )*10\.0\.0\.3(\s|$) | default=False isdefault=False |  |  |  | 
+regex | no ip domain-lookup | (?m)^no ip domain[ -]lookup\s*$ | default=False isdefault=False |  |  |  | 
+regex | ip ssh version 2 | (?m)^ip ssh version 2\s*$ | default=False isdefault=False |  |  |  | 
+regex | ip ssh time-out 60 | (?m)^ip ssh time-out 60\s*$ | default=False isdefault=False |  |  |  | 
+regex | ip ssh authentication-retries 3 | (?m)^ip ssh authentication-retries 3\s*$ | default=False isdefault=True |  |  |  | 
+block | [line vty 0 15] exec-timeout 15 0 | ^exec-timeout 15 0$ | default=False isdefault=False |  | ^line vty  |  | 
+block | [line vty 0 15] transport input ssh | ^transport input ssh$ | default=False isdefault=False |  | ^line vty  |  | 
+block | [line vty 0 15] access-class MANAGEMENT in | ^access-class MANAGEMENT in\b | default=False isdefault=False |  | ^line vty  |  | 
+block | [line con 0] exec-timeout 10 0 | ^exec-timeout 10 0$ | default=False isdefault=True |  | ^line con 0 |  | 
+regex | service password-encryption | (?m)^service\ password-encryption\s*$ | default=False isdefault=False |  |  |  | 
+regex | service timestamps debug datetime msec localtime show-timezone | (?m)^service\ timestamps\ debug\ datetime\ msec\ localtime\ show-timezone\s*$ | default=False isdefault=False |  |  |  | 
+regex | service timestamps log datetime msec localtime show-timezone | (?m)^service\ timestamps\ log\ datetime\ msec\ localtime\ show-timezone\s*$ | default=False isdefault=False |  |  |  | 
+absent | no ip http server | (?m)^ip\ http\ server\s*$ | default=False isdefault=False |  |  |  | 
+absent | no ip http secure-server | (?m)^ip\ http\ secure-server\s*$ | default=False isdefault=False |  |  |  | 
+absent | no service pad | (?m)^service\ pad\s*$ | default=False isdefault=False |  |  |  | 
+regex | service tcp-keepalives-in | (?m)^service\ tcp-keepalives-in\s*$ | default=False isdefault=False |  |  |  | 
+regex | service tcp-keepalives-out | (?m)^service\ tcp-keepalives-out\s*$ | default=False isdefault=False |  |  |  | 
+absent | no ip source-route | (?m)^ip\ source-route\s*$ | default=False isdefault=False |  |  |  | 
+regex | login on-failure log | (?m)^login\ on-failure\ log\s*$ | default=False isdefault=False |  |  |  | 
+regex | login on-success log | (?m)^login\ on-success\ log\s*$ | default=False isdefault=False |  |  |  | 
+show | spanning-tree mode rapid-pvst | (?i)Switch is in rapid-pvst mode | default=False isdefault=False | show spanning-tree summary | include mode |  |  | 
+regex | spanning-tree loopguard default | (?m)^spanning-tree\ loopguard\ default\s*$ | default=False isdefault=False |  |  |  | 
+regex | username support privilege 15 secret ******** | (?m)^username support privilege 15  | default=False isdefault=False |  |  |  | 
+regex | enable secret ******** | (?m)^enable secret  ******** default=False isdefault=False |  |  |  | 
+none | errdisable recovery cause all |  | default=False isdefault=False |  |  |  | 
+none | errdisable recovery interval 300 |  | default=False isdefault=False |  |  |  | 
+none | udld enable |  | default=False isdefault=False |  |  |  | 
+----
+configure terminal
+! --- LLDP and CDP
+lldp run
+! --- Login banner
+banner login #
+********************
+RESTRICTED ACCESS: authorized personnel only.
+Activity is logged.
+********************
+#
+! --- MOTD banner
+no banner motd
+! --- VTP
+vtp mode transparent
+vtp domain LAB
+vtp version 2
+vtp password ********
+! --- SNMP
+snmp-server location Building 2 IDF1
+snmp-server contact IT Support ext 1234
+snmp-server community ******** RO MANAGEMENT
+snmp-server group GRPRO v3 priv
+snmp-server user monitor GRPRO v3 auth sha ******** priv aes 128 ********
+snmp-server host 10.0.0.50 version 2c ********
+snmp-server enable traps
+no snmp-server community ********
+no snmp-server community ********
+no snmp-server host 10.0.0.50 version 2c ********
+no snmp-server host 192.0.2.20 traps version 2c ********
+! --- NTP and time
+clock timezone PST -8 0
+clock summer-time PDT recurring
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+no ntp server vrf Mgmt-vrf 192.0.2.30
+no ntp server 192.0.2.31
+! --- Syslog
+logging trap warnings
+logging buffered 64000
+logging host 10.0.0.8
+no logging 192.0.2.10
+no logging host 192.0.2.11
+! --- DNS
+ip domain-name lab.local
+ip name-server 10.0.0.2
+ip name-server 10.0.0.3
+no ip domain-lookup
+! --- SSH and lines
+ip ssh version 2
+ip ssh time-out 60
+ip ssh authentication-retries 3
+line vty 0 15
+ exec-timeout 15 0
+ transport input ssh
+ access-class MANAGEMENT in
+line con 0
+ exec-timeout 10 0
+! --- Services
+service password-encryption
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+no ip http server
+no ip http secure-server
+no service pad
+service tcp-keepalives-in
+service tcp-keepalives-out
+no ip source-route
+login on-failure log
+login on-success log
+! --- Spanning-tree
+spanning-tree mode rapid-pvst
+spanning-tree loopguard default
+! --- Local user / enable
+username support privilege 15 secret ********
+enable secret ********
+! --- Additional commands
+errdisable recovery cause all
+errdisable recovery interval 300
+udld enable
+end

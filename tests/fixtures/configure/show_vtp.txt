@@ -1,0 +1,5 @@
+VTP Version capable             : 1 to 3
+VTP version running             : 2
+VTP Domain Name                 : LAB
+VTP Pruning Mode                : Disabled
+VTP Operating Mode              : Transparent

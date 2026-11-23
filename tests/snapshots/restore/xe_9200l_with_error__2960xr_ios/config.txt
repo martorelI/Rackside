@@ -1,0 +1,424 @@
+service timestamps debug datetime msec
+!
+service timestamps log datetime msec
+!
+service password-encryption
+!
+hostname SW33
+!
+enable secret ********
+!
+no aaa new-model
+!
+ip domain-name lab.local
+!
+no ip domain-lookup
+!
+login on-success log
+!
+spanning-tree mode rapid-pvst
+!
+spanning-tree portfast default
+!
+spanning-tree extend system-id
+!
+username admin privilege 15 secret ********
+!
+vlan 10
+ name DATOS
+!
+vlan 20
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/21
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/22
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/23
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/25
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/26
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/27
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/28
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/29
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/30
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/31
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/32
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/33
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/34
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/35
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/36
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/37
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/38
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/39
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/40
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/41
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/42
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/43
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/44
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/45
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/46
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/47
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/48
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ auto qos trust
+ spanning-tree portfast
+!
+interface TenGigabitEthernet1/0/1
+ description Enlace a CORE Gi1/0/48
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/0/2
+!
+interface TenGigabitEthernet1/0/3
+!
+interface TenGigabitEthernet1/0/4
+!
+interface Vlan1
+ ip address 10.10.1.5 255.255.255.0
+ no shutdown
+!
+ip default-gateway 10.10.1.254
+!
+ip http server
+!
+ip http authentication local
+!
+ip http secure-server
+!
+ip ssh version 2
+!
+no ip access-list extended 110
+!
+ip access-list extended 110
+ remark IT Traffic
+ 20 permit ip 10.0.0.0 0.0.0.255 any
+ remark BLOQUEO TRAFICO DESCONOCIDO
+ 220 deny ip any any
+!
+logging host 10.10.1.10
+!
+ntp server 10.10.1.1
+!
+monitor session 1 source interface Gi1/0/5
+!
+monitor session 1 destination interface Gi1/0/48
+!
+banner motd #
+ACCESO AUTORIZADO UNICAMENTE
+Laboratorio de pruebas
+#
+!
+line con 0
+ stopbits 1
+!
+line vty 0 4
+ login local
+ transport input ssh
+!
+line vty 5 15
+ login local
+ transport input ssh
+!
+end

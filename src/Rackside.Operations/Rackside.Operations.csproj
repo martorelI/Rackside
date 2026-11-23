@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- The operations (configure, restore, factory reset, update IOS) without UI: they talk to the operator
+       through IOperatorUi and write the evidence folders. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Rackside.Operations</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Rackside.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rackside.Core\Rackside.Core.csproj" />
+    <ProjectReference Include="..\Rackside.Transport\Rackside.Transport.csproj" />
+    <ProjectReference Include="..\Rackside.Records\Rackside.Records.csproj" />
+  </ItemGroup>
+
+</Project>

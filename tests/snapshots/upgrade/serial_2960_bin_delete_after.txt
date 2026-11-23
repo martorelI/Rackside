@@ -1,0 +1,22 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E3)
+IMAGE    : c2960x-universalk9-mz.152-7.E10.bin  2.9 MB  -> version 15.2(7)E10
+LOAD     : Xmodem over the console   CONNECTION: COM3
+MD5      : file c9fc2d3dd83ab67a129ac10b09c9ebbb  <> Cisco
+
+CANNOT CONTINUE:
+  X The file MD5 (c9fc2d3dd83ab67a129ac10b09c9ebbb) does NOT match Cisco's (ffffffffffffffffffffffffffffffff). Damaged or wrong file.
+
+STEPS:
+   1. Clean flash keeping only the running image (c2960x-universalk9-mz.152-7.E3): delete c2960x-universalk9-mz.152-2.E8 (28.6 MB), update (4.8 MB). If BOOT points to something that is deleted, it is first pinned to the running image.
+   2. Enable manual boot (boot manual), save and reload to the "switch:" boot loader.
+   3. Raise the console to 115200 baud (set BAUD).
+   4. Send c2960x-universalk9-mz.152-7.E10.bin via Xmodem to flash: (estimated 00:04).
+   5. Return the console to 9600 baud, set BOOT flash:c2960x-universalk9-mz.152-7.E10.bin, set MANUAL_BOOT no and boot the new image.
+   6. If the new IOS updates the boot loader, the switch reloads once more by itself: this is expected.
+   7. Remove boot manual, boot system flash:c2960x-universalk9-mz.152-7.E10.bin and write memory.
+   8. Compare verify /md5 on the switch against the file MD5.
+   9. Reconnect and confirm the version (15.2(7)E10).
+  10. Only if it booted and the new version was confirmed: delete the previous image (flash:/c2960x-universalk9-mz.152-7.E3). If anything does not add up, it is kept.
+
+WARNINGS:
+  ! Serial is very slow: ~00:04 at 115200 baud. Do not disconnect the cable.

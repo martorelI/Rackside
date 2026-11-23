@@ -1,0 +1,60 @@
+!
+! Synthetic running-config after a push (no real data): some lines applied, some not.
+!
+hostname LAB-SW01
+!
+service password-encryption
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec localtime show-timezone
+service tcp-keepalives-in
+!
+logging trap warnings
+logging host 10.0.0.8
+logging 192.0.2.10
+!
+clock timezone PST -8 0
+clock summer-time PDT recurring
+!
+banner login ^C
+********************
+RESTRICTED ACCESS: authorized personnel only.
+Activity is logged.
+********************
+^C
+!
+ip domain-name lab.local
+ip name-server 10.0.0.2 10.0.0.3
+no ip domain-lookup
+ip ssh version 2
+ip ssh time-out 60
+!
+ip access-list standard MANAGEMENT
+ permit 10.0.0.0 0.0.0.255
+!
+snmp-server community MonitorRO2026 RO MANAGEMENT
+snmp-server location Building 2 IDF1
+snmp-server contact IT Support ext 1234
+snmp-server group GRPRO v3 priv
+snmp-server host 10.0.0.50 version 2c MonitorRO2026
+snmp-server enable traps
+!
+ntp server 10.0.0.5
+ntp server 10.0.0.6
+!
+spanning-tree loopguard default
+login on-failure log
+login on-success log
+username support privilege 15 secret 9 $9$synthetic$hash
+enable secret 9 $9$synthetic$hash
+!
+line con 0
+ exec-timeout 10 0
+line vty 0 4
+ exec-timeout 15 0
+ transport input ssh
+ access-class MANAGEMENT in
+line vty 5 15
+ exec-timeout 15 0
+ transport input telnet ssh
+!
+end

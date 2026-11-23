@@ -1,0 +1,2 @@
+Vlan1                  unassigned      YES unset  administratively down down
+Vlan10                 192.0.2.40      YES NVRAM  up                    up

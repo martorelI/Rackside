@@ -1,0 +1,11 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E3)
+IMAGE    : c2960x-universalk9-tar.152-7.E10.tar  38.1 MB  -> version 15.2(7)E10
+LOAD     : USB on the switch   CONNECTION: COM3
+
+STEPS:
+   1. Save the current configuration (write memory).
+   2. Clean flash keeping only the running image (c2960x-universalk9-mz.152-7.E3): delete c2960x-universalk9-mz.152-2.E8 (28.6 MB), update (4.8 MB). If BOOT points to something that is deleted, it is first pinned to the running image.
+   3. Compare verify /md5 usbflash0:c2960x-universalk9-tar.152-7.E10.tar against the Cisco MD5.
+   4. archive download-sw /leave-old-sw usbflash0:c2960x-universalk9-tar.152-7.E10.tar (does not delete the running image; if it does not fit it stops without touching anything).
+   5. Reload and wait for boot.
+   6. Reconnect and confirm the version (15.2(7)E10).

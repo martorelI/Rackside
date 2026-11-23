@@ -1,0 +1,59 @@
+lldp run | OK | Confirmed with "show lldp"
+banner login | OK | Present in the running-config
+no banner motd | OK | No longer in the running-config
+vtp mode transparent | OK | Confirmed with "show vtp status"
+vtp domain LAB | OK | Confirmed with "show vtp status"
+vtp version 2 | OK | Confirmed with "show vtp status"
+vtp password ******** | OK | Accepted without error (IOS does not show it in clear text)
+snmp-server location Building 2 IDF1 | OK | Present in the running-config
+snmp-server contact IT Support ext 1234 | OK | Present in the running-config
+snmp-server community ******** RO MANAGEMENT | OK | Present in the running-config
+snmp-server group GRPRO v3 priv | OK | Present in the running-config
+snmp-server user monitor GRPRO v3 auth sha ******** priv aes 128 ******** | OK | Confirmed with "show snmp user"
+snmp-server host 10.0.0.50 version 2c ******** | OK | Present in the running-config
+snmp-server enable traps | OK | Present in the running-config
+no snmp-server community ******** | OK | No longer in the running-config
+no snmp-server community ******** | OK | No longer in the running-config
+no snmp-server host 10.0.0.50 version 2c ******** | OK | No longer in the running-config
+no snmp-server host 192.0.2.20 traps version 2c ******** | OK | No longer in the running-config
+clock timezone PST -8 0 | OK | Present in the running-config
+clock summer-time PDT recurring | OK | Present in the running-config
+ntp server 10.0.0.5 | OK | Present in the running-config
+ntp server 10.0.0.6 | OK | Present in the running-config
+no ntp server vrf Mgmt-vrf 192.0.2.30 | OK | No longer in the running-config
+no ntp server 192.0.2.31 | OK | No longer in the running-config
+logging trap warnings | OK | Present in the running-config
+logging buffered 64000 | NOTE | Not found in the running-config: normal if it is the IOS default value
+logging host 10.0.0.8 | OK | Present in the running-config
+no logging 192.0.2.10 | FAIL | Still in the running-config
+no logging host 192.0.2.11 | OK | No longer in the running-config
+ip domain-name lab.local | OK | Present in the running-config
+ip name-server 10.0.0.2 | OK | Present in the running-config
+ip name-server 10.0.0.3 | OK | Present in the running-config
+no ip domain-lookup | OK | Present in the running-config
+ip ssh version 2 | OK | Present in the running-config
+ip ssh time-out 60 | OK | Present in the running-config
+ip ssh authentication-retries 3 | OK | It is the IOS default value (not shown in the running-config)
+[line vty 0 15] exec-timeout 15 0 | OK | Present in 2 "line vty" block(s)
+[line vty 0 15] transport input ssh | NOTE | Present in 1 of 2 "line vty" blocks
+[line vty 0 15] access-class MANAGEMENT in | NOTE | Present in 1 of 2 "line vty" blocks
+[line con 0] exec-timeout 10 0 | OK | Present in 1 "line con 0" block(s)
+service password-encryption | OK | Present in the running-config
+service timestamps debug datetime msec localtime show-timezone | OK | Present in the running-config
+service timestamps log datetime msec localtime show-timezone | OK | Present in the running-config
+no ip http server | OK | No longer in the running-config
+no ip http secure-server | OK | No longer in the running-config
+no service pad | OK | No longer in the running-config
+service tcp-keepalives-in | OK | Present in the running-config
+service tcp-keepalives-out | FAIL | Not found in the running-config
+no ip source-route | OK | No longer in the running-config
+login on-failure log | OK | Present in the running-config
+login on-success log | OK | Present in the running-config
+spanning-tree mode rapid-pvst | OK | Confirmed with "show spanning-tree summary | include mode"
+spanning-tree loopguard default | OK | Present in the running-config
+username support privilege 15 secret ******** | OK | Present in the running-config
+enable secret ******** | OK | Present in the running-config
+errdisable recovery cause all | OK | Accepted without error (additional command: no automatic check)
+errdisable recovery interval 300 | OK | Accepted without error (additional command: no automatic check)
+udld enable | FAIL | The switch rejected it: % Invalid input detected at '^' marker.
+interface GigabitEthernet1/0/99 | FAIL | The switch rejected it: % Invalid interface

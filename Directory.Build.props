@@ -1,0 +1,15 @@
+<Project>
+  <!-- Common settings for every .NET project of Rackside. -->
+  <PropertyGroup>
+    <LangVersion>latest</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <Deterministic>true</Deterministic>
+    <Authors>Jose Martorell</Authors>
+    <Product>Rackside</Product>
+    <Copyright>Jose Martorell</Copyright>
+    <VersionPrefix>1.0.0</VersionPrefix>
+  </PropertyGroup>
+</Project>

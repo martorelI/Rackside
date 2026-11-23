@@ -1,0 +1,481 @@
+Building configuration...
+
+Current configuration : 9000 bytes
+!
+! Last configuration change at 10:00:00 UTC Wed Nov 18 2026
+!
+version 17.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+platform punt-keepalive disable-kernel-core
+!
+hostname SW05
+!
+vrf definition Mgmt-vrf
+ !
+ address-family ipv4
+ exit-address-family
+ !
+ address-family ipv6
+ exit-address-family
+!
+enable secret 9 $9$abcabc$defdefdef
+!
+no aaa new-model
+switch 1 provision c9200l-48p-4x
+!
+ip domain name lab.local
+no ip domain lookup
+!
+login on-success log
+!
+device-tracking policy IPDT_POLICY
+ no protocol udp
+ tracking enable
+!
+crypto pki trustpoint SLA-TrustPoint
+ enrollment pkcs12
+ revocation-check crl
+!
+crypto pki trustpoint TP-self-signed-12345
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-12345
+ revocation-check none
+ rsakeypair TP-self-signed-12345
+!
+crypto pki certificate chain SLA-TrustPoint
+ certificate ca 01
+  30820321 30820209 A0030201 02020101
+  	quit
+crypto pki certificate chain TP-self-signed-12345
+ certificate self-signed 01
+  3082022B 30820194
+  	quit
+!
+license boot level network-essentials addon dna-essentials
+!
+diagnostic bootup level minimal
+!
+spanning-tree mode rapid-pvst
+spanning-tree portfast edge default
+spanning-tree extend system-id
+!
+username admin privilege 15 secret 9 $9$xyzxyz$abcabc
+!
+redundancy
+ mode sso
+!
+transceiver type all
+ monitoring
+!
+vlan 10
+ name DATOS
+!
+class-map match-any system-cpp-police-topology-control
+  description Topology control
+policy-map system-cpp-policy
+!
+interface GigabitEthernet0/0
+ vrf forwarding Mgmt-vrf
+ no ip address
+ negotiation auto
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/3
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/4
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/5
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/6
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/7
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/8
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/9
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/10
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/11
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/12
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/13
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/14
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/15
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/16
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/17
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/18
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/19
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/20
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/21
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/22
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/23
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/24
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/25
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/26
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/27
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/28
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/29
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/30
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/31
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/32
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/33
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/34
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/35
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/36
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/37
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/38
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/39
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/40
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/41
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/42
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/43
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/44
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/45
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/46
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/47
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/0/48
+ switchport access vlan 10
+ switchport mode access
+ switchport voice vlan 20
+ device-tracking attach-policy IPDT_POLICY
+ spanning-tree portfast edge
+!
+interface GigabitEthernet1/1/1
+!
+interface GigabitEthernet1/1/2
+!
+interface GigabitEthernet1/1/3
+!
+interface GigabitEthernet1/1/4
+!
+interface TenGigabitEthernet1/1/1
+ description Enlace a CORE Gi1/0/48
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/1/2
+!
+interface TenGigabitEthernet1/1/3
+!
+interface TenGigabitEthernet1/1/4
+!
+interface AppGigabitEthernet1/0/1
+!
+interface Vlan1
+ ip address 10.10.1.5 255.255.255.0
+!
+ip default-gateway 10.10.1.254
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip http secure-trustpoint TP-self-signed-12345
+ip ssh version 2
+!
+logging host 10.10.1.10 vrf Mgmt-vrf
+ntp server vrf Mgmt-vrf 10.10.1.1
+monitor session 1 source interface Gi1/0/5
+monitor session 1 destination interface Gi1/0/48
+!
+control-plane
+ service-policy input system-cpp-policy
+!
+banner motd ^C
+ACCESO AUTORIZADO UNICAMENTE
+Laboratorio de pruebas
+^C
+!
+line con 0
+ stopbits 1
+line aux 0
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 31
+ login local
+ transport input ssh
+!
+call-home
+ ! If contact email address in call-home is configured as sch-smart-licensing@cisco.com
+ contact-email-addr sch-smart-licensing@cisco.com
+ profile "CiscoTAC-1"
+  active
+  destination transport-method http
+!
+end

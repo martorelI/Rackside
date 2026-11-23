@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Printable HTML records (DRP, factory reset, IOS update, push, reduced record, inventory). Pure: they
+       receive the data and return the page; the operations write them in the evidence folder. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Rackside.Records</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Rackside.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The logo of the records (embedded in base64). -->
+    <EmbeddedResource Include="..\..\assets\logo.png" LogicalName="Rackside.Records.logo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rackside.Core\Rackside.Core.csproj" />
+  </ItemGroup>
+
+</Project>

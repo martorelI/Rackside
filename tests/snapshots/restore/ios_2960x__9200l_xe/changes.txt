@@ -1,0 +1,42 @@
+===== BLOCKED (1) =====
+boot system flash:/c2960x-universalk9-mz.152-7.E3/c2960x-universalk9-mz.152-7.E3.bin
+    -> Boot parameters: managed in "Update IOS", not from a backup
+
+===== REMOVED (11) =====
+version 15.2
+    -> Source IOS version
+switch 1 provision ws-c2960x-48fpd-l
+    -> Provisioning of the source model
+mls qos map policed-dscp  0 10 18 24 46 to 8
+    -> Classic IOS MLS QoS (does not exist on IOS-XE; use MQC)
+mls qos srr-queue output cos-map queue 1 threshold 3 5
+    -> Classic IOS MLS QoS (does not exist on IOS-XE; use MQC)
+mls qos
+    -> Classic IOS MLS QoS (does not exist on IOS-XE; use MQC)
+interface FastEthernet0 (+2 sublines)
+    -> 2960-X management port
+[GigabitEthernet1/0/1] srr-queue bandwidth share 1 30 35 5
+    -> Classic IOS QoS queues
+[GigabitEthernet1/0/1] priority-queue out
+    -> Classic IOS QoS queues
+[GigabitEthernet1/0/1] mls qos trust device cisco-phone
+    -> Classic IOS MLS QoS
+[TenGigabitEthernet1/0/1] switchport trunk encapsulation dot1q
+    -> 2960 and 9200 only use dot1q (if the target is 3560/3750, add it by hand)
+no vstack
+    -> Smart Install (does not exist on 9200 IOS-XE)
+
+===== CHANGED (4) =====
+ip domain-name lab.local  ->  ip domain name lab.local
+    -> IOS-XE syntax
+no ip domain-lookup  ->  no ip domain lookup
+    -> IOS-XE syntax
+enable secret  ********  enable secret ********
+    -> Enable secret from the dialog
+username admin  ->  username admin privilege 15 secret ********
+    -> Administrator user from the dialog
+
+===== ADDED (1) =====
+vlan 30
+    -> VLANs used on interfaces but not defined in the file (VTP server/client keeps VLANs in vlan.dat)
+

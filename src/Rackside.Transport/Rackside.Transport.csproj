@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Serial console and SSH: prompts, login, enable, expected questions, Xmodem, SCP and SSH fingerprints. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Rackside.Transport</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Rackside.Tests" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- 2026.0.0+ fixes GHSA-mggc-4xg6-vcxf and GHSA-q939-rpr3-3284 (both in
+         ScpClient, which Rackside does not use: it speaks "scp -t flash:<file>" itself). -->
+    <PackageReference Include="SSH.NET" Version="2026.0.1" />
+    <PackageReference Include="System.IO.Ports" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Rackside.Core\Rackside.Core.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,138 @@
+Version, support and data responsibility.	Versión, soporte y responsabilidad de los datos.
+Version {0}	Versión {0}
+What it does	Qué hace
+Your data	Tus datos
+Open the data folder	Abrir la carpeta de datos
+Trademarks	Marcas
+Accept new SSH fingerprints without asking (only switches with none saved)	Aceptar huellas SSH nuevas sin preguntar (solo switches sin huella guardada)
+Save with write memory if there were no failures	Guardar con write memory si no hubo fallas
+Save even with failures	Guardar aun con fallas
+Continue the sweep after a failed switch	Continuar el barrido después de un switch fallido
+Documents your switches and pushes common parameters over SSH (sweep) or over the console.	Documenta tus switches y plancha parámetros comunes por SSH (barrido) o por consola.
+1. Switches	1. Switches
+3. Connection and save	3. Conexión y guardado
+4. Preview	4. Vista previa
+Open record	Abrir registro
+Sel	Sel
+Add	Agregar
+new	nuevo
+Remove selected	Quitar seleccionados
+Uncheck all	Desmarcar todos
+Printable inventory	Inventario imprimible
+Check (Sel) the switches for the SSH sweep. Over the console the switch on the cable is used and added by its hostname.	Marca (Sel) los switches del barrido por SSH. Por consola se usa el switch del cable y se agrega por su hostname.
+Remove {0} switch(es) from the list?	¿Quitar {0} switch(es) de la lista?
+Imported: {0} added, {1} updated, {2} without IP skipped.	Importados: {0} agregados, {1} actualizados, {2} sin IP omitidos.
+Apply this group	Aplicar este grupo
+Do not change	No cambiar
+Empty text = remove the banner.	Texto vacío = quitar el banner.
+Transparent is recommended: server/client can overwrite the VLANs of the whole domain.	Se recomienda transparent: server/client puede sobrescribir las VLAN de todo el dominio.
+Version	Versión
+RO community	Comunidad RO
+Trap destinations	Destinos de traps
+snmp-server enable traps	snmp-server enable traps
+Remove the other communities and trap destinations	Quitar las demás comunidades y destinos de traps
+Authentication key (SHA)	Clave de autenticación (SHA)
+Encryption key (AES 128)	Clave de cifrado (AES 128)
+Remove the other NTP servers	Quitar los demás servidores NTP
+Servers	Servidores
+Trap level	Nivel de trap
+Buffer (bytes)	Buffer (bytes)
+Remove the other syslog servers	Quitar los demás servidores syslog
+no ip domain lookup	no ip domain lookup
+ip ssh version 2	ip ssh version 2
+SSH time-out (s)	Time-out SSH (s)
+VTY: SSH only (no telnet)	VTY: solo SSH (sin telnet)
+Changing the mode restarts STP on every VLAN: do it in a maintenance window.	Cambiar el modo reinicia STP en todas las VLAN: hazlo en una ventana de mantenimiento.
+spanning-tree loopguard default	spanning-tree loopguard default
+Repeat the password	Repite la contraseña
+Enable secret	Enable secret
+Repeat the enable secret	Repite el enable secret
+One per line; indented lines are sublines. Hostname, IP addresses and dangerous commands are never sent.	Uno por línea; las líneas con sangría son sublíneas. Nunca se envían hostname, direcciones IP ni comandos peligrosos.
+Sweep and save	Barrido y guardado
+A switch whose SSH fingerprint differs from the saved one is always asked about; if you do not accept it, it is skipped.	Si la huella SSH de un switch no coincide con la guardada siempre se pregunta; si no la aceptas, se omite.
+Record	Registro
+Wait for the "Switch>" prompt after the reload	Esperar el prompt "Switch>" después de recargar
+Backs up the configuration, keeps the IOS image, erases keys, vlan.dat and startup-config and reloads without saving.	Respalda la configuración, conserva la imagen de IOS, borra llaves, vlan.dat y startup-config y recarga sin guardar.
+Evidence folder, ticket and reason for the erase record.	Carpeta de evidencias, ticket y motivo para el registro de borrado.
+What will happen	Qué va a pasar
+Read from the switch without changing anything. The backup is already in the evidence folder.	Leído del switch sin cambiar nada. El respaldo ya está en la carpeta de evidencias.
+Confirm	Confirmar
+Type the exact hostname of the device (case-sensitive) to enable the button.	Escribe el hostname exacto del equipo (distingue mayúsculas) para habilitar el botón.
+2. Review and confirm	2. Revisar y confirmar
+No backup loaded.	No hay respaldo cargado.
+Generate 2048-bit RSA keys (SSH)	Generar llaves RSA de 2048 bits (SSH)
+Create the VLANs the backup uses	Crear las VLAN que usa el respaldo
+Remove the self-signed certificate of the backup	Quitar el certificado autofirmado del respaldo
+Also restore the other users	Restaurar también los demás usuarios
+Save to startup-config (write memory)	Guardar en startup-config (write memory)
+Applies the backup of a failed switch to its replacement, converting between models if needed.	Aplica el respaldo de un switch dañado a su reemplazo, convirtiendo entre modelos si hace falta.
+Backups (*.txt;*.cfg;*.conf)|*.txt;*.cfg;*.conf|All files (*.*)|*.*	Respaldos (*.txt;*.cfg;*.conf)|*.txt;*.cfg;*.conf|Todos los archivos (*.*)|*.*
+Backup	Respaldo
+The running-config of the failed switch. Only allowed global commands pass; the dangerous ones are always blocked.	La running-config del switch dañado. Solo pasan los comandos globales permitidos; los peligrosos se bloquean siempre.
+Identity and management	Identidad y gestión
+Proposed from the backup. Change them if the replacement must be different.	Propuestos a partir del respaldo. Cámbialos si el reemplazo debe ser distinto.
+Hostname	Hostname
+Gateway	Gateway
+Access	Acceso
+Administrator user and enable for the replacement. Empty = keep the ones of the backup (hashes are not portable between models).	Usuario administrador y enable del reemplazo. Vacío = conservar los del respaldo (los hashes no son portables entre modelos).
+DRP record	Registro DRP
+Data of the event for the printable record.	Datos del evento para el registro imprimible.
+Failed switch hostname	Hostname del switch dañado
+Failed switch serial	Serie del switch dañado
+Configuration to send	Configuración a enviar
+Changes	Cambios
+2. Target data	2. Datos del destino
+3. Record	3. Registro
+Language, data folders and the settings file.	Idioma, carpetas de datos y el archivo de ajustes.
+Language	Idioma
+Applied when the application restarts.	Se aplica al reiniciar la aplicación.
+Save and restart	Guardar y reiniciar
+Settings file	Archivo de ajustes
+Data folder and subfolders, preferred COM port, push defaults (banners, time zone, VTY idle timeout) and extra commands allowed in the restore. Edit it with the application closed.	Carpeta de datos y subcarpetas, puerto COM preferido, valores por defecto del planchado (banners, zona horaria, inactividad de VTY) y comandos extra permitidos en la restauración. Edítalo con la aplicación cerrada.
+Folders in use	Carpetas en uso
+Problems in settings.json	Problemas en settings.json
+The default value is used for each one.	Se usa el valor por defecto en cada uno.
+USB drive in the switch	Memoria USB en el switch
+Query the switch to read its USB drive.	Consulta el switch para leer su memoria USB.
+Save the configuration first (write memory)	Guardar antes la configuración (write memory)
+Delete the other images from flash (never the running one)	Borrar las demás imágenes de flash (nunca la de ejecución)
+Also include the running image	Incluir también la imagen en ejecución
+IOS-XE: install remove inactive	IOS-XE: install remove inactive
+Reload when finished	Recargar al terminar
+Allow an image from another family	Permitir una imagen de otra familia
+Loads a new image from the switch USB, over Xmodem or over SCP, with MD5 verification and reload.	Carga una imagen nueva desde el USB del switch, por Xmodem o por SCP, con verificación MD5 y recarga.
+IOS images (*.bin;*.tar)|*.bin;*.tar|All files (*.*)|*.*	Imágenes IOS (*.bin;*.tar)|*.bin;*.tar|Todos los archivos (*.*)|*.*
+Take the MD5 published by Cisco: it is compared with the file and with what the switch computes.	Toma el MD5 publicado por Cisco: se compara con el archivo y con lo que calcula el switch.
+Image on the USB	Imagen en el USB
+Image on this computer	Imagen en esta computadora
+Cisco MD5	MD5 de Cisco
+Xmodem speed (baud)	Velocidad Xmodem (baud)
+The running image is never deleted unless you check it and accept the warning.	La imagen en ejecución nunca se borra salvo que lo marques y aceptes la advertencia.
+3. Image	3. Imagen
+4. Plan	4. Plan
+Prepare plan	Preparar plan
+USB console (mini-USB / USB-C)	Consola USB (mini-USB / USB-C)
+Serial console (RJ45 / DB9)	Consola serial (RJ45 / DB9)
+Console	Consola
+Console cable or SSH. Over SSH the fingerprint is always verified before sending the password.	Cable de consola o SSH. Por SSH la huella se verifica siempre antes de enviar la contraseña.
+Console cable connected to the switch.	Cable de consola conectado al switch.
+Refresh	Actualizar
+Port	Puerto
+Speed (baud)	Velocidad (baud)
+Cable	Cable
+Expected fingerprint (optional)	Huella esperada (opcional)
+SHA256:... or MD5 as shown by PuTTY. If empty, it is compared with the one saved from previous connections; the first time you are asked.	SHA256:... o MD5 como la muestra PuTTY. Si está vacía, se compara con la guardada de conexiones anteriores; la primera vez se te pregunta.
+User	Usuario
+Enable (optional)	Enable (opcional)
+They are not saved: they are only used for this operation and are masked in every log and record.	No se guardan: solo se usan en esta operación y se enmascaran en toda bitácora y registro.
+Choose the folder	Elige la carpeta
+All files (*.*)|*.*	Todos los archivos (*.*)|*.*
+Continue	Continuar
+Enter the username and the password.	Escribe el usuario y la contraseña.
+An operation is running. Close anyway? The switch may be left halfway.	Hay una operación en curso. ¿Cerrar de todos modos? El switch puede quedar a medias.
+Name	Nombre
+Model	Modelo
+Platform	Plataforma
+Serial	Serie
+Status	Estado
+Date	Fecha

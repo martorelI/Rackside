@@ -1,0 +1,28 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E3)
+IMAGE    : c2960x-universalk9-mz.152-7.E12.bin  38.1 MB  -> version 15.2(7)E12
+LOAD     : SCP over SSH   CONNECTION: SSH 10.0.0.7
+MD5      : file 48e9a108a3ec623652e7988af2f88867
+
+CANNOT CONTINUE:
+  X It does not fit next to the running image: ~39.1 MB needed and, without the other images, there would be 9.5 MB. It would fit by also deleting the running one (c2960x-universalk9-mz.152-7.E3): check "Also include the running image" (deleted before copying, with checks) or use the USB (the file does not take flash space).
+
+STEPS:
+   1. Check AAA and enable "ip scp server enable" if needed (removed when finished).
+   2. Send c2960x-universalk9-mz.152-7.E12.bin via SCP to flash:.
+   3. Compare verify /md5 flash:c2960x-universalk9-mz.152-7.E12.bin against the local file MD5.
+   4. boot system flash:c2960x-universalk9-mz.152-7.E12.bin and write memory. The previous image stays in flash as a backup.
+   5. Reload and wait for boot.
+   6. Reconnect and confirm the version (15.2(7)E12).
+
+WARNINGS:
+  ! You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.
+
+MANUAL CONSOLE PROCEDURE (the tool does not do it: it involves deleting the running image)
+  Requirements: console cable connected the whole time, the .bin image on a USB drive and on the PC, and its Cisco MD5.
+  1. Back up the configuration off the switch and save: write memory
+  2. Delete the running image (the switch keeps running from RAM; do NOT reload from here): delete /force /recursive flash:/c2960x-universalk9-mz.152-7.E3
+  3. Copy the new one: copy usbflash0:c2960x-universalk9-mz.152-7.E12.bin flash:c2960x-universalk9-mz.152-7.E12.bin
+  4. Verify: verify /md5 flash:c2960x-universalk9-mz.152-7.E12.bin  (must match the Cisco MD5)
+  5. boot system flash:c2960x-universalk9-mz.152-7.E12.bin   /   write memory   /   reload
+  If something fails before reloading: repeat step 3. If the switch reloaded without an image it stays at "switch:";
+  from there: flash_init / copy xmodem: flash:c2960x-universalk9-mz.152-7.E12.bin (Xmodem from the terminal) / set BOOT flash:c2960x-universalk9-mz.152-7.E12.bin / boot

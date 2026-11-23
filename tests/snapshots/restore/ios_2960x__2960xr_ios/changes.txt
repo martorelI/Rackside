@@ -1,0 +1,22 @@
+===== BLOCKED (1) =====
+boot system flash:/c2960x-universalk9-mz.152-7.E3/c2960x-universalk9-mz.152-7.E3.bin
+    -> Boot parameters: managed in "Update IOS", not from a backup
+
+===== REMOVED (3) =====
+version 15.2
+    -> Source IOS version
+switch 1 provision ws-c2960x-48fpd-l
+    -> Provisioning of the source model
+[TenGigabitEthernet1/0/1] switchport trunk encapsulation dot1q
+    -> 2960 and 9200 only use dot1q (if the target is 3560/3750, add it by hand)
+
+===== CHANGED (2) =====
+enable secret  ********  enable secret ********
+    -> Enable secret from the dialog
+username admin  ->  username admin privilege 15 secret ********
+    -> Administrator user from the dialog
+
+===== ADDED (1) =====
+vlan 30
+    -> VLANs used on interfaces but not defined in the file (VTP server/client keeps VLANs in vlan.dat)
+

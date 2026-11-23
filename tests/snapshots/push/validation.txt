@@ -1,0 +1,35 @@
+Check the parameters (tab 2):
+- LLDP and CDP: choose to enable or disable at least one.
+- Login banner: contains control characters.
+- Login banner: uses every possible delimiter (# $ % ~ @ & | ^ *); remove one.
+- MOTD banner: too long (maximum 2000 characters).
+- VTP password: ******** to 64 characters, no spaces or "?".
+- VTP version 3 requires the domain.
+- SNMP location: cannot contain "?" (the console takes it as help).
+- SNMP community: "public" / "private" are the factory defaults and the first ones tried; use another one.
+- SNMP ACL: invalid ACL name or number.
+- SNMP traps: "10.0.0.300" is not an IPv4 address.
+- SNMPv3: enter user and group.
+- SNMPv3: the authentication key ******** must have 8 or more characters, no spaces or "?".
+- SNMPv3: the encryption key ******** 128) must have 8 or more characters, no spaces or "?".
+- NTP: "ntp.local" is not an IPv4 address.
+- NTP source-interface: invalid interface "bad if" (e.g. Vlan10).
+- Time zone: name of 1 to 7 letters (e.g. PST).
+- Time zone: offset from UTC: must be a number from -12 to 14.
+- Summer time: name of 1 to 7 letters (e.g. PDT).
+- Syslog buffer: must be a number from 4096 to 2147483647.
+- Syslog: "Remove the others" requires at least one server.
+- DNS: invalid domain.
+- DNS: maximum 6 servers.
+- SSH time-out (seconds): must be a number from 1 to 120.
+- SSH retries: must be a number from 0 to 5.
+- Console exec-timeout (minutes): must be a number from 0 to 35791.
+- VTY ACL: invalid ACL name or number.
+- VTY exec-timeout 0 leaves remote sessions open forever; use 5 to 15 minutes.
+- Services: check at least one.
+- User: only letters, numbers, dot, hyphen and underscore.
+- User: the passwords do not match.
+- User: password ******** 8 or more characters, no spaces or "?".
+- Enable secret: they do not match.
+- Enable secret: 8 or more characters, no spaces or "?".
+- Additional commands: the box is empty.

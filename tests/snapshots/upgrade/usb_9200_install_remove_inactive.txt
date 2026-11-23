@@ -1,0 +1,14 @@
+DEVICE   : SW09  C9200L-48P-4X  serial JAE0000TEST  (IOS-XE 17.09.04a)
+IMAGE    : cat9k_lite_iosxe.17.09.05.SPA.bin  381.5 MB  -> version 17.09.05
+LOAD     : USB on the switch   CONNECTION: COM3
+
+STEPS:
+   1. Free space: install remove inactive.
+   2. Compare verify /md5 usbflash0:cat9k_lite_iosxe.17.09.05.SPA.bin against nothing (you did not enter the Cisco MD5: it is only recorded).
+   3. install add file usbflash0:cat9k_lite_iosxe.17.09.05.SPA.bin activate commit (the switch reloads by itself; if it does not and you checked reload, reload is sent).
+   4. Reconnect and confirm the version (17.09.05).
+
+WARNINGS:
+  ! Space can grow by cleaning inactive packages (install remove inactive).
+  ! You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.
+  ! The switch has "Manual Boot = yes": after reloading it will stay at the boot loader. Remove it first (no boot manual).

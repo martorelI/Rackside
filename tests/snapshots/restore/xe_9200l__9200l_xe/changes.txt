@@ -1,0 +1,22 @@
+===== REMOVED (5) =====
+crypto pki trustpoint SLA-TrustPoint (+2 sublines)
+    -> Smart licensing certificate: IOS-XE generates it by itself
+crypto pki trustpoint TP-self-signed-12345 (+4 sublines)
+    -> Self-signed certificate of the previous device (does not match the new keys)
+crypto pki certificate chain SLA-TrustPoint (+3 sublines)
+    -> Smart licensing certificate: IOS-XE generates it by itself
+crypto pki certificate chain TP-self-signed-12345 (+3 sublines)
+    -> Self-signed certificate of the previous device (does not match the new keys)
+ip http secure-trustpoint TP-self-signed-12345
+    -> Points to the self-signed certificate of the previous device
+
+===== CHANGED (2) =====
+enable secret  ********  enable secret ********
+    -> Enable secret from the dialog
+username admin  ->  username admin privilege 15 secret ********
+    -> Administrator user from the dialog
+
+===== ADDED (1) =====
+vlan 20
+    -> VLANs used on interfaces but not defined in the file (VTP server/client keeps VLANs in vlan.dat)
+

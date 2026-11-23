@@ -1,0 +1,16 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E14)
+IMAGE    : c2960x-universalk9-mz.152-7.E14.bin  2.9 MB  -> version 15.2(7)E14
+LOAD     : SCP over SSH   CONNECTION: SSH 10.0.0.7
+MD5      : file c9fc2d3dd83ab67a129ac10b09c9ebbb  = Cisco (OK)
+
+STEPS:
+   1. Check AAA and enable "ip scp server enable" if needed (removed when finished).
+   2. flash:c2960x-universalk9-mz.152-7.E14.bin is the running image and the same file as the new one: its MD5 is compared first. If it matches it is neither deleted nor sent; if not, it is deleted (after checking the new image against Cisco's MD5) and sent again.
+   3. Compare verify /md5 flash:c2960x-universalk9-mz.152-7.E14.bin against the Cisco MD5.
+   4. boot system flash:c2960x-universalk9-mz.152-7.E14.bin and write memory.
+
+WARNINGS:
+  ! The switch already runs 15.2(7)E14: it is reinstalled (overwriting what is installed) only if you confirm it when clicking Update.
+  ! If something fails after deleting the running image, recovery is over the console: keep the console cable connected and at hand.
+  ! From the moment the running image is deleted until the installation finishes, the switch has no image in flash: it keeps running from RAM, but do NOT power it off or reload it.
+  ! No reload: the new version takes effect at the next reload.

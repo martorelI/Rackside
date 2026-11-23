@@ -1,0 +1,16 @@
+Hostname = LAB-SW01
+Model = WS-C2960X-48FPD-L
+Platform = IOS
+Version = 15.2(7)E3
+Serial = FOC1111X0AA
+LLDP = Enabled
+CDP = Disabled
+VTP = Transparent / domain "LAB" / v2
+STP = rapid-pvst
+Domain = lab.local
+SNMP = location "Building 2 IDF1"; contact "IT Support ext 1234"; 1 v2c community(ies); 1 v3 group(s); traps to 10.0.0.50
+NTP = 10.0.0.5, 10.0.0.6 / zone PST -8 0 (summer PDT)
+Syslog = 10.0.0.8, 192.0.2.10 / level warnings
+Banner = login
+SSH = SSH v2; vty: ssh | telnet ssh; ACL MANAGEMENT
+IPManagement = 192.0.2.40

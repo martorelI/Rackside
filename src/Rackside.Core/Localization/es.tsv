@@ -1,0 +1,1029 @@
+Could not create {0}: {1}	No se pudo crear {0}: {1}
+{0} is not valid JSON ({1}). Default values are used: fix it or delete it so it is created again.	{0} no es un JSON valido ({1}). Se usan los valores por defecto: corrigelo o borralo para que se vuelva a crear.
+Language "{0}" not recognized (en / es): "en" is used.	Idioma "{0}" no reconocido (en / es): se usa "en".
+Folders.{0} = "{1}" is not a valid folder name: "{2}" is used.	Folders.{0} = "{1}" no es un nombre de carpeta valido: se usa "{2}".
+PreferredCOMPort = "{0}" is not a COM port: COM3 is used.	PreferredCOMPort = "{0}" no es un puerto COM: se usa COM3.
+ExtraAllowedCommands: "{0}" is not a valid regular expression and is ignored.	ExtraAllowedCommands: "{0}" no es una expresion regular valida y se ignora.
+Could not open {0}: {1}. Close PuTTY or any other program using it.	No se pudo abrir {0}: {1}. Cierra PuTTY u otro programa que lo use.
+Operation stopped by the operator.	Operacion detenida por el operador.
+Timed out ({0}s). Last output: {1}	Tiempo de espera agotado ({0}s). Ultima salida: {1}
+No response on the console. Check the cable, the COM port and the speed.	Sin respuesta por consola. Revisa el cable, el puerto COM y la velocidad.
+Login rejected by the switch: {0}	Login rechazado por el switch: {0}
+The switch has no enable password configured for the console ("% No password set").	El switch no tiene enable configurado para la consola ("% No password set").
+The switch is in ROMMON (prompt "switch:"); IOS did not boot.	El switch esta en ROMMON (prompt "switch:"); no arranco el IOS.
+The console asks for a username but no username was entered.	La consola pide usuario pero no se capturo usuario de consola.
+Too many password attempts on the console.	Demasiados intentos de password en la consola.
+Could not reach privileged mode (#).	No se logro llegar a modo privilegiado (#).
+(no equivalent)	(sin equivalente)
+The file does not look like a Cisco IOS / IOS-XE configuration (it has no "hostname" or "version").	El archivo no parece una configuracion de Cisco IOS / IOS-XE (no tiene "hostname" ni "version").
+Contains control characters (Ctrl+Z, Ctrl+C, etc.) that can take the console out of configuration mode	Contiene caracteres de control (Ctrl+Z, Ctrl+C, etc.) que pueden sacar a la consola del modo configuracion
+The text uses every possible delimiter: the banner could close early and the rest would run as commands	El texto usa todos los delimitadores posibles: el banner podria cerrarse antes y su resto se ejecutaria como comandos
+ (+{0} sublines)	 (+{0} sublineas)
+Banner with a delimiter other than ^C: it cannot be delimited safely	Banner con delimitador distinto de ^C: no se puede delimitar con seguridad
+Not in the list of allowed commands. If it is legitimate, apply it by hand or add it to ExtraAllowedCommands in settings.json.	No esta en la lista de comandos permitidos. Si es legitimo, aplicalo a mano o agregalo a ExtraAllowedCommands en settings.json.
+The certificate chain has lines that are not hexadecimal: {0}	La cadena de certificado trae lineas que no son hexadecimales: {0}
+Additional user from the backup: restored because you checked "Also restore the other users". Confirm it must exist.	Usuario adicional del respaldo: se restaura porque marcaste "Restaurar tambien los demas usuarios". Confirma que debe existir.
+Additional user from the backup: not created without confirmation. If it must exist, check "Also restore the other users from the backup" (tab 3).	Usuario adicional del respaldo: no se crea sin confirmacion. Si debe existir, marca "Restaurar tambien los demas usuarios del respaldo" (pestana 3).
+User SSH public keys: they grant access without a password. Restored because you checked "Also restore the other users".	Llaves publicas SSH de usuario: dan acceso sin contrasena. Se restauran porque marcaste "Restaurar tambien los demas usuarios".
+User SSH public keys (passwordless access): not restored without confirmation.	Llaves publicas SSH de usuario (acceso sin contrasena): no se restauran sin confirmacion.
+Write (RW) SNMP community: allows changing the configuration over SNMP. Check that it is needed.	Comunidad SNMP de escritura (RW): permite cambiar la configuracion por SNMP. Revisa que sea necesaria.
+The target has no equivalent interface	El destino no tiene una interfaz equivalente
+References an interface with no equivalent on the target	Hace referencia a una interfaz sin equivalente en el destino
+The target only has vty 0-15	El destino solo tiene vty 0-15
+VLANs used on interfaces but not defined in the file (VTP server/client keeps VLANs in vlan.dat)	VLANs usadas en interfaces pero no definidas en el archivo (VTP server/client guarda las VLANs en vlan.dat)
+Management interface from the dialog	Interfaz de gestion del dialogo
+The management interface must be up	La interfaz de gestion debe estar activa
+Gateway from the dialog	Gateway del dialogo
+; ... ({0} in total)	; ... ({0} en total)
+Deletes each list right before loading it so it ends up identical to the backup (avoids "Duplicate sequence number" and duplicate entries if the switch already had it)	Borra cada lista justo antes de cargarla para que quede identica al respaldo (evita "Duplicate sequence number" y entradas duplicadas si el switch ya la tenia)
+Image "{0}" does not exist on the target	La imagen "{0}" no existe en el destino
+Hostname from the dialog	Hostname del dialogo
+Domain from the dialog	Dominio del dialogo
+Enable secret from the dialog	Enable secret del dialogo
+Administrator user from the dialog	Usuario administrador del dialogo
+Type 8/9 hash: if the target IOS does not accept it, enable is left without a password. Enter an enable secret in the dialog to avoid it.	Hash tipo 8/9: si el IOS destino no lo acepta, el enable queda sin contrasena. Captura un enable secret en el dialogo para evitarlo.
+Type 8/9 hash: if the target IOS does not accept it, the user is not created. Enter a password in the dialog to avoid it.	Hash tipo 8/9: si el IOS destino no lo acepta, el usuario no se crea. Captura una contrasena en el dialogo para evitarlo.
+Mentions the previous hostname ({0}). It is not changed automatically: check whether it should carry the new one ({1}).	Menciona el hostname anterior ({0}). No se cambia solo: revisa si debe llevar el nuevo ({1}).
+Whatever the switch has that is not in the backup stays (users, ACLs, etc.). If it was already applied without saving, reload it without saving; otherwise, factory reset it before applying.	Lo que tenga el switch y no venga en el respaldo se queda (usuarios, ACLs, etc.). Si ya se aplico antes sin guardar, reinicialo sin guardar; si no, restablecelo de fabrica antes de aplicar.
+Unexpected question from the switch for "{0}": "{1}". Answered "{2}" and the operation was stopped for safety.	Pregunta inesperada del switch con "{0}": "{1}". Se contesto "{2}" y se detuvo la operacion por seguridad.
+Line "{0}" took the switch out of configuration mode. The apply was stopped for safety: do not reload without checking and do not save.	La linea "{0}" saco al switch del modo configuracion. Se detuvo la aplicacion por seguridad: no reinicies sin revisar y no guardes.
+Could not enter configuration mode.	No se pudo entrar a modo configuracion.
+Applying configuration: {0} of {1} lines	Aplicando configuracion: {0} de {1} lineas
+Not applied: the header line failed	No aplicada: fallo la linea de cabecera
+Apply finished: {0} lines	Aplicacion terminada: {0} lineas
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8">	<!DOCTYPE html><html lang="es"><head><meta charset="utf-8">
+<title>DRP record - {0} - {1}</title>	<title>Registro DRP - {0} - {1}</title>
+DRP execution record &mdash; Network switch replacement	Registro de ejecucion DRP &mdash; Reemplazo de switch de red
+<div class="res" style="background:{0}">RESULT: {1}</div>	<div class="res" style="background:{0}">RESULTADO: {1}</div>
+<p class="bad">Reason: {0}</p>	<p class="bad">Motivo: {0}</p>
+Event details	Datos del evento
+Ticket / incident	Ticket / incidente
+Responsible	Responsable
+Windows user / computer	Usuario de Windows / equipo
+Start	Inicio
+End	Fin
+Duration	Duracion
+Notes	Observaciones
+Devices	Equipos
+<table class="lista"><tr><th></th><th>Failed device (source)</th><th>Replacement device (target)</th></tr>	<table class="lista"><tr><th></th><th>Equipo danado (origen)</th><th>Equipo de reemplazo (destino)</th></tr>
+<tr><th>Model</th><td>{0}</td><td>{1}</td></tr>	<tr><th>Modelo</th><td>{0}</td><td>{1}</td></tr>
+<tr><th>Serial number</th><td>{0}</td><td>{1}</td></tr>	<tr><th>Numero de serie</th><td>{0}</td><td>{1}</td></tr>
+<tr><th>Operating system</th><td>{0}</td><td>{1}</td></tr>	<tr><th>Sistema operativo</th><td>{0}</td><td>{1}</td></tr>
+<tr><th>Management IP</th><td colspan="2">{0}</td></tr>	<tr><th>IP de gestion</th><td colspan="2">{0}</td></tr>
+Backup used and configuration applied	Respaldo utilizado y configuracion aplicada
+Backup file	Archivo de respaldo
+Backup date (modified)	Fecha del respaldo (modificacion)
+Size	Tamano
+Backup SHA-256	SHA-256 del respaldo
+Mode	Modo
+Lines sent	Lineas enviadas
+SHA-256 of the applied configuration	SHA-256 de la configuracion aplicada
+Evidence folder	Carpeta de evidencias
+Automatic verification	Verificacion automatica
+<table class="lista"><tr><th>Check</th><th>Result</th><th>Detail</th></tr>	<table class="lista"><tr><th>Punto</th><th>Resultado</th><th>Detalle</th></tr>
+Errors returned by the switch ({0})	Errores devueltos por el switch ({0})
+<p class="ok">None.</p>	<p class="ok">Ninguno.</p>
+<table class="lista"><tr><th>Line</th><th>Switch response</th></tr>	<table class="lista"><tr><th>Linea</th><th>Respuesta del switch</th></tr>
+Switch warnings ({0})	Avisos del switch ({0})
+<table class="lista"><tr><th>Line</th><th>Message</th></tr>	<table class="lista"><tr><th>Linea</th><th>Mensaje</th></tr>
+Changes from the backup	Cambios respecto al respaldo
+<p>The backup was applied as is.</p>	<p>Se aplico el respaldo tal cual.</p>
+<table class="lista"><tr><th>Type</th><th>Line</th><th>Reason</th></tr>	<table class="lista"><tr><th>Tipo</th><th>Linea</th><th>Motivo</th></tr>
+Interface mapping	Mapeo de interfaces
+<table class="lista"><tr><th>Source</th><th>Target</th><th>Role</th></tr>	<table class="lista"><tr><th>Origen</th><th>Destino</th><th>Rol</th></tr>
+Post-change validation (fill in by hand)	Validacion posterior (llenar a mano)
+<table class="lista chk"><tr><th></th><th>Check</th><th>Notes</th></tr>	<table class="lista chk"><tr><th></th><th>Punto</th><th>Observaciones</th></tr>
+SSH access to the management IP with the administrator user	Acceso por SSH a la IP de gestion con el usuario administrador
+Uplink(s) up and trunking (show interfaces trunk)	Uplink(s) arriba y en trunk (show interfaces trunk)
+VLANs present (show vlan brief)	VLANs presentes (show vlan brief)
+Expected neighbors (show cdp neighbors / show lldp neighbors)	Vecinos esperados (show cdp neighbors / show lldp neighbors)
+End devices and phones have connectivity	Equipos finales y telefonos con conectividad
+Monitoring / SNMP / syslog receiving from the new device	Monitoreo / SNMP / syslog recibiendo del nuevo equipo
+New backup taken from the replacement switch	Respaldo nuevo tomado del switch de reemplazo
+Inventory and labels updated with the new serial number	Inventario y etiquetado actualizados con la nueva serie
+<div class="signatures"><div class="signature">Performed by</div><div class="signature">Validated by</div><div class="signature">Approved by</div></div>	<div class="signatures"><div class="signature">Ejecuto</div><div class="signature">Valido</div><div class="signature">Autorizo</div></div>
+<h2>Appendix A. Applied configuration</h2>	<h2>Anexo A. Configuracion aplicada</h2>
+Connected via {0}: {1}#	Conectado por {0}: {1}#
+The connected device does not look like a Cisco switch.	El equipo conectado no parece un switch Cisco.
+{0} user(s)	{0} usuario(s)
+enable configured	enable configurado
+The target switch is NOT at factory defaults: {0}.	El switch destino NO esta de fabrica: {0}.
+Select the backup file.	Selecciona el archivo de respaldo.
+Enter the COM port.	Indica el puerto COM.
+Invalid hostname (letters, numbers and hyphen; must start with a letter).	Hostname invalido (letras, numeros y guion; empieza con letra).
+Invalid domain.	Dominio invalido.
+Invalid IP address.	Direccion IP invalida.
+Invalid mask.	Mascara invalida.
+Invalid management interface.	Interfaz de gestion invalida.
+Invalid gateway.	Gateway invalido.
+The user passwords do not match.	Las contrasenas del usuario no coinciden.
+The enable secrets do not match.	Los enable secret no coinciden.
+You entered a password but no administrator user.	Capturaste contrasena pero no usuario administrador.
+Invalid administrator user (letters, numbers, dot, hyphen, underscore or @; no spaces).	Usuario administrador invalido (letras, numeros, punto, guion, guion bajo o @; sin espacios).
+Passwords cannot contain spaces or "?" (the "?" opens help on the console).	Las contrasenas no pueden tener espacios ni "?" (el "?" abre la ayuda en la consola).
+Enter the folder where the DRP record will be saved.	Indica la carpeta donde guardar el registro DRP.
+(not in the file: type it if you know it)	(no viene en el archivo: escribelo si lo conoces)
+Detected source: {0} {1}  |  model {2}  |  {3} physical interfaces  |  hostname {4}	Origen detectado: {0} {1}  |  modelo {2}  |  {3} interfaces fisicas  |  hostname {4}
+Click "Connect and review" to read the target switch and generate the configuration.	Pulsa "Conectar y revisar" para leer el switch destino y generar la configuracion.
+{0}: changed	{0}: cambiada
+(empty)	(vacio)
+Yes	Si
+SOURCE	ORIGEN
+TARGET	DESTINO
+ROLE	ROL
+{0,-28} {1,-28} {2} (member {3})	{0,-28} {1,-28} {2} (miembro {3})
+Target interfaces with no source configuration (left at defaults): {0}	Interfaces del destino sin configuracion de origen (quedan por defecto): {0}
+DIRECT mode: same model, interfaces are applied with their original names.	Modo DIRECTO: mismo modelo, las interfaces se aplican con su nombre original.
+No changes: the file is applied as is.	Sin cambios: el archivo se aplica tal cual.
+same model, applied as is	mismo modelo, se aplica tal cual
+Mode: {0} ({1})	Modo: {0} ({1})
+Source: {0} {1}, model "{2}"   ->   Target: {3} {4}, model "{5}", serial {6}	Origen: {0} {1}, modelo "{2}"   ->   Destino: {3} {4}, modelo "{5}", serie {6}
+Blocked for safety: {6}  |  Lines to send: {0}  |  Removed: {1}  |  Changed: {2}  |  No equivalent: {3}  |  Added: {4}  |  Warnings: {5}	Bloqueadas por seguridad: {6}  |  Lineas a enviar: {0}  |  Quitadas: {1}  |  Cambiadas: {2}  |  Sin equivalente: {3}  |  Agregadas: {4}  |  Avisos: {5}
+===== Review: backup {0} =====	===== Revision: respaldo {0} =====
+Connecting via {0}...	Conectando por {0}...
+Reading the target switch...	Leyendo el switch destino...
+Target: {0} {1}, model "{2}", serial {3}, {4} physical interfaces	Destino: {0} {1}, modelo "{2}", serie {3}, {4} interfaces fisicas
+Could not read the target interfaces (show ip interface brief).	No se pudieron leer las interfaces del destino (show ip interface brief).
+Generating the configuration...	Generando la configuracion...
+Plan ready: mode {0}, {1} lines. Check tab 4 and click "Apply to switch". If you change data, the configuration is regenerated automatically.	Plan listo: modo {0}, {1} lineas. Revisa la pestana 4 y pulsa "Aplicar al switch". Si cambias datos, la configuracion se regenera sola.
+Review ready: {0} lines in mode {1}. Check it and click "Apply to switch".	Revision lista: {0} lineas en modo {1}. Revisa y pulsa "Aplicar al switch".
+Configuration regenerated with the changes: {0}	Configuracion regenerada con los cambios: {0}
+Configuration updated with your changes: {0} lines.	Configuracion actualizada con tus cambios: {0} lineas.
+The configuration was regenerated with your changes:{0}  - {1}{0}{0}	La configuracion se regenero con tus cambios:{0}  - {1}{0}{0}
+WARNING: the switch was not at factory defaults when reviewed ({0}). Whatever is not in the backup will remain.{1}{1}	ATENCION: el switch no estaba de fabrica al revisarlo ({0}). Lo que no venga en el respaldo se quedara.{1}{1}
+{0}{1} lines will be sent to switch {2} (serial {3}) via {4}, with hostname {5}.{6}{6}Continue?	{0}Se van a enviar {1} lineas al switch {2} (serie {3}) por {4}, con hostname {5}.{6}{6}Continuar?
+===== Apply: {0} lines, mode {1} =====	===== Aplicacion: {0} lineas, modo {1} =====
+Connecting...	Conectando...
+The connected switch (serial {0}) is not the one that was reviewed (serial {1}). Review again.	El switch conectado (serie {0}) no es el que se reviso (serie {1}). Vuelve a revisar.
+Apply finished: {0} error(s), {1} warning(s).	Aplicacion terminada: {0} error(es), {1} aviso(s).
+Generating 2048-bit RSA keys (may take a couple of minutes)...	Generando llaves RSA 2048 (puede tardar un par de minutos)...
+RSA keys generated.	Llaves RSA generadas.
+Verifying...	Verificando...
+Administrator user	Usuario administrador
+{0} does NOT exist: create it before closing the console	{0} NO existe: crealo antes de cerrar la consola
+Configured	Configurado
+No enable secret	Sin enable secret
+Management IP ({0})	IP de gestion ({0})
+RSA keys for SSH	Llaves RSA para SSH
+Switch errors while applying	Errores del switch al aplicar
+{0} line(s) rejected	{0} linea(s) rechazada(s)
+There were {0} switch error(s) and {1} verification failure(s) (details in tab 5).{2}{2}Save to startup-config anyway?	Hubo {0} error(es) del switch y {1} falla(s) de verificacion (detalle en la pestana 5).{2}{2}Guardar de todos modos en startup-config?
+Saving (write memory)...	Guardando (write memory)...
+Saved to startup-config	Guardado en startup-config
+write memory did not confirm [OK]	write memory no confirmo [OK]
+Not saved by operator decision	No se guardo por decision del operador
+Option unchecked: the configuration is lost if the switch reloads	Opcion desmarcada: la configuracion se pierde si el switch se reinicia
+Stopped by the operator in the middle of the apply: the switch configuration is incomplete.	Detenido por el operador a mitad de la aplicacion: la configuracion del switch quedo incompleta.
+===== RESULT: {0} =====	===== RESULTADO: {0} =====
+===== SWITCH ERRORS ({0}) =====	===== ERRORES DEL SWITCH ({0}) =====
+===== VERIFICATION =====	===== VERIFICACION =====
+Could not complete report.txt: {0}	No se pudo completar report.txt: {0}
+{0} {1} on {2}, gateway {3}	{0} {1} en {2}, gateway {3}
+(no change)	(sin cambio)
+DIRECT (same model, applied as is)	DIRECTO (mismo modelo, aplicado tal cual)
+CONVERT (	CONVERTIR (
+DRP record: {0}	Registro DRP: {0}
+Could not generate the full DRP record: {0}. A reduced one is generated.	No se pudo generar el registro DRP completo: {0}. Se genera uno reducido.
+{0}, serial {1}, model {2}	{0}, serie {1}, modelo {2}
+yes	si
+DRP execution record (reduced)	Registro de ejecucion DRP (reducido)
+Reduced DRP record: {0}	Registro DRP reducido: {0}
+The reduced record could not be generated either: {0}	Tampoco se pudo generar el registro reducido: {0}
+===== Result: {0} ({1} switch error(s), saved={2}) =====	===== Resultado: {0} ({1} error(es) del switch, guardado={2}) =====
+Result: {0}. DRP record in {1}	Resultado: {0}. Registro DRP en {1}
+Result: {0}{1}{1}Switch errors: {2}{1}Saved to startup-config: {3}{1}{1}The DRP record and evidence are in:{1}{4}	Resultado: {0}{1}{1}Errores del switch: {2}{1}Guardado en startup-config: {3}{1}{1}El registro DRP y las evidencias estan en:{1}{4}
+\r\n\r\nOpen the DRP record in the browser to print it or save it as PDF?	\r\n\r\nAbrir el registro DRP en el navegador para imprimirlo o guardarlo como PDF?
+Restore finished	Restauracion terminada
+\r\n\r\nThe DRP record could NOT be generated: check the log.	\r\n\r\nNO se pudo generar el registro DRP: revisa la bitacora.
+Could not detect the filesystem in the "dir" output.	No se pudo detectar el filesystem en la salida de "dir".
+No IOS image found on {0}:. Nothing is deleted.	No se encontro ninguna imagen IOS en {0}:. No se borra nada.
+BOOT points to "{0}" but it does not exist on {1}:. Nothing is deleted.	BOOT apunta a "{0}" pero no existe en {1}:. No se borra nada.
+The running-config came out incomplete; not continuing without a backup.	La running-config salio incompleta; no se continua sin respaldo.
+Enter the evidence folder.	Indica la carpeta de evidencias.
+===== Review for factory reset =====	===== Revision para restablecer de fabrica =====
+Reading the device and backing up its configuration...	Leyendo el equipo y respaldando su configuracion...
+running-config backup: {0}	Respaldo de la running-config: {0}
+Model         : {0}	Modelo        : {0}
+Serial        : {0}	Serie         : {0}
+System        : {0} {1}	Sistema       : {0} {1}
+Stack         : {0} member(s){1}	Stack         : {0} miembro(s){1}
+  <- the reload restarts the whole stack	  <- el reinicio reinicia todo el stack
+Kept          : {0}	Se conserva   : {0}
+Deleted       : startup-config, RSA keys{0}	Se borra      : startup-config, llaves RSA{0}
+Then          : reload without saving{0}	Despues       : reinicio sin guardar{0}
+ and wait for the "Switch>" prompt	 y espera hasta el prompt "Switch>"
+Backup        : {0}	Respaldo      : {0}
+Device {0} reviewed. Type its hostname to enable "Factory reset".	Equipo {0} revisado. Escribe su hostname para habilitar "Restablecer de fabrica".
+Type the exact hostname of the device to confirm.	Escribe el hostname exacto del equipo para confirmar.
+The configuration of {0} (model {1}, serial {2}) will be ERASED and the switch will reload. This cannot be undone.{3}{3}Previous backup:{3}{4}{3}{3}Continue?	Se va a BORRAR la configuracion de {0} (modelo {1}, serie {2}) y se va a reiniciar. No se puede deshacer.{3}{3}Respaldo previo:{3}{4}{3}{3}Continuar?
+===== Factory reset: {0} =====	===== Restablecer de fabrica: {0} =====
+The connected device (serial {0}) is not the one that was reviewed (serial {1}). Review again.	El equipo conectado (serie {0}) no es el que se reviso (serie {1}). Vuelve a revisar.
+Deleting keys and configuration files...	Borrando llaves y archivos de configuracion...
+Delete RSA keys	Borrar llaves RSA
+There were no keys	No habia llaves
+Keys deleted	Llaves eliminadas
+Delete {0}:{1}	Borrar {0}:{1}
+Erasing startup-config (write erase)...	Borrando startup-config (write erase)...
+write erase did not confirm. Output: {0}	write erase no confirmo. Salida: {0}
+Erase startup-config (write erase)	Borrar startup-config (write erase)
+Verifying before reloading...	Verificando antes de reiniciar...
+No startup-config	Sin startup-config
+Still present	Sigue presente
+IOS image kept	Imagen IOS conservada
+Missing: 	Falta: 
+Configuration files deleted	Archivos de configuracion borrados
+vlan.dat and the rest deleted	vlan.dat y demas eliminados
+Still there: 	Siguen: 
+The pre-check failed; the device was NOT reloaded. Check the log.	La verificacion previa fallo; NO se reinicio el equipo. Revisa la bitacora.
+Reloading without saving...	Reiniciando sin guardar...
+Reload without saving (reload)	Reinicio sin guardar (reload)
+Answered "no" to saving	Se contesto "no" a guardar
+Waiting for boot (5 to 15 minutes)...	Esperando el arranque (de 5 a 15 minutos)...
+The device was left in ROMMON after the reload. Check it by hand on the console.	El equipo quedo en ROMMON despues del reinicio. Revisalo a mano por consola.
+The prompt did not appear after 20 minutes. Check the console.	No aparecio el prompt despues de 20 minutos. Revisa la consola.
+Boot without configuration	Arranque sin configuracion
+Did not wait for boot (option unchecked)	No se espero el arranque (opcion desmarcada)
+The device was already erased and reloaded; the operator stopped waiting for boot.	El equipo ya se borro y reinicio; el operador detuvo la espera del arranque.
+Wait stopped by the operator	Espera detenida por el operador
+Stopped by the operator before the reload; check the device state.	Detenido por el operador antes del reinicio; revisa el estado del equipo.
+Record: {0}	Registro: {0}
+Could not generate the record: {0}	No se pudo generar el registro: {0}
+===== Result: {0} =====	===== Resultado: {0} =====
+Factory reset: {0}. Evidence in {1}	Restablecimiento: {0}. Evidencias en {1}
+Result: 	Resultado: 
+\r\n\r\nEvidence and record in:\r\n	\r\n\r\nEvidencias y registro en:\r\n
+Factory reset	Restablecer de fabrica
+<title>Factory reset - {0} - {1}</title>	<title>Restablecimiento de fabrica - {0} - {1}</title>
+Factory reset record &mdash; Switch	Registro de restablecimiento de fabrica &mdash; Switch
+Ticket / reference	Ticket / referencia
+Reason	Motivo
+Device	Equipo
+Previous hostname	Hostname anterior
+Model	Modelo
+Serial number	Numero de serie
+Operating system	Sistema operativo
+Stack members	Miembros de stack
+Image kept	Imagen conservada
+Backup before erasing	Respaldo previo al borrado
+File	Archivo
+Actions performed	Acciones realizadas
+<tr><td colspan="3">No entries (the operation stopped earlier).</td></tr>	<tr><td colspan="3">Sin registros (la operacion se detuvo antes).</td></tr>
+Enter the evidence folder (tab 1).	Indica la carpeta de evidencias (pestana 1).
+Enter the COM port (tab 1).	Indica el puerto COM (pestana 1).
+Enter a valid IP for SSH (tab 1).	Indica una IP valida para SSH (pestana 1).
+Enter the username and password to log in to the switch (tab 1).	Indica usuario y contrasena para entrar al switch (pestana 1).
+Could not read the SSH fingerprint of {0}:{1}.	No se pudo leer la huella SSH de {0}:{1}.
+the fingerprint you typed in tab 1	la huella que escribiste en la pestana 1
+the one saved on {0} ({1}{2})	la guardada el {0} ({1}{2})
+, serial 	, serie 
+First use, accepted without asking (sweep option checked by the operator)	Primer uso, aceptada sin preguntar (opcion del barrido marcada por el operador)
+SSH fingerprint of {0} accepted on first use without asking (sweep option): {1}	Huella SSH de {0} aceptada en primer uso sin preguntar (opcion del barrido): {1}
+First SSH connection to {0}. There is no saved fingerprint to compare with.{1}{1}The device presents:{1}{2}{1}{1}Verify it by other means before accepting (for example, the one PuTTY showed you when connecting from a trusted location, or the record of a previous access). If someone controls the network between your computer and the switch, they could be impersonating it.{1}{1}Trust this fingerprint and save it for future connections?	Primera conexion SSH a {0}. No hay huella guardada para compararla.{1}{1}El equipo presenta:{1}{2}{1}{1}Verificala por otro medio antes de aceptar (por ejemplo, la que te mostro PuTTY al conectarte desde un punto de confianza, o el registro de un acceso anterior). Si alguien controla la red entre tu equipo y el switch, podria estar suplantandolo.{1}{1}Confiar en esta huella y guardarla para las siguientes conexiones?
+Unverified SSH fingerprint	Huella SSH sin verificar
+SSH connection cancelled: the fingerprint of {0} was not accepted.	Conexion SSH cancelada: no se acepto la huella de {0}.
+First use, accepted by the operator	Primer uso, aceptada por el operador
+SSH fingerprint of {0} accepted on first use: {1}	Huella SSH de {0} aceptada en primer uso: {1}
+Matches the one entered by the operator	Coincide con la indicada por el operador
+Matches the saved one	Coincide con la guardada
+SSH fingerprint of {0} verified ({1}): {2}	Huella SSH de {0} verificada ({1}): {2}
+The reference is in another format ({0}) and cannot be compared with the one presented ({1}).	La referencia esta en otro formato ({0}) y no se puede comparar con la presentada ({1}).
+THEY DO NOT MATCH.	NO COINCIDEN.
+WARNING: the SSH fingerprint of {0} does not match {1}.{2}{2}Expected : {3}{2}Presented: {4}{2}{2}{5}{2}{2}It may be a man-in-the-middle attack (someone impersonating the switch to capture your password or hand it a tampered image). It also happens if the switch was replaced or its RSA keys were regenerated.{2}{2}If you do not know why it changed, answer NO and check it on the console.{2}{2}Accept the presented fingerprint (override) and continue?	ATENCION: la huella SSH de {0} no coincide con {1}.{2}{2}Esperada  : {3}{2}Presentada: {4}{2}{2}{5}{2}{2}Puede ser un ataque de intermediario (alguien suplantando al switch para capturar tu contrasena o entregarle una imagen alterada). Tambien pasa si se reemplazo el switch o se regeneraron sus llaves RSA.{2}{2}Si no sabes por que cambio, contesta NO y verificalo por consola.{2}{2}Aceptar la huella presentada (override) y continuar?
+The SSH fingerprint does not match	La huella SSH no coincide
+SSH connection cancelled: the fingerprint of {0} does not match {1}.	Conexion SSH cancelada: la huella de {0} no coincide con {1}.
+Operator OVERRIDE (expected {0})	OVERRIDE del operador (esperada {0})
+SSH fingerprint OVERRIDE for {0}: expected {1}, presented {2}. Accepted by {3}.	OVERRIDE de huella SSH de {0}: esperada {1}, presentada {2}. Aceptada por {3}.
+Could not open SSH to {0}: {1}. If it mentions the key or fingerprint, the device presented a different one from the verified one: do not continue without checking.	No se pudo abrir SSH con {0}: {1}. Si menciona la llave o la huella, el equipo presento una distinta a la verificada: no continues sin revisar.
+Could not open SSH to {0}.	No se pudo abrir SSH con {0}.
+Connection attempt {0} failed: {1}. Retrying...	Intento {0} de conexion fallo: {1}. Reintentando...
+format it as FAT32 with an MBR partition table and a single partition (Windows only offers FAT32 on drives of 32 GB or less)	formateala en FAT32 con tabla de particiones MBR y una sola particion (Windows solo ofrece FAT32 en memorias de 32 GB o menos)
+ Then click "Read switch USB".	 Luego pulsa "Leer USB del switch".
+The switch detected the drive but rejected it when initializing it ({0}). It is not the format: that drive is not compatible with the switch. Use another one, preferably USB 2.0 of 8 GB or less; USB 3.x and high-capacity drives often fail on the 2960-X.	El switch detecto la memoria pero la rechazo al iniciarla ({0}). No es el formato: esa memoria no es compatible con el switch. Usa otra, de preferencia USB 2.0 de 8 GB o menos; las USB 3.x y las de mucha capacidad suelen fallar en el 2960-X.
+The switch sees the drive but does not understand its partition ({0}). {1}, or format it from the switch with "format {2}" (erases the drive) and then copy the image from the PC.	El switch ve la memoria pero no entiende su particion ({0}). {1}, o formateala desde el switch con "format {2}" (borra la memoria) y despues copia la imagen desde la PC.
+The last thing the switch logged is that the drive was removed ({0}). Insert it again and wait about 10 seconds.	Lo ultimo que registro el switch es que retiraron la memoria ({0}). Insertala otra vez y espera unos 10 segundos.
+The switch logged the drive ({0}) but does not have it mounted. Remove it, insert it again and wait about 10 seconds. If nothing changes, {1}, or try another drive.	El switch registro la memoria ({0}) pero no la tiene montada. Retirala, insertala otra vez y espera unos 10 segundos. Si sigue igual, {1}, o prueba otra memoria.
+The switch has the {0} unit but answers "Invalid DOS media or no media in slot": there is no drive inserted or it cannot read it. If it is inserted, {1}, or format it from the switch with "format {0}" (erases the drive).	El switch tiene la unidad {0} pero responde "Invalid DOS media or no media in slot": no hay memoria insertada o no la puede leer. Si esta insertada, {1}, o formateala desde el switch con "format {0}" (borra la memoria).
+The switch has no USB drive mounted and there are no USB events in its log: it does not see it. Check: (1) that it is in the type A USB port on the front (the mini-USB is the console); (2) that it goes all the way in: the slot is deep and a thick casing keeps it from making contact; (3) that it is USB 2.0 of 8 GB or less. Insert it with the switch powered on and wait about 10 seconds.	El switch no tiene ninguna memoria USB montada y no hay eventos USB en su log: no la esta viendo. Revisa: (1) que este en el puerto USB tipo A del frente (el mini-USB es la consola); (2) que entre hasta el fondo: la ranura es profunda y un estuche grueso impide que haga contacto; (3) que sea USB 2.0 de 8 GB o menos. Insertala con el switch encendido y espera unos 10 segundos.
+ (The switch does not keep a log in memory, so it cannot be known whether it detected it.)	 (El switch no guarda log en memoria, asi que no se puede saber si la llego a detectar.)
+USB events in the switch log: {0}	Eventos USB en el log del switch: {0}
+The running image ({0}) was not found in flash:. Nothing is deleted.	No encuentro la imagen en uso ({0}) en flash:. No se borra nada.
+Flash cleanup	Limpieza de flash
+There were no other images	No habia otras imagenes
+Could not secure boot on the running image: {0}. Nothing is deleted.	No se pudo asegurar el arranque en la imagen en uso: {0}. No se borra nada.
+write memory did not confirm [OK] while securing boot. Nothing is deleted.	write memory no confirmo [OK] al asegurar el arranque. No se borra nada.
+Boot secured on the running image	Arranque asegurado en la imagen en uso
+boot system {0} + write memory (BOOT pointed to "{1}")	boot system {0} + write memory (BOOT apuntaba a "{1}")
+Cleaning flash: {0}	Limpiando flash: {0}
+Could not delete flash:/{0}: {1}	No se pudo borrar flash:/{0}: {1}
+Delete {0}flash:/{1}	Borrar {0}flash:/{1}
+folder 	carpeta 
+It is not the running image	No es la imagen en uso
+The running image ({0}) no longer appears in flash: after cleaning. Do NOT reload the switch: check it on the console.	La imagen en uso ({0}) ya no aparece en flash: despues de limpiar. NO reinicies el switch: revisalo por consola.
+After cleaning there are {0:N1} MB free and ~{1:N1} MB are needed. Stopped before copying; the running image is untouched.	Despues de limpiar hay {0:N1} MB libres y se necesitan ~{1:N1} MB. Se detuvo antes de copiar; la imagen en uso sigue intacta.
+Flash space after cleanup	Espacio en flash tras la limpieza
+{0:N1} MB free	{0:N1} MB libres
+MANUAL CONSOLE PROCEDURE (the tool does not do it: it involves deleting the running image)	PROCEDIMIENTO MANUAL POR CONSOLA (la herramienta no lo hace: implica borrar la imagen que esta corriendo)
+  Requirements: console cable connected the whole time, the .bin image on a USB drive and on the PC, and its Cisco MD5.	  Requisitos: cable de consola conectado todo el tiempo, la imagen .bin en una USB y en la PC, y su MD5 de Cisco.
+  1. Back up the configuration off the switch and save: write memory	  1. Respalda la configuracion fuera del switch y guarda: write memory
+  2. Delete the running image (the switch keeps running from RAM; do NOT reload from here): delete /force /recursive flash:/{0}	  2. Borra la imagen en uso (el switch sigue funcionando desde la RAM; NO reinicies desde aqui): delete /force /recursive flash:/{0}
+  3. Copy the new one: copy {0}{1} flash:{1}	  3. Copia la nueva: copy {0}{1} flash:{1}
+  4. Verify: verify /md5 flash:{0}  (must match the Cisco MD5)	  4. Verifica: verify /md5 flash:{0}  (debe ser igual al MD5 de Cisco)
+  If something fails before reloading: repeat step 3. If the switch reloaded without an image it stays at "switch:";	  Si algo falla antes de reiniciar: repite el paso 3. Si el switch se reinicio sin imagen queda en "switch:";
+  from there: flash_init / copy xmodem: flash:{0} (Xmodem from the terminal) / set BOOT flash:{0} / boot	  desde ahi: flash_init / copy xmodem: flash:{0} (Xmodem desde la terminal) / set BOOT flash:{0} / boot
+Could not get the MD5 of {0}: {1}	No se pudo obtener el MD5 de {0}: {1}
+"{0}" did not finish in {1} s.	"{0}" no termino en {1} s.
+The reload did not ask for confirmation and the switch is still at the prompt.	El reload no pidio confirmacion y el switch sigue en el prompt.
+The reload did not reach the confirmation.	El reload no llego a la confirmacion.
+The new IOS updated the boot loader and reloaded; it stopped at "switch:". Sending "boot".	El IOS nuevo actualizo el boot loader y reinicio; se detuvo en "switch:". Se envia "boot".
+The switch stopped at the boot loader; sending "boot".	El switch se detuvo en el boot loader; se envia "boot".
+The new IOS updated the boot loader and reloaded, and the switch was left at "switch:" (manual boot enabled). The image DID boot: type "boot" on the console and then "no boot manual" + write memory.	El IOS nuevo actualizo el boot loader y reinicio, y el switch quedo en "switch:" (arranque manual activo). La imagen SI arranco: escribe "boot" en la consola y luego "no boot manual" + write memory.
+The switch was left at the boot loader / ROMMON: the image did not boot. Check it on the console (set BOOT / boot with the previous image).	El switch quedo en el boot loader / ROMMON: la imagen no arranco. Revisalo por consola (set BOOT / boot con la imagen anterior).
+The switch booted WITHOUT configuration (initial dialog).	El switch arranco SIN configuracion (dialogo inicial).
+The switch did not finish booting in {0} minutes.	El switch no termino de arrancar en {0} minutos.
+Waiting for boot ({0:mm\:ss}). SSH {1}.	Esperando el arranque ({0:mm\:ss}). SSH {1}.
+responds	responde
+no response	sin respuesta
+The switch did not answer over SSH again in {0} minutes.	El switch no volvio a contestar por SSH en {0} minutos.
+The switch did not start the Xmodem reception (no "C" or NAK arrived).	El switch no inicio la recepcion Xmodem (no llego "C" ni NAK).
+Xmodem receiver ready ({0}).	Receptor Xmodem listo ({0}).
+The switch cancelled the transfer at block {0}.	El switch cancelo la transferencia en el bloque {0}.
+The receiver does not accept 1 KB blocks; 128-byte blocks are used.	El receptor no acepta bloques de 1 KB; se usan bloques de 128 bytes.
+Block {0}: too many retries.	Bloque {0}: demasiados reintentos.
+Xmodem: {0:N1} of {1:N1} MB ({2}%) at {3:N1} KB/s, {4:hh\:mm\:ss} left	Xmodem: {0:N1} de {1:N1} MB ({2}%) a {3:N1} KB/s, faltan {4:hh\:mm\:ss}
+The switch did not confirm the end of the transfer (EOT).	El switch no confirmo el fin de la transferencia (EOT).
+The switch did not respond ({0}) in {1} s.	El switch no respondio ({0}) en {1} s.
+The switch closed the SCP connection ({0}).	El switch cerro la conexion SCP ({0}).
+The switch rejected the SCP ({0}): {1}	El switch rechazo el SCP ({0}): {1}
+SCP to {0} against fingerprint {1} {2}	SCP a {0} contra la huella {1} {2}
+SCP: could not open the SSH session: {0}. If it mentions the key or fingerprint, the device presented a different one from the verified one: do not continue without checking.	SCP: no se pudo abrir la sesion SSH: {0}. Si menciona la llave o la huella, el equipo presento una distinta a la verificada: no continues sin revisar.
+start	inicio
+file header	cabecera del archivo
+Sending {0} via SCP: {1:N1} of {2:N1} MB ({3:N0}%) at {4:N1} MB/s	Enviando {0} por SCP: {1:N1} de {2:N1} MB ({3:N0}%) a {4:N1} MB/s
+{0} sent; waiting for the switch to finish writing it to flash...	{0} enviado; esperando que el switch termine de escribirlo en flash...
+flash write	escritura en flash
+SCP close	cierre del SCP
+SCP: the switch confirmed the write; closing the channel reported: {0}	SCP: el switch confirmo la escritura; el cierre del canal informo: {0}
+SCP failed: {0}. Check that the switch has "ip scp server enable", "aaa new-model" and "aaa authorization exec default local", or use the USB.	SCP fallo: {0}. Revisa que el switch tenga "ip scp server enable", "aaa new-model" y "aaa authorization exec default local", o usa la USB.
+===== Version query =====	===== Consulta de version =====
+Reading version, boot and storage...	Leyendo version, arranque y almacenamiento...
+{0}: {1} {2}, model {3}, serial {4}	{0}: {1} {2}, modelo {3}, serie {4}
+{0} has {1} {2}. Check tab 2 to look for the image.	{0} tiene {1} {2}. Revisa la pestana 2 para buscar la imagen.
+{0} detected: {1} .bin/.tar image(s)	{0} detectada: {1} imagen(es) .bin/.tar
+No USB detected on the switch.	No se detecto USB en el switch.
+CURRENT VERSION	VERSION ACTUAL
+  Model           : {0}	  Modelo          : {0}
+  Serial          : {0}	  Serie           : {0}
+  System          : {0} {1}	  Sistema         : {0} {1}
+  Running image   : {0}	  Imagen en uso   : {0}
+  Mode            : {0}{1}	  Modo            : {0}{1}
+  (install add converts it to INSTALL)	  (install add lo convierte a INSTALL)
+  Boot (BOOT)     : {0}{1}	  Arranque (BOOT) : {0}{1}
+   WARNING: Manual Boot = yes	   ATENCION: Manual Boot = yes
+  Stack           : {0} member(s)	  Stack           : {0} miembro(s)
+  Uptime          : {0}	  Encendido       : {0}
+  Flash           : {0} free of {1}	  Flash           : {0} libres de {1}
+  Other images    : {0} ({1}) that are not the running one: {2}	  Otras imagenes  : {0} ({1}) que no son la que corre: {2}
+  USB             : {0} ({1} free)	  USB             : {0} ({1} libres)
+  USB             : cannot be used (details in tab 3, next to "Read switch USB")	  USB             : no se puede usar (detalle en la pestana 3, junto a "Leer USB del switch")
+  USB             : not detected (no drive connected or the model has no USB storage port)	  USB             : no detectada (sin memoria conectada o el modelo no tiene puerto USB de almacenamiento)
+HOW TO FIND THE IMAGE	COMO BUSCAR LA IMAGEN
+  software.cisco.com > Software Download (requires an account with an active contract)	  software.cisco.com > Software Download (requiere cuenta con contrato vigente)
+  Search for the model: {0}	  Busca el modelo: {0}
+  Expected file: {0}.<version>.SPA.bin	  Archivo esperado: {0}.<version>.SPA.bin
+  Recommended    : {0}-tar.<version>.tar  (includes the web manager; installed with archive download-sw)	  Recomendado    : {0}-tar.<version>.tar  (incluye el gestor web; se instala con archive download-sw)
+  Alternative    : {0}-mz.<version>.bin   (only option if sent over serial)	  Alternativa    : {0}-mz.<version>.bin   (unica opcion si se envia por serial)
+  Pick the version marked as suggested (star) and copy the MD5 shown on the page:	  Elige la version marcada como sugerida (estrella) y copia el MD5 que muestra la pagina:
+  the tool compares it with the file and with what the switch computes.	  la herramienta lo compara contra el archivo y contra lo que calcule el switch.
+  It is a stack: use the .tar (archive download-sw updates all members).	  Es un stack: usa el .tar (archive download-sw actualiza a todos los miembros).
+(query the switch first)	(consulta primero el switch)
+DANGER: you are about to remove the protection that prevents loading an image that is not from this switch's family ({0}).{1}{1}An image from another family or other hardware can:{1}  - leave the switch unable to boot (it stays at the boot loader or reboots in a loop);{1}  - force you to recover it over the console with Xmodem (more than an hour) or to replace it;{1}  - boot without the features or license the configuration uses and take down the service that depends on it;{1}  - if the file does not come from Cisco, put tampered software on your network.{1}{1}Cisco does not support combinations outside the compatibility matrix. Use it only if Cisco (TAC or the official documentation) explicitly indicates that file for this model, with the MD5 verified and console access at hand.{1}{1}Do you understand the risk and want to allow it?	PELIGRO: vas a quitar la proteccion que impide cargar una imagen que no es de la familia de este switch ({0}).{1}{1}Una imagen de otra familia o de otro hardware puede:{1}  - dejar el switch sin arrancar (se queda en el boot loader o reinicia en ciclo);{1}  - obligarte a recuperarlo por consola con Xmodem (mas de una hora) o a reemplazarlo;{1}  - arrancar sin las funciones o la licencia que usa la configuracion y tirar el servicio que depende de el;{1}  - si el archivo no viene de Cisco, poner software alterado en tu red.{1}{1}Cisco no soporta combinaciones fuera de la matriz de compatibilidad. Usalo solo si Cisco (TAC o la documentacion oficial) indica expresamente ese archivo para este modelo, con el MD5 verificado y con acceso por consola a la mano.{1}{1}Entiendes el riesgo y quieres permitirlo?
+Image from another family	Imagen de otra familia
+Operator {0} allowed loading an image from another family (expected {1}).	El operador {0} permitio cargar una imagen de otra familia (esperada {1}).
+You are about to allow deleting the running image too, so flash keeps only the new one.	Vas a permitir que se borre tambien la imagen que esta corriendo, para que la flash quede solo con la nueva.
+How the tool does it:	Como lo hace la herramienta:
+  - If the new one fits next to the current one: the current one is deleted AT THE END, only after the switch boots the new one and the version is confirmed. This is the safe way (requires "Reload when finished").	  - Si la nueva cabe junto a la actual: la actual se borra AL FINAL, solo despues de que el switch arranque con la nueva y se confirme la version. Es la forma segura (requiere "Reiniciar al terminar").
+  - If it does not fit: it is deleted BEFORE copying. While copying and installing, the switch has no image in flash. If power is lost at that moment, someone reloads it or the copy fails, it can only be recovered over the console (Xmodem, more than an hour). For that case the MD5 published by Cisco is required and the new image is verified before deleting anything.	  - Si no cabe: se borra ANTES de copiar. Mientras se copia e instala, el switch no tiene imagen en flash. Si en ese momento se va la luz, alguien lo reinicia o la copia falla, solo se recupera por consola (Xmodem, mas de una hora). Para ese caso se exige el MD5 publicado por Cisco y se verifica la imagen nueva antes de borrar nada.
+This does not leave the switch "factory new": the configuration is not touched (Factory reset is for that). It only leaves flash without old images.	Esto no deja el switch "de fabrica": la configuracion no se toca (para eso esta Restablecer de fabrica). Solo deja la flash sin imagenes viejas.
+Allow deleting the running image?	Permitir que se borre la imagen en uso?
+Also delete the running image	Borrar tambien la imagen en uso
+Operator {0} allowed deleting the running image too.	El operador {0} permitio borrar tambien la imagen en uso.
+First click "Connect and query".	Primero pulsa "Conectar y consultar".
+Reading the switch USB...	Leyendo la USB del switch...
+Computing MD5 of {0}...	Calculando MD5 de {0}...
+No USB detected on the switch. Connect it and click "Read switch USB".	No hay USB detectada en el switch. Conectala y pulsa "Leer USB del switch".
+Choose the image on the USB.	Elige la imagen de la USB.
+Choose the image file on your computer.	Elige el archivo de imagen en tu equipo.
+The file MD5 ({0}) does NOT match Cisco's ({1}). Damaged or wrong file.	El MD5 del archivo ({0}) NO coincide con el de Cisco ({1}). Archivo danado o equivocado.
+The image must be .bin or .tar.	La imagen debe ser .bin o .tar.
+File {0} is not from this device's family ({1}).	El archivo {0} no es de la familia de este equipo ({1}).
+ CONTINUING AT YOUR OWN RISK because you allowed another family: the switch may fail to boot.	 SE CONTINUA BAJO TU RESPONSABILIDAD porque permitiste otra familia: el switch puede quedar sin arrancar.
+On IOS-XE the image is a .bin (cat9k...SPA.bin).	En IOS-XE la imagen es un .bin (cat9k...SPA.bin).
+It is a stack: use the .tar image (archive download-sw updates all members).	Es un stack: usa la imagen .tar (archive download-sw actualiza todos los miembros).
+Serial is not possible on IOS-XE: the 9200 ROMMON has no Xmodem and the image is ~500 MB. Use USB or SSH.	Por serial no se puede en IOS-XE: el ROMMON del 9200 no tiene Xmodem y la imagen pesa ~500 MB. Usa USB o SSH.
+To send over serial, the connection must be serial (tab 1).	Para enviar por serial, la conexion debe ser por serial (pestana 1).
+Over serial only the .bin can be sent (the boot loader does not install .tar).	Por serial solo se puede enviar el .bin (el boot loader no instala .tar).
+Over serial only one member is updated: on a stack use USB or SSH with the .tar.	Por serial solo se actualiza un miembro: en un stack usa USB o SSH con el .tar.
+To send over SSH I need the IP, username and password (tab 1), even if the control connection is serial.	Para enviar por SSH necesito IP, usuario y contrasena de SSH (pestana 1), aunque la conexion de control sea serial.
+The classic IOS cleanup checkboxes do not apply to IOS-XE: install remove inactive is used there.	Las casillas de limpieza de IOS clasico no aplican a IOS-XE: ahi se usa install remove inactive.
+The switch already runs {0}: it is reinstalled (overwriting what is installed) only if you confirm it when clicking Update.	El switch ya corre {0}: se reinstala (sobrescribe lo instalado) solo si lo confirmas al pulsar Actualizar.
+The new image would be installed with the same name as the running one (flash:/{0}). To overwrite it check "Also include the running image".	La imagen nueva se instalaria con el mismo nombre que la que esta corriendo (flash:/{0}). Para sobrescribirla marca "Incluir tambien la imagen que esta corriendo".
+flash:/{0} already exists (from a previous attempt). Check "delete the other images from flash" to delete it before copying.	Ya existe flash:/{0} (de un intento anterior). Marca "borrar de flash las demas imagenes" para borrarlo antes de copiar.
+Space can grow by cleaning inactive packages (install remove inactive).	El espacio puede crecer al limpiar paquetes inactivos (install remove inactive).
+No space in flash: ~{0} needed and {1} available. Check "install remove inactive".	No hay espacio en flash: se necesitan ~{0} y hay {1}. Marca "install remove inactive".
+ or use the USB (the file does not take flash space)	 o usa la USB (el archivo no ocupa flash)
+No space in flash: ~{0} needed and {1} free. Check "delete the other images from flash" to delete {2}. The running image ({3}) is not touched.	No hay espacio en flash: se necesitan ~{0} y hay {1} libres. Marca "borrar de flash las demas imagenes" para borrar {2}. La imagen en uso ({3}) no se toca.
+It does not fit next to the running image: ~{0} needed and, without the other images, there would be {1}. It would fit by also deleting the running one ({2}): check "Also include the running image" (deleted before copying, with checks){3}.	No cabe junto a la imagen en uso: se necesitan ~{0} y, sin las demas imagenes, habria {1}. Cabria borrando tambien la que corre ({2}): marca "Incluir tambien la imagen que esta corriendo" (se borra antes de copiar, con verificaciones){3}.
+It does not fit even deleting all images: ~{0} needed and flash could only free {1}.{2}	No cabe ni borrando todas las imagenes: se necesitan ~{0} y la flash solo podria liberar {1}.{2}
+ Use the USB.	 Usa la USB.
+The running image is not deleted because the switch is not reloaded: without booting the new one it cannot be checked that it works.	La imagen en uso no se borra porque no se reinicia: sin arrancar la nueva no se puede comprobar que funciona.
+There are {0} old image(s) in flash ({1}); they are not deleted because there is space.	Hay {0} imagen(es) vieja(s) en flash ({1}); no se borran porque hay espacio.
+To delete the running image before copying I need the MD5 published by Cisco for the new image (tab 3): it guarantees that what will be installed is complete before you are left without an image.	Para borrar la imagen en uso antes de copiar necesito el MD5 publicado por Cisco de la imagen nueva (pestana 3): garantiza que lo que se va a instalar esta completo antes de quedarte sin imagen.
+On a stack the running image is not deleted before copying.	En un stack no se borra la imagen en uso antes de copiar.
+If something fails after deleting the running image, recovery is over the console: keep the console cable connected and at hand.	Si algo falla despues de borrar la imagen en uso, la recuperacion es por consola: ten el cable de consola conectado y a la mano.
+From the moment the running image is deleted until the installation finishes, the switch has no image in flash: it keeps running from RAM, but do NOT power it off or reload it.	Desde que se borra la imagen en uso hasta que termina la instalacion, el switch no tiene imagen en flash: sigue funcionando desde la RAM, pero NO lo apagues ni lo reinicies.
+Save the current configuration (write memory).	Guardar la configuracion actual (write memory).
+Clean flash keeping only the running image ({0}): delete {1}. If BOOT points to something that is deleted, it is first pinned to the running image.	Limpiar flash dejando solo la imagen en uso ({0}): borrar {1}. Si BOOT apunta a algo que se borra, antes se fija en la imagen en uso.
+Verify the MD5 of {0}{1} against Cisco's BEFORE touching the running image.	Verificar el MD5 de {0}{1} contra el de Cisco ANTES de tocar la imagen en uso.
+DELETE THE RUNNING IMAGE (flash:/{0}). From here until the installation finishes the switch has no image in flash: do not power it off.	BORRAR LA IMAGEN EN USO (flash:/{0}). Desde aqui y hasta terminar la instalacion el switch no tiene imagen en flash: no lo apagues.
+Enable manual boot (boot manual), save and reload to the "switch:" boot loader.	Activar arranque manual (boot manual), guardar y reiniciar hasta el boot loader "switch:".
+Raise the console to {0} baud (set BAUD).	Subir la consola a {0} baudios (set BAUD).
+Return the console to {0} baud, set BOOT flash:{1}, set MANUAL_BOOT no and boot the new image.	Regresar la consola a {0} baudios, set BOOT flash:{1}, set MANUAL_BOOT no y arrancar la imagen nueva.
+If the new IOS updates the boot loader, the switch reloads once more by itself: this is expected.	Si el IOS nuevo actualiza el boot loader, el switch se reinicia una vez mas solo: se espera.
+Remove boot manual, boot system flash:{0} and write memory.	Quitar boot manual, boot system flash:{0} y write memory.
+Compare verify /md5 on the switch against the file MD5.	Comparar verify /md5 en el switch contra el MD5 del archivo.
+Check AAA and enable "ip scp server enable" if needed (removed when finished).	Comprobar AAA y activar "ip scp server enable" si hace falta (se quita al terminar).
+Free space: install remove inactive.	Liberar espacio: install remove inactive.
+Send {0} via SCP to flash:.	Enviar {0} por SCP a flash:.
+Compare verify /md5 {0}{1} against {2}.	Comparar verify /md5 {0}{1} contra {2}.
+the Cisco MD5	el MD5 de Cisco
+the local file MD5	el MD5 del archivo local
+nothing (you did not enter the Cisco MD5: it is only recorded)	nada (no capturaste MD5 de Cisco: solo se registra)
+install add file {0}{1} activate commit (the switch reloads by itself; if it does not and you checked reload, reload is sent).	install add file {0}{1} activate commit (el switch se reinicia solo; si no lo hace y marcaste reiniciar, se manda reload).
+archive tar /xtract {0}{1} flash: (same version: archive download-sw would reject it).	archive tar /xtract {0}{1} flash: (misma version: archive download-sw la rechazaria).
+boot system flash:/{0}/{0}.bin and write memory.	boot system flash:/{0}/{0}.bin y write memory.
+archive download-sw /leave-old-sw {0}{1} (does not delete the running image; if it does not fit it stops without touching anything).	archive download-sw /leave-old-sw {0}{1} (no borra la imagen en uso; si no cabe se detiene sin tocar nada).
+Delete the .tar from flash: when finished.	Borrar el .tar de flash: al terminar.
+copy {0}{1} flash:{1} and verify the MD5 again.	copy {0}{1} flash:{1} y verificar MD5 otra vez.
+boot system flash:{0} and write memory.{1}	boot system flash:{0} y write memory.{1}
+ The previous image stays in flash as a backup.	 La imagen anterior se queda en flash como respaldo.
+Reload and wait for boot.	Reiniciar (reload) y esperar el arranque.
+No reload: the new version takes effect at the next reload.	No se reinicia: la version nueva entra hasta el proximo reinicio.
+Reconnect and confirm the version{0}.	Reconectar y confirmar la version{0}.
+Only if it booted and the new version was confirmed: delete the previous image (flash:/{0}). If anything does not add up, it is kept.	Solo si arranco y se confirmo la version nueva: borrar la imagen anterior (flash:/{0}). Si algo no cuadra, se conserva.
+You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.	No capturaste el MD5 de Cisco: no se puede confirmar que el archivo sea el original.
+The switch has "Manual Boot = yes": after reloading it will stay at the boot loader. Remove it first (no boot manual).	El switch tiene "Manual Boot = yes": al reiniciar se quedara en el boot loader. Quitalo antes (no boot manual).
+DEVICE   : {0}  {1}  serial {2}  ({3} {4})	EQUIPO   : {0}  {1}  serie {2}  ({3} {4})
+IMAGE    : {0}  {1}  -> version {2}	IMAGEN   : {0}  {1}  -> version {2}
+(could not be read from the name)	(no se pudo leer del nombre)
+LOAD     : {0}   CONNECTION: {1}	CARGA    : {0}   CONEXION: {1}
+USB on the switch	USB en el switch
+Xmodem over the console	Xmodem por consola
+SCP over SSH	SCP por SSH
+MD5      : file {0}{1}	MD5      : archivo {0}{1}
+CANNOT CONTINUE:	NO SE PUEDE CONTINUAR:
+STEPS:	PASOS:
+WARNINGS:	AVISOS:
+Xmodem requires a serial connection.	Xmodem requiere conexion por serial.
+Enabling manual boot...	Activando arranque manual...
+write memory did not confirm [OK].	write memory no confirmo [OK].
+Manual boot enabled and saved	Arranque manual activado y guardado
+Reloading to the boot loader...	Reiniciando hasta el boot loader...
+The switch booted IOS instead of stopping at the boot loader.	El switch arranco el IOS en vez de detenerse en el boot loader.
+Boot loader reached	Boot loader alcanzado
+The console was lost when changing the speed.	Se perdio la consola al cambiar la velocidad.
+Speed change	Cambio de velocidad
+Stays at {0} baud	Se queda en {0} baudios
+{0} baud	{0} baudios
+Starting Xmodem...	Iniciando Xmodem...
+Xmodem transfer	Transferencia Xmodem
+{0:N0} bytes in {1:hh\:mm\:ss}, {2} retries, {3}-byte blocks	{0:N0} bytes en {1:hh\:mm\:ss}, {2} reintentos, bloques de {3}
+The boot loader reported an error while saving: {0}	El boot loader reporto un error al guardar: {0}
+Boot pointing to the new image	Arranque apuntando a la imagen nueva
+Automatic boot in the boot loader	Arranque automatico en el boot loader
+Booting the new image...	Arrancando la imagen nueva...
+Automatic boot restored	Arranque automatico restaurado
+identical to the file	identico al archivo
+identical to the file + Xmodem padding	identico al archivo + relleno Xmodem
+does NOT match	NO coincide
+Cannot update:{0}- {1}	No se puede actualizar:{0}- {1}
+{0} ({1}, serial {2}) will be updated from {3} to {4}.{5}{5}{6}{5}{5}The switch will reload. Continue?	Se va a actualizar {0} ({1}, serie {2}) de {3} a {4}.{5}{5}{6}{5}{5}El switch se reiniciara. Continuar?
+The switch already has that version	El switch ya tiene esa version
+The switch already runs {0} (flash:/{1}).{2}{2}Do you want to reinstall it anyway (overwrite what is installed with {3})?	El switch ya corre {0} (flash:/{1}).{2}{2}Quieres reinstalarla de todos modos (sobrescribir lo instalado con {3})?
+The new image only fits by deleting the running one FIRST (flash:/{0}).	La imagen nueva solo cabe borrando ANTES la que esta corriendo (flash:/{0}).
+Before deleting, the MD5 of the new image is verified against Cisco's. Then, while copying and installing, the switch has no image in flash (it keeps running from RAM):	Antes de borrar se verifica el MD5 de la imagen nueva contra el de Cisco. Despues, mientras se copia e instala, el switch no tiene imagen en flash (sigue funcionando desde la RAM):
+  - Do NOT power it off or reload it until the tool finishes.	  - NO lo apagues ni lo reinicies hasta que la herramienta termine.
+  - If the copy fails, the tool does NOT reload: you can load the image again without losing service.	  - Si la copia falla, la herramienta NO reinicia: puedes volver a cargar la imagen sin perder el servicio.
+  - If the switch reloads without an image, it stays at "switch:" and can only be recovered over the console with Xmodem.	  - Si el switch se reinicia sin imagen, queda en "switch:" y solo se recupera por consola con Xmodem.
+You are connected over SSH: keep the console cable at hand.	Estas conectado por SSH: ten el cable de consola a la mano.
+Delete the running image and continue?	Borrar la imagen en uso y continuar?
+Delete the running image before copying	Borrar la imagen en uso antes de copiar
+Last confirmation: {0} is NOT from family {1}. If it does not boot, recovery is over the console.{2}{2}Install it anyway?	Ultima confirmacion: {0} NO es de la familia {1}. Si no arranca, la recuperacion es por consola.{2}{2}Instalarla de todos modos?
+Verifying the new image before deleting the running one...	Verificando la imagen nueva antes de borrar la que esta corriendo...
+MD5 of the new image before deleting the running one	MD5 de la imagen nueva antes de borrar la que corre
+The MD5 of the image on the USB does not match Cisco's. Nothing was deleted.	El MD5 de la imagen en la USB no coincide con el de Cisco. No se borro nada.
+The file MD5 does not match Cisco's. Nothing was deleted.	El MD5 del archivo no coincide con el de Cisco. No se borro nada.
+Deleting the running image flash:/{0}...	Borrando la imagen en uso flash:/{0}...
+Could not delete the running image: {0}	No se pudo borrar la imagen en uso: {0}
+Delete the running image (before copying)	Borrar la imagen en uso (antes de copiar)
+flash:/{0}. From here the switch has no image in flash until finished.	flash:/{0}. Desde aqui el switch no tiene imagen en flash hasta terminar.
+After deleting the running image there are {0:N1} MB free and ~{1:N1} MB are needed.	Tras borrar la imagen en uso hay {0:N1} MB libres y se necesitan ~{1:N1} MB.
+Version after reload	Version despues del reinicio
+Delete the previous image	Borrar la imagen anterior
+flash:/{0} is kept: it was not confirmed that the new one is running	Se conserva flash:/{0}: no se confirmo que la nueva este corriendo
+Delete the previous image (the new one already booted)	Borrar la imagen anterior (la nueva ya arranco)
+SCP server disabled	Servidor SCP desactivado
+===== Update of {0}: {1} via {2} =====	===== Actualizacion de {0}: {1} por {2} =====
+Image from another family allowed by the operator	Imagen de otra familia permitida por el operador
+{0} is not from family {1}; under the responsibility of {2}	{0} no es de la familia {1}; bajo responsabilidad de {2}
+The connected device (serial {0}) is not the one that was queried (serial {1}).	El equipo conectado (serie {0}) no es el que se consulto (serie {1}).
+Save current configuration	Guardar configuracion actual
+Cleaning flash (only the running image stays)...	Limpiando flash (solo queda la imagen en uso)...
+MD5 on the switch	MD5 en el switch
+SCP on IOS needs "aaa new-model" and "aaa authorization exec default local". They are not configured automatically because a mistake there locks you out of the switch: configure it by hand or use the USB.	SCP en IOS necesita "aaa new-model" y "aaa authorization exec default local". No se configuran solos porque un error ahi te deja fuera del switch: configuralo a mano o usa la USB.
+SCP server temporarily enabled	Servidor SCP activado temporalmente
+Freeing space (install remove inactive)...	Liberando espacio (install remove inactive)...
+Clean inactive packages	Limpiar paquetes inactivos
+Sending {0} via SCP...	Enviando {0} por SCP...
+SCP transfer	Transferencia SCP
+{0:N0} bytes in {1:hh\:mm\:ss}	{0:N0} bytes en {1:hh\:mm\:ss}
+Verifying MD5 on the switch...	Verificando MD5 en el switch...
+The MD5 computed by the switch does not match: not installing.	El MD5 calculado por el switch no coincide: no se instala.
+{0} (no reference MD5)	{0} (sin MD5 de referencia)
+install add ... activate commit (10 to 25 minutes, the switch reloads by itself)...	install add ... activate commit (10 a 25 minutos, el switch se reinicia solo)...
+install add failed: {0}	install add fallo: {0}
+install add in progress... {0}	install add en curso... {0}
+The switch is reloading	El switch se esta reiniciando
+Installed and committed (SUCCESS), but the switch did not reload by itself	Instalado y confirmado (SUCCESS), pero el switch no se reinicio solo
+Reloading to boot the new version...	Reiniciando para entrar a la version nueva...
+Reload	Reinicio
+reload (install did not reload by itself)	reload (install no reinicio solo)
+Running version	Version en ejecucion
+Installed and committed; takes effect when you reload	Instalada y confirmada; entra hasta que reinicies (reload)
+install add finished without SUCCESS or reload: {0}	install add termino sin SUCCESS ni reinicio: {0}
+archive tar /xtract (may take 5 to 15 minutes)...	archive tar /xtract (puede tardar 5 a 15 minutos)...
+archive tar failed: {0}	archive tar fallo: {0}
+archive tar finished but {0} was not found.	archive tar termino pero no encuentro {0}.
+archive tar /xtract (reinstall of the same version)	archive tar /xtract (reinstalacion de la misma version)
+archive download-sw (may take 10 to 20 minutes)...	archive download-sw (puede tardar 10 a 20 minutos)...
+archive download-sw did not finish well: {0}	archive download-sw no termino bien: {0}
+Delete the .tar from flash:	Borrar el .tar de flash:
+Copying {0} to flash:...	Copiando {0} a flash:...
+copy failed: {0}	copy fallo: {0}
+MD5 after copying to flash:	MD5 tras copiar a flash:
+The copy in flash: does not match the USB.	La copia en flash: no coincide con la USB.
+BOOT points to the new image	BOOT apunta a la imagen nueva
+Reloading...	Reiniciando...
+Waiting for boot with the new version...	Esperando el arranque con la version nueva...
+{0} (expected {1})	{0} (esperada {1})
+{0} (before {1})	{0} (antes {1})
+Committed packages (install commit)	Paquetes comprometidos (install commit)
+State C (committed)	Estado C (committed)
+Check show install summary	Revisa show install summary
+Stopped by the operator: check the switch state on the console before reloading it.	Detenido por el operador: revisa el estado del switch por consola antes de reiniciarlo.
+WARNING: FLASH HAS NO BOOTABLE IMAGE (deleted {0}). DO NOT RELOAD OR POWER OFF THE SWITCH: it keeps running from RAM. Load the image again without reloading (for example: copy usbflash0:<image>.bin flash: and boot system flash:<image>.bin + write memory, or repeat the update). If it already reloaded, it stays at "switch:" and is recovered over the console with Xmodem. Detail: {1}	ATENCION: LA FLASH NO TIENE IMAGEN ARRANCABLE (se borro {0}). NO REINICIES NI APAGUES EL SWITCH: sigue funcionando desde la RAM. Vuelve a cargar la imagen sin reiniciar (por ejemplo: copy usbflash0:<imagen>.bin flash: y boot system flash:<imagen>.bin + write memory, o repite la actualizacion). Si ya se reinicio, queda en "switch:" y se recupera por consola con Xmodem. Detalle: {1}
+Update: {0}. Evidence in {1}	Actualizacion: {0}. Evidencias en {1}
+Update IOS	Actualizar IOS
+USB connected to the switch	USB conectada al switch
+<title>IOS update - {0} - {1}</title>	<title>Actualizacion de IOS - {0} - {1}</title>
+IOS update record &mdash; Switch	Registro de actualizacion de IOS &mdash; Switch
+Ticket / change	Ticket / cambio
+Device and version	Equipo y version
+Previous version	Version anterior
+Expected version	Version esperada
+Version after	Version despues
+Image	Imagen
+Load method	Metodo de carga
+Control connection	Conexion de control
+Console 	Consola 
+SSH fingerprint accepted	Huella SSH aceptada
+MD5 published by Cisco	MD5 publicado por Cisco
+(not entered)	(no capturado)
+Local file MD5	MD5 del archivo local
+(not applicable: loaded from USB)	(no aplica: carga por USB)
+MD5 computed by the switch	MD5 calculado por el switch
+SSH and console access	Acceso por SSH y consola
+Uplinks and trunks up	Uplinks y trunks arriba
+VLANs and STP unchanged (show vlan brief, show spanning-tree summary)	VLANs y STP sin cambios (show vlan brief, show spanning-tree summary)
+Phones / PoE working	Telefonos / PoE funcionando
+Monitoring receiving from the device	Monitoreo recibiendo del equipo
+New configuration backup	Respaldo nuevo de la configuracion
+Browse...	Examinar...
+Source model	Modelo de origen
+1. Backup and connection	1. Respaldo y conexion
+Domain	Dominio
+Management interface	Interfaz de gestion
+IP address	Direccion IP
+Mask	Mascara
+Password	Contrasena
+4. Review	4. Revision
+Apply to switch	Aplicar al switch
+Connect and review	Conectar y revisar
+Options	Opciones
+SSH port	Puerto SSH
+1. Connection	1. Conexion
+2. Current version	2. Version actual
+Read switch USB	Leer USB del switch
+Update	Actualizar
+Connect and query	Conectar y consultar
+The CSV has no IP column (IP, Direccion or Address). Columns found: {0}	El CSV no tiene una columna de IP (IP, Direccion o Address). Columnas encontradas: {0}
+{0}: invalid SSH port "{1}"	{0}: puerto SSH invalido "{1}"
+{0}: invalid IP "{1}"	{0}: IP invalida "{1}"
+{0}: IP {1} is repeated (also {2})	{0}: la IP {1} esta repetida (tambien {2})
+Fix the switch list (tab 1):{0}{1}	Corrige la lista de switches (pestana 1):{0}{1}
+Check in tab 1 (Sel column) the switches to connect to. "Check all" for a sweep or "Only the selected one" for one.	Marca en la pestana 1 (columna Sel) los switches a los que se conectara. "Marcar todos" para un barrido o "Solo el seleccionado" para uno.
+SSH (sweep of the checked switches)	SSH (barrido de los switches marcados)
+{0} console {1} at {2} baud	Consola {0} {1} a {2} baudios
+Cancel	Cancelar
+No response at {0}:{1} (powered off, no network, ACL or SSH disabled).	Sin respuesta en {0}:{1} (apagado, sin red, ACL o SSH deshabilitado).
+The running-config came out incomplete; not continuing.	La running-config salio incompleta; no se continua.
+Disabled	Inactivo
+Enabled	Activo
+{0} / domain {1} / v{2}	{0} / dominio {1} / v{2}
+(none)	(ninguno)
+location "{0}"	ubicacion "{0}"
+contact "{0}"	contacto "{0}"
+{0} v2c community(ies)	{0} comunidad(es) v2c
+{0} v3 group(s)	{0} grupo(s) v3
+traps to {0}	traps a {0}
+{0}{1}zone {2}	{0}{1}zona {2}
+{0} (summer {1})	{0} (verano {1})
+{0}{1}level {2}	{0}{1}nivel {2}
+vty: default transport	vty: transporte por defecto
+{0} was not in the list: it was added{1}.	{0} no estaba en la lista: se agrego{1}.
+ with IP 	 con la IP 
+ without IP (enter it for SSH)	 sin IP (capturala para SSH)
+Credentials to query	Credenciales para consultar
+{0} will be queried: version, LLDP, CDP, VTP, STP and the running-config (read only).	Se consultara {0}: version, LLDP, CDP, VTP, STP y la running-config (solo lectura).
+{0} switch(es) over SSH	{0} switch(es) por SSH
+the console switch 	el switch de la consola 
+===== Query of {0} switch(es) via {1} =====	===== Consulta de {0} switch(es) por {1} =====
+NOT QUERIED (stopped)	NO CONSULTADO (detenido)
+Querying {0} ({1} of {2})...	Consultando {0} ({1} de {2})...
+Querying...	Consultando...
+Queried	Consultado
+Query finished: {0} successful, {1} failed.	Consulta terminada: {0} correcta(s), {1} con falla.
+Query finished: {0} successful, {1} failed. List saved to {2}	Consulta terminada: {0} correcta(s), {1} con falla. Lista guardada en {2}
+Query finished: {0} successful, {1} failed.{2}{2}The list was updated and saved to:{2}{3}	Consulta terminada: {0} correcta(s), {1} con falla.{2}{2}La lista se actualizo y se guardo en:{2}{3}
+Configure switches	Configurar switches
+LLDP and CDP	LLDP y CDP
+Login banner	Banner login
+MOTD banner	Banner MOTD
+NTP and time	NTP y hora
+SSH and lines	SSH y lineas
+Services	Servicios
+Local user / enable	Usuario local / enable
+Additional commands	Comandos adicionales
+{0}: "{1}" is not an IPv4 address.	{0}: "{1}" no es una IPv4.
+{0}: cannot contain "?" (the console takes it as help).	{0}: no puede llevar "?" (la consola lo toma como ayuda).
+{0}: no spaces, quotes or "?" (maximum {1} characters).	{0}: sin espacios, comillas ni "?" (maximo {1} caracteres).
+{0}: invalid interface "{1}" (e.g. Vlan10).	{0}: interfaz invalida "{1}" (ej. Vlan10).
+{0}: must be a number from {1} to {2}.	{0}: debe ser un numero de {1} a {2}.
+{0}: invalid ACL name or number.	{0}: nombre o numero de ACL invalido.
+Check at least one group in tab 2 ("Apply ...").	Marca al menos un grupo en la pestana 2 ("Aplicar ...").
+LLDP and CDP: choose to enable or disable at least one.	LLDP y CDP: elige habilitar o deshabilitar al menos uno.
+{0}: contains control characters.	{0}: contiene caracteres de control.
+{0}: uses every possible delimiter (# $ % ~ @ & | ^ *); remove one.	{0}: usa todos los delimitadores posibles (# $ % ~ @ & | ^ *); quita alguno.
+{0}: too long (maximum 2000 characters).	{0}: demasiado largo (maximo 2000 caracteres).
+VTP: invalid mode.	VTP: modo invalido.
+VTP domain	VTP dominio
+VTP password: 8 to 64 characters, no spaces or "?".	VTP contrasena: de 8 a 64 caracteres, sin espacios ni "?".
+VTP version 3 requires the domain.	VTP version 3 requiere indicar el dominio.
+SNMP: there is nothing to apply.	SNMP: no hay nada que aplicar.
+SNMP location	SNMP ubicacion
+SNMP contact	SNMP contacto
+SNMP community	SNMP comunidad
+SNMP community: "public" / "private" are the factory defaults and the first ones tried; use another one.	SNMP comunidad: "public" / "private" son las de fabrica y las primeras que se prueban; usa otra.
+SNMP: the ACL applies to the community; enter the community.	SNMP: la ACL se aplica a la comunidad; indica la comunidad.
+SNMP traps: enter the community or a v3 user to send them.	SNMP traps: indica la comunidad o un usuario v3 para enviarlos.
+SNMP: "Remove the others" without a community or v3 user would leave the switch without SNMP.	SNMP: "Quitar las demas" sin comunidad ni usuario v3 dejaria el switch sin SNMP.
+SNMPv3 user	SNMPv3 usuario
+SNMPv3 group	SNMPv3 grupo
+SNMPv3: enter user and group.	SNMPv3: indica usuario y grupo.
+SNMPv3: the authentication key (SHA) must have 8 or more characters, no spaces or "?".	SNMPv3: la clave de autenticacion (SHA) debe tener 8 o mas caracteres, sin espacios ni "?".
+SNMPv3: the encryption key (AES 128) must have 8 or more characters, no spaces or "?".	SNMPv3: la clave de cifrado (AES 128) debe tener 8 o mas caracteres, sin espacios ni "?".
+NTP and time: there is nothing to apply.	NTP y hora: no hay nada que aplicar.
+NTP source-interface	NTP interfaz origen
+NTP: "Remove the others" requires at least one server.	NTP: "Quitar los demas" requiere al menos un servidor.
+Time zone: name of 1 to 7 letters (e.g. PST).	Zona horaria: nombre de 1 a 7 letras (ej. PST).
+Time zone: offset from UTC	Zona horaria: diferencia con UTC
+Time zone: enter the offset from UTC (e.g. -8).	Zona horaria: indica la diferencia con UTC (ej. -8).
+Summer time: name of 1 to 7 letters (e.g. PDT).	Horario de verano: nombre de 1 a 7 letras (ej. PDT).
+Syslog: there is nothing to apply.	Syslog: no hay nada que aplicar.
+Syslog source interface	Syslog interfaz origen
+Syslog: "Remove the others" requires at least one server.	Syslog: "Quitar los demas" requiere al menos un servidor.
+DNS: there is nothing to apply.	DNS: no hay nada que aplicar.
+DNS: invalid domain.	DNS: dominio invalido.
+DNS: maximum 6 servers.	DNS: maximo 6 servidores.
+SSH and lines: there is nothing to apply.	SSH y lineas: no hay nada que aplicar.
+SSH time-out (seconds)	SSH time-out (segundos)
+SSH retries	SSH reintentos
+VTY exec-timeout (minutes)	VTY exec-timeout (minutos)
+Console exec-timeout (minutes)	Consola exec-timeout (minutos)
+VTY ACL	ACL de las VTY
+VTY exec-timeout 0 leaves remote sessions open forever; use 5 to 15 minutes.	VTY exec-timeout 0 deja sesiones remotas abiertas para siempre; usa 5 a 15 minutos.
+Services: check at least one.	Servicios: marca al menos uno.
+Spanning-tree: invalid mode.	Spanning-tree: modo invalido.
+User / enable: enter a user or an enable secret.	Usuario / enable: indica un usuario o un enable secret.
+User: only letters, numbers, dot, hyphen and underscore.	Usuario: solo letras, numeros, punto, guion y guion bajo.
+User: the password is missing.	Usuario: falta la contrasena.
+User: the passwords do not match.	Usuario: las contrasenas no coinciden.
+User: password of 8 or more characters, no spaces or "?".	Usuario: contrasena de 8 o mas caracteres, sin espacios ni "?".
+Enable secret: they do not match.	Enable secret: no coinciden.
+Enable secret: 8 or more characters, no spaces or "?".	Enable secret: 8 o mas caracteres, sin espacios ni "?".
+Additional commands: the box is empty.	Comandos adicionales: el cuadro esta vacio.
+Check the parameters (tab 2):{0}- {1}	Revisa los parametros (pestana 2):{0}- {1}
+Not needed: the tool enters and leaves configuration mode	No es necesario: la herramienta entra y sale del modo configuracion
+The hostname is specific to each switch	El hostname es propio de cada switch
+An IP address is specific to each switch: it is not pushed	Una direccion IP es propia de cada switch: no se plancha
+ACL {0} of the community	ACL {0} de la comunidad
+The ACL does not exist on this switch: the community has no source restriction until you create it.	La ACL no existe en este switch: la comunidad queda sin restriccion de origen hasta que la crees.
+! The communities and trap destinations the switch has that are not listed here are removed (read from its running-config)	! Se quitan las comunidades y destinos de traps que el switch tenga y no esten aqui (se leen de su running-config)
+! The NTP servers the switch has that are not listed here are removed	! Se quitan los servidores NTP que el switch tenga y no esten aqui
+! The syslog servers the switch has that are not listed here are removed	! Se quitan los servidores syslog que el switch tenga y no esten aqui
+The ACL does not exist on this switch: it was not applied. Create it first (additional commands) and push again.	La ACL no existe en este switch: no se aplico. Creala primero (comandos adicionales) y vuelve a planchar.
+! access-class {0} is only applied on switches where the ACL already exists	! access-class {0} solo se aplica en los switches donde la ACL ya existe
+write memory      (only if there were no failures, unless you check save with errors)	write memory      (solo si no hubo fallas, salvo que marques guardar con errores)
+Decided on each switch, with its running-config:	Se decide en cada switch, con su running-config:
+PUSH PREVIEW (passwords and communities are shown as ********)	VISTA PREVIA DEL PLANCHADO (contrasenas y comunidades se muestran como ********)
+Connection : {0}	Conexion : {0}
+Switches   : {0}	Switches : {0}
+Switch     : the one connected to the console cable	Switch   : el conectado al cable de consola
+Groups     : {0}	Grupos   : {0}
+Save       : {0}	Guardar  : {0}
+yes, even with failures	si, aunque haya fallas
+yes, only if there were no failures	si, solo si no hubo fallas
+no (stays only in the running-config)	no (queda solo en la running-config)
+Before changing anything, each switch's running-config is saved in its evidence folder.	Antes de cambiar nada se guarda la running-config de cada switch en su carpeta de evidencias.
+---- Classic IOS (2960 / 2960-X / 2960-XR) and IOS-XE (9200): same lines ----	---- IOS clasico (2960 / 2960-X / 2960-XR) e IOS-XE (9200): mismas lineas ----
+---- Classic IOS (Catalyst 2960 / 2960-X / 2960-XR) ----	---- IOS clasico (Catalyst 2960 / 2960-X / 2960-XR) ----
+---- Additional commands that are NOT sent ----	---- Comandos adicionales que NO se envian ----
+---- Before pushing, consider ----	---- Antes de planchar, considera ----
+IP phones, APs and some devices get the voice VLAN or PoE power via CDP / LLDP-MED: disabling them may affect them. The neighbor view is also lost.	Telefonos IP, AP y algunos equipos toman la VLAN de voz o la energia PoE por CDP / LLDP-MED: deshabilitarlos puede afectarlos. Tambien se pierde la vista de vecinos.
+VTP {0}: if a switch with a higher revision number joins the domain, it can DELETE or REPLACE the VLANs of every switch in the domain (classic VTP incident). Recommended: transparent.	VTP {0}: si un switch con un numero de revision mayor entra al dominio, puede BORRAR o REEMPLAZAR las VLANs de todos los switches del dominio (incidente clasico de VTP). Recomendado: transparent.
+Changing the VTP domain resets the revision number; in client/server mode the switch stops syncing with the previous domain.	Cambiar el dominio VTP reinicia el numero de revision; en modo client/server el switch deja de sincronizar con el dominio anterior.
+SNMP: the communities and trap destinations not listed here are deleted. Monitoring that uses another community will stop receiving data.	SNMP: se borran las comunidades y destinos de traps que no esten aqui. El monitoreo que use otra comunidad dejara de recibir datos.
+NTP: the servers not listed here are deleted.	NTP: se borran los servidores que no esten aqui.
+Syslog: the servers not listed here are deleted.	Syslog: se borran los servidores que no esten aqui.
+VTY SSH only: telnet is disabled. Switches without RSA keys or without "ip ssh" would lose remote access (the SSH sweep already confirms SSH works on the ones it connects to).	VTY solo SSH: se deshabilita telnet. Los switches sin llaves RSA o sin "ip ssh" quedarian sin acceso remoto (en el barrido por SSH ya se comprueba que SSH funciona en los que conecta).
+access-class {0} on the VTYs: if the ACL does not permit the IP of your computer, your VPN or the backup server, remote access is lost (the current session continues). Check the ACL first.	access-class {0} en las VTY: si la ACL no permite la IP de tu equipo, de tu VPN o del servidor de respaldos, se pierde el acceso remoto (la sesion actual sigue). Revisa la ACL antes.
+No HTTP/HTTPS server: on the 9200 the WebUI is turned off.	Sin servidor HTTP/HTTPS: en el 9200 se apaga la WebUI.
+Changing the spanning-tree mode to {0} restarts STP on all VLANs: 1 to 50 second outages on each switch. Do it in a maintenance window and starting with the root.	Cambiar el modo de spanning-tree a {0} reinicia STP en todas las VLANs: cortes de 1 a 50 segundos en cada switch. Hazlo en ventana de mantenimiento y empezando por la raiz.
+The user password and/or enable is changed on all switches. Record it in the password vault before saving.	Se cambia la contrasena del usuario y/o el enable en todos los switches. Registrala en la boveda de contrasenas antes de guardar.
+The additional commands touch remote access (vty, AAA, ACL, SVI, SSH or users): review them twice, a mistake can lock you out of the switches.	Los comandos adicionales tocan acceso remoto (vty, AAA, ACL, SVI, SSH o usuarios): revisalos dos veces, un error puede dejarte sin acceso a los switches.
+The switch rejected it: {0}	El switch la rechazo: {0}
+Not found in the running-config	No aparece en la running-config
+It is the IOS default value (not shown in the running-config)	Es el valor por defecto del IOS (no se muestra en la running-config)
+Not found in the running-config: normal if it is the IOS default value	No aparece en la running-config: es normal si es el valor por defecto del IOS
+Accepted without error (additional command: no automatic check)	Aceptada sin error (comando adicional: sin comprobacion automatica)
+Accepted without error (IOS does not show it in clear text)	Aceptada sin error (el IOS no la muestra en claro)
+Present in the running-config	Presente en la running-config
+Still in the running-config	Sigue en la running-config
+No longer in the running-config	Ya no esta en la running-config
+Confirmed with "{0}"	Confirmado con "{0}"
+"{0}" does not confirm it	"{0}" no lo confirma
+Present in {0} "{1}" block(s)	Presente en {0} bloque(s) "{1}"
+Present in {0} of {1} "{2}" blocks	Presente en {0} de {1} bloques "{2}"
+No check	Sin comprobacion
+{0}: connected to {1}# ({2} {3} {4})	{0}: conectado a {1}# ({2} {3} {4})
+The list says "{0}" and the switch answers as "{1}"	La lista dice "{0}" y el switch responde como "{1}"
+{0}: applying...	{0}: aplicando...
+{0}: verifying...	{0}: verificando...
+Not needed (nothing was sent)	No hizo falta (no se envio nada)
+No (option unchecked): the configuration is lost if the switch reloads	No (opcion desmarcada): la configuracion se pierde si el switch se reinicia
+NO: there were failures. What was applied stays only in the running-config (a reload reverts it)	NO: hubo fallas. Lo aplicado queda solo en la running-config (un reinicio lo revierte)
+{0}: saving (write memory)...	{0}: guardando (write memory)...
+Yes (write memory [OK])	Si (write memory [OK])
+NO: write memory did not confirm [OK]	NO: write memory no confirmo [OK]
+Did not confirm [OK]	No confirmo [OK]
+{0}: could not document after the change: {1}	{0}: no se pudo documentar despues del cambio: {1}
+{0} failure(s), {1} note(s)	{0} falla(s), {1} observacion(es)
+{0} note(s)	{0} observacion(es)
+{0} check(s) verified	{0} punto(s) verificados
+ (stopped in the middle of the apply: part stayed in the running-config and was NOT saved; check it or reload without saving to revert)	 (se detuvo a mitad de la aplicacion: parte quedo en la running-config y NO se guardo; revisa o reinicia sin guardar para revertir)
+ and {0} more	 y {0} mas
+{0} switch(es) over SSH: {1}	{0} switch(es) por SSH: {1}
+the switch connected to console {0}	el switch conectado a la consola {0}
+These groups will be pushed:{0}  {1}{0}{0}to {2}.{0}{0}Save: {3}.{0}Each switch's running-config is backed up first in its evidence folder.	Se van a planchar estos grupos:{0}  {1}{0}{0}en {2}.{0}{0}Guardar: {3}.{0}La running-config de cada switch se respalda antes en su carpeta de evidencias.
+yes, with write memory if there were no failures	si, con write memory si no hubo fallas
+{0}{0}WARNING:{0}- {1}{0}{0}Continue?	{0}{0}ATENCION:{0}- {1}{0}{0}Continuar?
+Confirm push	Confirmar planchado
+\r\n\r\nContinue?	\r\n\r\nContinuar?
+Enter the evidence folder (tab 4).	Indica la carpeta de evidencias (pestana 4).
+Push cancelled.	Planchado cancelado.
+Credentials for the push	Credenciales para el planchado
+User with privilege 15 (or with enable) on {0}.	Usuario con privilegio 15 (o con enable) en {0}.
+the {0} checked switch(es)	los {0} switch(es) marcados
+===== Push: {0} to {1} target(s) via {2} =====	===== Planchado: {0} en {1} destino(s) por {2} =====
+Switch user: {0}. Evidence: {1}	Usuario del switch: {0}. Evidencias: {1}
+Stopped by the operator	Detenido por el operador
+The sweep stopped after a failure	Se detuvo el barrido tras una falla
+NOT RUN: {0}	NO EJECUTADO: {0}
+Pushing...	Planchando...
+Push {0}	Planchado {0}
+{0}: {1} - {2}. Saved: {3}	{0}: {1} - {2}. Guardado: {3}
+Could not save the list: {0}	No se pudo guardar la lista: {0}
+Yes, even with failures	Si, aunque haya fallas
+Yes, only if there were no failures	Si, solo si no hubo fallas
+Could not generate the full record: {0}	No se pudo generar el registro completo: {0}
+Configuration push record	Registro de planchado de configuracion
+Push finished. {0}	Planchado terminado. {0}
+===== Push finished: {0}. Record: {1}	===== Planchado terminado: {0}. Registro: {1}
+Push finished.{0}{0}{1}{0}{0}Record: {2}{0}{0}Open it in the browser? (from there you can print it or save it as PDF)	Planchado terminado.{0}{0}{1}{0}{0}Registro: {2}{0}{0}Abrirlo en el navegador? (desde ahi se imprime o se guarda como PDF)
+<title>Configuration push - {0}</title>	<title>Planchado de configuracion - {0}</title>
+<div class="res" style="background:{0}">RESULT: {1}</div> <span>{2}</span>	<div class="res" style="background:{0}">RESULTADO: {1}</div> <span>{2}</span>
+User on the switches	Usuario en los switches
+Connection	Conexion
+Groups pushed	Grupos planchados
+Save to startup-config	Guardar en startup-config
+Summary by switch	Resumen por switch
+<table class="lista"><tr><th>Switch</th><th>IP</th><th>Hostname</th><th>Model / version</th><th>Result</th><th>Saved</th><th>Detail</th></tr>	<table class="lista"><tr><th>Switch</th><th>IP</th><th>Hostname</th><th>Modelo / version</th><th>Resultado</th><th>Guardado</th><th>Detalle</th></tr>
+Pushed parameters (preview)	Parametros planchados (vista previa)
+Detail: {0} {1}	Detalle: {0} {1}
+Result	Resultado
+Hostname / serial	Hostname / serie
+Saved	Guardado
+Time	Hora
+Evidence	Evidencias
+<table class="lista"><tr><th>Line / check</th><th>Result</th><th>Detail</th></tr>	<table class="lista"><tr><th>Linea / punto</th><th>Resultado</th><th>Detalle</th></tr>
+<p><b>Switch messages</b></p><table class="lista"><tr><th>Line</th><th>Message</th></tr>	<p><b>Mensajes del switch</b></p><table class="lista"><tr><th>Linea</th><th>Mensaje</th></tr>
+SSH access to the pushed switches (new session)	Acceso por SSH a los switches planchados (sesion nueva)
+Monitoring / SNMP receiving from the switches	Monitoreo / SNMP recibiendo de los switches
+Correct time (show clock) and NTP synchronized (show ntp status)	Hora correcta (show clock) y NTP sincronizado (show ntp status)
+Syslog receiving events	Syslog recibiendo eventos
+LLDP / CDP neighbors and IP phones working	Vecinos LLDP / CDP y telefonos IP funcionando
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><title>Switch inventory</title>	<!DOCTYPE html><html lang="es"><head><meta charset="utf-8"><title>Inventario de switches</title>
+Switch inventory	Inventario de switches
+<p>{0} switch(es). Data from the last query or push of each one (Date column). SNMP communities and passwords are not included.</p>	<p>{0} switch(es). Datos de la ultima consulta o planchado de cada uno (columna Fecha). Las comunidades SNMP y contrasenas no se incluyen.</p>
+CSV (*.csv)|*.csv|All files (*.*)|*.*	CSV (*.csv)|*.csv|Todos los archivos (*.*)|*.*
+Check all	Marcar todos
+Import CSV...	Importar CSV...
+Save list	Guardar lista
+Enable	Habilitar
+Disable	Deshabilitar
+Location	Ubicacion
+Contact	Contacto
+Community ACL	ACL de la comunidad
+NTP servers	Servidores NTP
+Time zone	Zona horaria
+Offset from UTC	Diferencia con UTC
+Summer time	Horario de verano
+Source interface	Interfaz origen
+DNS servers	Servidores DNS
+VTY idle timeout (min)	Inactividad VTY (min)
+Console idle timeout (min)	Inactividad consola (min)
+User (privilege 15)	Usuario (privilegio 15)
+2. Parameters	2. Parametros
+Log	Bitacora
+Push	Planchar
+Preview	Vista previa
+Query	Consultar
+List saved to {0}	Lista guardada en {0}
+{0} is not valid JSON: fix it or delete it so it is created again.	{0} no es un JSON valido: corrigelo o borralo para que se vuelva a crear.
+Open settings.json	Abrir settings.json
+Developed by {0}	Desarrollado por {0}
+No data from the switch for {0} s: the session seems stuck. Last output: {1}	Sin datos del switch durante {0} s: la sesion parece colgada. Ultima salida: {1}
+flash:{0} is already on the switch with the same size: its MD5 is compared with the local file and it is only sent again if it differs.	flash:{0} ya esta en el switch con el mismo tamano: se compara su MD5 con el del archivo local y solo se vuelve a enviar si es distinto.
+Checking the copy already on flash (MD5)...	Revisando la copia que ya esta en flash (MD5)...
+Image already on flash	Imagen ya en flash
+flash:{0} has a different MD5 ({1}): it is deleted and sent again.	flash:{0} tiene un MD5 distinto ({1}): se borra y se vuelve a enviar.
+flash:{0} is the running image and the same file as the new one: its MD5 is compared first. If it matches it is neither deleted nor sent; if not, it is deleted (after checking the new image against Cisco's MD5) and sent again.	flash:{0} es la imagen en ejecucion y el mismo archivo que la nueva: primero se compara su MD5. Si coincide no se borra ni se envia; si no, se borra (despues de comparar la imagen nueva con el MD5 de Cisco) y se envia de nuevo.
+flash:{0} already has the expected MD5 ({1}): it is neither deleted nor copied again.	flash:{0} ya tiene el MD5 esperado ({1}): no se borra ni se vuelve a copiar.
+Not needed: flash:{0} is already the new image (same MD5).	No hace falta: flash:{0} ya es la imagen nueva (mismo MD5).
+Could not delete flash:{0}: {1}	No se pudo borrar flash:{0}: {1}
+The control session is closed during the transfer and reopened afterwards.	La sesion de control se cierra durante la transferencia y se vuelve a abrir despues.
+Support: {0}	Soporte: {0}
+Tools for Catalyst switches (IOS / IOS-XE) over the console (serial or USB) and over SSH:	Herramientas para switches Catalyst (IOS / IOS-XE) por consola (serial o USB) y por SSH:
+Restore from backup	Restaurar desde respaldo
+Applies the backup of a failed switch to its replacement. If the model is the same it applies it as is; otherwise it remaps the interfaces and converts between IOS-XE and classic IOS. Generates the DRP record of the procedure.	Aplica el respaldo de un switch danado a su reemplazo. Si el modelo es el mismo lo aplica tal cual; si no, remapea las interfaces y convierte entre IOS-XE e IOS clasico. Genera el registro DRP del procedimiento.
+Backs up the configuration, keeps the IOS image, deletes keys, vlan.dat and startup-config, and reloads without saving. Generates the erase record.	Respalda la configuracion, conserva la imagen IOS, borra llaves, vlan.dat y startup-config, y reinicia sin guardar. Genera el registro del borrado.
+Queries the version over the console or SSH and loads the new image from a USB drive, over the console (Xmodem) or over SSH (SCP), with MD5 verification, reload and change record.	Consulta la version por consola o SSH y carga la imagen nueva desde una USB, por la consola (Xmodem) o por SSH (SCP), con verificacion MD5, reinicio y registro del cambio.
+CSV switch inventory, a query that documents each one and a push of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH as a sweep or over the console to one, with a prior backup, verification and record.	Inventario de switches en CSV, consulta que documenta cada uno y planchado de parametros comunes (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, servicios, STP, usuarios) por SSH en barrido o por consola en uno, con respaldo previo, verificacion y registro.
+Cisco, Catalyst, IOS and IOS-XE are trademarks of Cisco Systems, Inc. This tool is independent: it is not affiliated with, sponsored or endorsed by Cisco. The trademarks are mentioned only to indicate which devices it is compatible with.	Cisco, Catalyst, IOS e IOS-XE son marcas de Cisco Systems, Inc. Esta herramienta es independiente: no esta afiliada, patrocinada ni respaldada por Cisco. Las marcas se mencionan solo para indicar con que equipos es compatible.
+Data folder: {0}	Carpeta de datos: {0}
+Subfolders: {0}, {1}, {2}, {3}, {4}, {5}, {6}	Subcarpetas: {0}, {1}, {2}, {3}, {4}, {5}, {6}
+They contain backups, transcripts and records with network data: protecting them (permissions, encryption, backup) is the operator's responsibility.	Contienen respaldos, transcripciones y registros con datos de la red: protegerlas (permisos, cifrado, respaldo) es responsabilidad del operador.
+No record has been generated yet.	Todavia no hay registro generado.
+<p class="bad">Reduced record: the full record could not be generated ({0}). Details are in log.txt, report.txt and console_session.txt in the same folder.</p>	<p class="bad">Registro reducido: el registro completo no se pudo generar ({0}). El detalle esta en log.txt, report.txt y console_session.txt de la misma carpeta.</p>
+Settings	Ajustes
+About	Acerca de
+Ready.	Listo.
+Stop	Detener
+<div class="noprint print-bar"><button type="button" onclick="window.print()">Print / Save as PDF</button></div><div class="head"><img src="data:image/png;base64,{0}" alt=""><div><h1>{1}</h1><div class="sub">Generated by {2} {3} on {4} from {5}</div></div></div>	<div class="noprint print-bar"><button type="button" onclick="window.print()">Imprimir / Guardar como PDF</button></div><div class="head"><img src="data:image/png;base64,{0}" alt=""><div><h1>{1}</h1><div class="sub">Generado por {2} {3} el {4} en {5}</div></div></div>
+Self-signed certificate of the previous device	Certificado autofirmado del equipo anterior
+Self-signed certificate of the previous device (does not match the new keys)	Certificado autofirmado del equipo anterior (no coincide con las llaves nuevas)
+Points to the self-signed certificate of the previous device	Apunta al certificado autofirmado del equipo anterior
+Smart licensing certificate: IOS-XE generates it by itself	Certificado de licencias Smart: IOS-XE lo genera solo
+Model change	Cambio de modelo
+Provisioning of the source model	Aprovisionamiento del modelo de origen
+Image path of the source device	Ruta de imagen del equipo de origen
+Auto QoS generated by the source platform	QoS automatico generado por la plataforma de origen
+Auto QoS of the source platform	QoS automatico de la plataforma de origen
+Macro of the source platform	Macro de la plataforma de origen
+2960 and 9200 only use dot1q (if the target is 3560/3750, add it by hand)	2960 y 9200 solo usan dot1q (si el destino es 3560/3750, agregalo a mano)
+EnergyWise of the source platform	EnergyWise de la plataforma de origen
+Syntax compatible on both platforms	Sintaxis compatible en ambas plataformas
+IOS-XE -> classic IOS	IOS-XE -> IOS clasico
+IOS-XE license	Licencia de IOS-XE
+Catalyst 9000 management VRF	VRF de gestion de Catalyst 9000
+Catalyst 9000 out-of-band management port	Puerto de gestion fuera de banda de Catalyst 9000
+Catalyst 9000 internal interface	Interfaz interna de Catalyst 9000
+Management VRF route (uses the gateway from the dialog)	Ruta de la VRF de gestion (usa el gateway del dialogo)
+Device-tracking (IOS-XE only)	Device-tracking (solo IOS-XE)
+IBNS 2.0 style 802.1X (IOS-XE only): review by hand	802.1X estilo IBNS 2.0 (solo IOS-XE): revisar a mano
+IOS-XE session templates	Plantillas de sesion de IOS-XE
+Smart licensing certificate (IOS-XE only)	Certificado de licencias Smart (solo IOS-XE)
+IOS-XE boot diagnostics	Diagnostico de arranque de IOS-XE
+IOS-XE transceiver monitoring	Monitoreo de transceivers de IOS-XE
+IOS-XE SSO redundancy	Redundancia SSO de IOS-XE
+IOS-XE memory parameter	Parametro de memoria de IOS-XE
+IOS-XE platform parameter	Parametro de plataforma de IOS-XE
+IOS-XE CPU policy	Politica de CPU de IOS-XE
+IOS-XE subscriber templates	Plantillas de suscriptor de IOS-XE
+IOS-XE parameter	Parametro de IOS-XE
+Catalyst 9000 management port	Puerto de gestion de Catalyst 9000
+The 2960 has no auxiliary port	El 2960 no tiene puerto auxiliar
+Catalyst 9000 stack power	Energia de stack de Catalyst 9000
+IOS-XE programmability	Programabilidad de IOS-XE
+IOS-XE NBAR	NBAR de IOS-XE
+IOS-XE SSH parameter	Parametro SSH de IOS-XE
+IOS-XE 17 cryptography parameter	Parametro de criptografia de IOS-XE 17
+IBNS 2.0 style 802.1X (IOS-XE only): the port is left without 802.1X, review	802.1X estilo IBNS 2.0 (solo IOS-XE): el puerto queda sin 802.1X, revisar
+Catalyst 9000 PoE	PoE de Catalyst 9000
+Classic IOS syntax	Sintaxis de IOS clasico
+Classic IOS does not accept a sequence number on ACL remarks	IOS clasico no acepta numero de secuencia en los remark de una ACL
+No management VRF on classic IOS	Sin VRF de gestion en IOS clasico
+Classic IOS -> IOS-XE	IOS clasico -> IOS-XE
+Classic IOS MLS QoS (does not exist on IOS-XE; use MQC)	QoS MLS de IOS clasico (no existe en IOS-XE; usa MQC)
+Classic IOS QoS queues	Colas de QoS de IOS clasico
+Obsolete on IOS-XE	Obsoleto en IOS-XE
+Smart Install (does not exist on 9200 IOS-XE)	Smart Install (no existe en IOS-XE de 9200)
+2960-X management port	Puerto de gestion del 2960-X
+Classic IOS parameter	Parametro de IOS clasico
+Classic IOS SDM template	Plantilla SDM de IOS clasico
+Classic IOS MLS QoS	QoS MLS de IOS clasico
+Classic IOS combo ports	Puertos combo de IOS clasico
+IOS-XE syntax	Sintaxis de IOS-XE
+Runs an exec mode command from configuration mode	Ejecuta un comando de modo exec desde la configuracion
+Exec command: reloads, erases, copies or modifies the device	Comando de ejecucion: reinicia, borra, copia o modifica el equipo
+License exec command	Comando de ejecucion de licencias
+Automation or command execution (EEM, kron, archive, Tcl, shell, alias, menu, autocommand)	Automatizacion o ejecucion de comandos (EEM, kron, archive, Tcl, shell, alias, menu, autocommand)
+Macro: runs commands	Macro: ejecuta comandos
+Changes the privilege level of commands	Cambia el nivel de privilegio de los comandos
+Boot parameters: managed in "Update IOS", not from a backup	Parametros de arranque: se administran en "Actualizar IOS", no desde un respaldo
+Configuration register (can make the startup-config be ignored)	Registro de configuracion (puede hacer que se ignore la startup-config)
+Enables hidden commands or loads configuration from the network at boot	Habilita comandos ocultos o carga configuracion desde la red al arrancar
+Allows reloading the switch via SNMP	Permite reiniciar el switch por SNMP
+File prompts, TFTP server or remote provisioning	Prompts de archivos, servidor TFTP o aprovisionamiento remoto
+Device keys (zeroize / import / generate): the tool generates its own	Llaves del equipo (zeroize / import / generate): la herramienta genera las suyas
+Smart Install (vulnerable): only "no vstack" is allowed	Smart Install (vulnerable): solo se permite "no vstack"
+Leaves configuration mode	Sale del modo configuracion
+Opens another block from a subline	Abre otro bloque desde una sublinea
+User hidden as a subline (IOS would create it in global mode)	Usuario escondido como sublinea (IOS lo crearia en modo global)
+SNMP hidden as a subline	SNMP escondido como sublinea
+Remote access hidden as a subline	Acceso remoto escondido como sublinea
+Cryptography hidden as a subline	Criptografia escondida como sublinea
+SUCCESSFUL WITH NOTES	EXITOSO CON OBSERVACIONES
+Settings: {0}	Ajustes: {0}
+Create VLANs	Crear VLANs
+Remove certificate	Quitar certificado
+Restore the other users	Restaurar los demas usuarios
+Start / end / duration	Inicio / fin / duracion
+Failed switch	Switch danado
+Replacement switch	Switch de reemplazo
+Backup used	Respaldo utilizado
+Switch errors	Errores del switch
+WITH FAILURES	CON FALLAS
+WITH NOTES	CON OBSERVACIONES
+SUCCESSFUL	EXITOSO
+FAILED	FALLIDO
+CANCELLED	CANCELADO
+SKIPPED	OMITIDO
+NOT RUN	NO EJECUTADO
+NOTE	OBSERVACION
+FAIL	FALLA
+BLOCKED	BLOQUEADO
+REMOVED	QUITADO
+WARNING	AVISO
+CHANGED	CAMBIADO
+ADDED	AGREGADO
+NO_MAPPING	SIN_MAPEO
+access	acceso
+Name	Nombre
+Status	Estado
+Date	Fecha
+Serial	Serie
+Verification	Verificacion
+AAA hidden as a subline	AAA escondido como sublinea
+Enable hidden as a subline	Enable escondido como sublinea
+Hostname hidden as a subline	Hostname escondido como sublinea
+Not applicable on classic IOS	No aplica en IOS clasico
+Source IOS version	Version del IOS de origen
+username {0} with type 8/9 hash	username {0} con hash tipo 8/9
+enable with type 8/9 hash	enable con hash tipo 8/9
+Target switch is NOT at factory defaults: {0}	Switch destino NO esta de fabrica: {0}
+Send {0} via Xmodem to flash: (estimated {1:hh\:mm}).	Enviar {0} por Xmodem a flash: (estimado {1:hh\:mm}).
+Serial is very slow: ~{0:hh\:mm} at {1} baud. Do not disconnect the cable.	Por serial tarda mucho: ~{0:hh\:mm} a {1} baudios. No desconectes el cable.
+Console {0}	Consola {0}
+DIRECT	DIRECTO
+CONVERT	CONVERTIR
+Compatibility: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (classic IOS) and Catalyst 9200 / 9200L (IOS-XE).	Compatibilidad: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (IOS clasico) y Catalyst 9200 / 9200L (IOS-XE).

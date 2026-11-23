@@ -1,0 +1,48 @@
+# ---- Network data and evidence: NEVER commit it ----
+# Folders the app creates next to Rackside.exe (default names; if you change them in settings.json, add them)
+# (anchored to the root so they don't hide code folders with the same name, such as src/Rackside.Core/Settings)
+/Restores/
+/FactoryResets/
+/Upgrades/
+/Backups/
+/SSHFingerprints/
+/Inventory/
+/Pushes/
+/Settings/
+settings.json
+ssh_fingerprints.csv
+switches.csv
+# Loose logs, transcripts and backups
+*.log
+console_session*.txt
+ssh_session*.txt
+running_before*.txt
+Report_*.html
+push_report*.html
+DRP_*/
+RESET_*/
+UPDATE_*/
+PUSH_*/
+# IOS images (large and licensed by Cisco)
+*.bin
+*.tar
+*.SPA.*
+
+# ---- Tests ----
+tests/out/
+tests/sim/__pycache__/
+__pycache__/
+*.pyc
+
+# ---- Build output ----
+*.exe
+bin/
+obj/
+publish/
+*.user
+.vs/
+*.suo
+
+# ---- Misc ----
+.DS_Store
+Thumbs.db

@@ -1,0 +1,13 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E3)
+IMAGE    : c3750e-universalk9-tar.152-4.E10.tar  36.2 MB  -> version 15.2(4)E10
+LOAD     : USB on the switch   CONNECTION: COM3
+
+STEPS:
+   1. Clean flash keeping only the running image (c2960x-universalk9-mz.152-7.E3): delete c2960x-universalk9-mz.152-2.E8 (28.6 MB), update (4.8 MB). If BOOT points to something that is deleted, it is first pinned to the running image.
+   2. Compare verify /md5 usbflash0:c3750e-universalk9-tar.152-4.E10.tar against nothing (you did not enter the Cisco MD5: it is only recorded).
+   3. archive download-sw /leave-old-sw usbflash0:c3750e-universalk9-tar.152-4.E10.tar (does not delete the running image; if it does not fit it stops without touching anything).
+
+WARNINGS:
+  ! File c3750e-universalk9-tar.152-4.E10.tar is not from this device's family (c2960x-universalk9). CONTINUING AT YOUR OWN RISK because you allowed another family: the switch may fail to boot.
+  ! No reload: the new version takes effect at the next reload.
+  ! You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!-- Pure logic, no UI and no network I/O: config parser, rules, security filter, interface mapping,
+       restore plan, push, settings and texts. -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <RootNamespace>Rackside.Core</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Rackside.Tests" />
+    <InternalsVisibleTo Include="Rackside.Transport" />
+    <InternalsVisibleTo Include="Rackside.Records" />
+    <InternalsVisibleTo Include="Rackside.Operations" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- English -> Spanish table: one entry per line, English TAB Spanish (\n and \r escaped). -->
+    <EmbeddedResource Include="Localization\es.tsv" LogicalName="Rackside.Core.Localization.es.tsv" />
+  </ItemGroup>
+
+</Project>

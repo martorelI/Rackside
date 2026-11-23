@@ -1,0 +1,72 @@
+no service pad
+!
+service password-encryption
+!
+hostname SW12
+!
+boot-start-marker
+!
+boot-end-marker
+!
+enable secret ********
+!
+username admin privilege 15 secret ********
+!
+ip domain-name lab.local
+!
+no ip domain-lookup
+!
+vtp mode transparent
+!
+mls qos map policed-dscp  0 10 18 24 46 to 8
+!
+mls qos srr-queue output cos-map queue 1 threshold 3 5
+!
+mls qos
+!
+spanning-tree mode rapid-pvst
+!
+vlan 10
+ name DATOS
+!
+vlan 30
+!
+interface FastEthernet0
+ no ip address
+ shutdown
+!
+interface GigabitEthernet1/0/1
+ switchport access vlan 10
+ switchport mode access
+ srr-queue bandwidth share 1 30 35 5
+ priority-queue out
+ mls qos trust device cisco-phone
+ spanning-tree portfast
+!
+interface GigabitEthernet1/0/2
+ switchport access vlan 30
+ switchport mode access
+!
+interface TenGigabitEthernet1/0/1
+ description Uplink CORE
+ switchport mode trunk
+!
+interface TenGigabitEthernet1/0/2
+!
+interface Vlan1
+ ip address 10.10.1.12 255.255.255.0
+ no shutdown
+!
+ip default-gateway 10.10.1.254
+!
+ip http server
+!
+no vstack
+!
+line vty 0 4
+ transport input ssh
+!
+line vty 5 15
+ transport input ssh
+!
+end

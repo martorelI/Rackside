@@ -1,0 +1,56 @@
+# Texts passed to T that stay the same in Spanish on purpose (commands, names, already bilingual).
+# One per line; \n and \r stand for line breaks; lines starting with # are comments.
+  5. boot system flash:{0}   /   write memory   /   reload
+  <> Cisco
+  = Cisco (OK)
+  Hostname        : {0}
+ priv aes 128 {0}
+---- IOS-XE (Catalyst 9200 / 9200L) ----
+2048 bits
+<style>{0} body{{max-width:none}} table.inv td,table.inv th{{font-size:11px}} @page{{size:landscape}}</style></head><body>
+<tr><th>Hostname</th><td>{0}</td><td>{1}</td></tr>
+All software images installed
+CRC
+DNS
+Erase of nvram: complete
+Hostname
+Hostname      : {0}
+NTP
+No
+Prompt "{0}>"
+RSA: {0}
+SCP, 
+SHA-256
+SHOW INSTALL SUMMARY
+SNMP
+SNMP ACL
+SNMP traps
+SSH 
+SSH v2
+Spanning-tree
+Syslog
+Syslog buffer
+USB: {0}
+VTP
+archive download-sw
+boot manual + write memory
+boot manual: {0}
+boot system flash:{0} + write memory
+boot system {0} + write memory
+boot system: {0}
+checksum
+conversion 
+flash:/{0}
+install add / activate / commit
+install remove inactive
+ip scp server enable
+no boot manual, boot system flash:{0}, write memory
+no ip scp server enable
+reload
+set BOOT flash:{0}
+set MANUAL_BOOT no
+startup-config is not present
+switch:
+write memory
+write memory [OK]
+{0}: {1} {2} {3}, LLDP {4}, CDP {5}, VTP {6}, STP {7}

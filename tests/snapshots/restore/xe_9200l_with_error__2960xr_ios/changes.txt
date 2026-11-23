@@ -1,0 +1,82 @@
+===== REMOVED (119) =====
+version 17.9
+    -> Source IOS version
+platform punt-keepalive disable-kernel-core
+    -> IOS-XE platform parameter
+vrf definition Mgmt-vrf (+4 sublines)
+    -> Catalyst 9000 management VRF
+switch 1 provision c9200l-48p-4x
+    -> Provisioning of the source model
+device-tracking policy IPDT_POLICY (+2 sublines)
+    -> Device-tracking (IOS-XE only)
+crypto pki trustpoint SLA-TrustPoint (+2 sublines)
+    -> Smart licensing certificate: IOS-XE generates it by itself
+crypto pki trustpoint TP-self-signed-12345 (+4 sublines)
+    -> Self-signed certificate of the previous device (does not match the new keys)
+crypto pki certificate chain SLA-TrustPoint (+3 sublines)
+    -> Smart licensing certificate: IOS-XE generates it by itself
+crypto pki certificate chain TP-self-signed-12345 (+3 sublines)
+    -> Self-signed certificate of the previous device (does not match the new keys)
+license boot level network-essentials addon dna-essentials
+    -> IOS-XE license
+diagnostic bootup level minimal
+    -> IOS-XE boot diagnostics
+redundancy (+1 sublines)
+    -> IOS-XE SSO redundancy
+transceiver type all (+1 sublines)
+    -> IOS-XE transceiver monitoring
+class-map match-any system-cpp-police-topology-control (+1 sublines)
+    -> IOS-XE CPU policy
+policy-map system-cpp-policy
+    -> IOS-XE CPU policy
+interface GigabitEthernet0/0 (+3 sublines)
+    -> Catalyst 9000 out-of-band management port
+[48 interfaces: GigabitEthernet1/0/1 ... GigabitEthernet1/0/48] device-tracking attach-policy IPDT_POLICY
+    -> Device-tracking (IOS-XE only)
+[48 interfaces: GigabitEthernet1/0/1 ... GigabitEthernet1/0/48] service-policy input AutoQos-4.0-Trust-Cos-Input-Policy
+    -> Auto QoS of the source platform
+interface AppGigabitEthernet1/0/1
+    -> Catalyst 9000 internal interface
+ip forward-protocol nd
+    -> IOS-XE parameter
+ip http secure-trustpoint TP-self-signed-12345
+    -> Points to the self-signed certificate of the previous device
+crypto engine compliance shield disable
+    -> IOS-XE 17 cryptography parameter
+control-plane (+1 sublines)
+    -> IOS-XE CPU policy
+line aux 0
+    -> The 2960 has no auxiliary port
+call-home (+4 sublines)
+    -> Call-home (IOS-XE)
+
+===== CHANGED (58) =====
+ip domain name lab.local  ->  ip domain-name lab.local
+    -> Classic IOS syntax
+no ip domain lookup  ->  no ip domain-lookup
+    -> Classic IOS syntax
+spanning-tree portfast edge default  ->  spanning-tree portfast default
+    -> Syntax compatible on both platforms
+[48 interfaces: GigabitEthernet1/0/1 ... GigabitEthernet1/0/48] spanning-tree portfast edge  ->  spanning-tree portfast
+    -> Syntax compatible on both platforms
+[ip access-list extended 110] 10 remark IT Traffic  ->  remark IT Traffic
+    -> Classic IOS does not accept a sequence number on ACL remarks
+[ip access-list extended 110] 210 remark BLOQUEO TRAFICO DESCONOCIDO  ->  remark BLOQUEO TRAFICO DESCONOCIDO
+    -> Classic IOS does not accept a sequence number on ACL remarks
+logging host 10.10.1.10 vrf Mgmt-vrf  ->  logging host 10.10.1.10
+    -> No management VRF on classic IOS
+ntp server vrf Mgmt-vrf 10.10.1.1  ->  ntp server 10.10.1.1
+    -> No management VRF on classic IOS
+line vty 5 31  ->  line vty 5 15
+    -> The target only has vty 0-15
+enable secret  ********  enable secret ********
+    -> Enable secret from the dialog
+username admin  ->  username admin privilege 15 secret ********
+    -> Administrator user from the dialog
+
+===== ADDED (2) =====
+vlan 20
+    -> VLANs used on interfaces but not defined in the file (VTP server/client keeps VLANs in vlan.dat)
+no ip access-list extended 110
+    -> Deletes each list right before loading it so it ends up identical to the backup (avoids "Duplicate sequence number" and duplicate entries if the switch already had it)
+

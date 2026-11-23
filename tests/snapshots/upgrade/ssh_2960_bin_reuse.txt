@@ -1,0 +1,16 @@
+DEVICE   : SW07  WS-C2960X-48FPD-L  serial FOC1234X0AB  (IOS 15.2(7)E3)
+IMAGE    : c2960x-universalk9-mz.152-7.E10.bin  2.9 MB  -> version 15.2(7)E10
+LOAD     : SCP over SSH   CONNECTION: SSH 10.0.0.7
+MD5      : file c9fc2d3dd83ab67a129ac10b09c9ebbb
+
+STEPS:
+   1. Check AAA and enable "ip scp server enable" if needed (removed when finished).
+   2. flash:c2960x-universalk9-mz.152-7.E10.bin is already on the switch with the same size: its MD5 is compared with the local file and it is only sent again if it differs.
+   3. Compare verify /md5 flash:c2960x-universalk9-mz.152-7.E10.bin against the local file MD5.
+   4. boot system flash:c2960x-universalk9-mz.152-7.E10.bin and write memory. The previous image stays in flash as a backup.
+   5. Reload and wait for boot.
+   6. Reconnect and confirm the version (15.2(7)E10).
+
+WARNINGS:
+  ! There are 2 old image(s) in flash (33.4 MB); they are not deleted because there is space.
+  ! You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.

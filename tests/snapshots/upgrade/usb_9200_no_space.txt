@@ -1,0 +1,16 @@
+DEVICE   : SW09  C9200L-48P-4X  serial JAE0000TEST  (IOS-XE 17.09.04a)
+IMAGE    : cat9k_lite_iosxe.17.09.05.SPA.bin  381.5 MB  -> version 17.09.05
+LOAD     : USB on the switch   CONNECTION: COM3
+
+CANNOT CONTINUE:
+  X No space in flash: ~457.8 MB needed and 286.1 MB available. Check "install remove inactive".
+
+STEPS:
+   1. Compare verify /md5 usbflash0:cat9k_lite_iosxe.17.09.05.SPA.bin against nothing (you did not enter the Cisco MD5: it is only recorded).
+   2. install add file usbflash0:cat9k_lite_iosxe.17.09.05.SPA.bin activate commit (the switch reloads by itself; if it does not and you checked reload, reload is sent).
+   3. Reconnect and confirm the version (17.09.05).
+
+WARNINGS:
+  ! The classic IOS cleanup checkboxes do not apply to IOS-XE: install remove inactive is used there.
+  ! You did not enter the Cisco MD5: it cannot be confirmed that the file is the original.
+  ! The switch has "Manual Boot = yes": after reloading it will stay at the boot loader. Remove it first (no boot manual).

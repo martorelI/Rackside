@@ -1,0 +1,6 @@
+Switch;Direccion IP;Puerto;Model;Status
+SW-A;10.0.0.11;;WS-C2960X-48FPD-L;Queried
+SW-B;10.0.0.12;2222;;
+;10.0.0.13;;;
+SW-A renamed;10.0.0.11;22;;
+NoIP;;;;

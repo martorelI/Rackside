@@ -1,0 +1,36 @@
+!
+! Synthetic running-config (no real data) for the push lines in tests/snapshots/push.
+!
+hostname LAB-SW01
+!
+logging buffered 16384
+logging trap informational
+logging 192.0.2.10
+logging host 10.0.0.8
+logging host 192.0.2.11 transport udp port 514
+!
+ip access-list standard MANAGEMENT
+ permit 10.0.0.0 0.0.0.255
+!
+access-list 15 permit 10.0.0.0 0.0.0.255
+!
+snmp-server community public RO
+snmp-server community MonitorRO2026 RO MANAGEMENT
+snmp-server community OldRW RW 15
+snmp-server location Old place
+snmp-server host 10.0.0.50 version 2c MonitorRO2026
+snmp-server host 10.0.0.50 version 2c public
+snmp-server host 192.0.2.20 traps version 2c OldRW
+!
+ntp server 10.0.0.5
+ntp server vrf Mgmt-vrf 192.0.2.30
+ntp server 192.0.2.31 prefer
+!
+line con 0
+ exec-timeout 5 0
+line vty 0 4
+ transport input telnet ssh
+line vty 5 15
+ transport input telnet ssh
+!
+end

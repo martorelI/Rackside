@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/Rackside.App/Rackside.App.csproj" />
+    <Project Path="src/Rackside.Core/Rackside.Core.csproj" />
+    <Project Path="src/Rackside.Operations/Rackside.Operations.csproj" />
+    <Project Path="src/Rackside.Records/Rackside.Records.csproj" />
+    <Project Path="src/Rackside.Transport/Rackside.Transport.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Rackside.Tests/Rackside.Tests.csproj" />
+  </Folder>
+</Solution>
