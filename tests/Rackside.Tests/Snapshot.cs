@@ -29,6 +29,10 @@ internal static class Snapshot
         {
             return;
         }
+        if (string.Equals(expected.Replace("\r\n", "\n", StringComparison.Ordinal), actual.Replace("\r\n", "\n", StringComparison.Ordinal), StringComparison.Ordinal))
+        {
+            Assert.Fail($"{what}: only the line endings differ (CRLF / LF). The checkout converted them: see .gitattributes.");
+        }
         var e = expected.Split('\n');
         var a = actual.Split('\n');
         var i = 0;

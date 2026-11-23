@@ -123,7 +123,7 @@ public sealed class UpgradeOperationTests
         }
     }
 
-    [Theory]
+    [SkippableTheory]
     [InlineData("stale", 2335)]
     [InlineData("reuse_same", 2336)]
     [InlineData("reuse_different", 2337)]
