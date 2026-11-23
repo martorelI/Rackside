@@ -30,9 +30,15 @@ internal sealed class Simulator : IDisposable
         {
             return env;
         }
+        // On Windows: python.exe, skipping the Microsoft Store alias in WindowsApps (it is not Python).
+        var names = OperatingSystem.IsWindows() ? new[] { "python.exe", "python3.exe" } : new[] { "python3", "python" };
         foreach (var dir in (Environment.GetEnvironmentVariable("PATH") ?? string.Empty).Split(Path.PathSeparator))
         {
-            foreach (var name in new[] { "python3", "python" })
+            if (dir.Contains("WindowsApps", StringComparison.OrdinalIgnoreCase))
+            {
+                continue;
+            }
+            foreach (var name in names)
             {
                 var f = Path.Combine(dir, name);
                 if (File.Exists(f))
