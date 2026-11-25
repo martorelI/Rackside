@@ -188,6 +188,28 @@ public sealed class Inventory
         return list;
     }
 
+    /// <summary>
+    /// Every switch of the list with a valid IP and SSH port, checked or not (for locating an address).
+    /// Rows without a valid IP are left out silently; the first row wins if an IP:port is repeated.
+    /// </summary>
+    public IReadOnlyList<ConfTarget> AllWithIp()
+    {
+        var list = new List<ConfTarget>();
+        var seen = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        foreach (var f in Rows)
+        {
+            var ip = f["IP"];
+            if (!Validators.IsIPv4(ip)
+                || !int.TryParse(f["Port"], System.Globalization.NumberStyles.Integer, System.Globalization.CultureInfo.InvariantCulture, out var port)
+                || port < 1 || port > 65535 || !seen.Add(Ci.F("{0}:{1}", ip, port)))
+            {
+                continue;
+            }
+            list.Add(new ConfTarget(f, f["Name"].Length > 0 ? f["Name"] : ip, ip, port));
+        }
+        return list;
+    }
+
     /// <summary>Folder-safe name.</summary>
     public static string SafeName(string? text)
     {
