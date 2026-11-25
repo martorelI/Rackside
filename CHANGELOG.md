@@ -1,5 +1,11 @@
 # Changelog
 
+## 1.1.1 (2026-11-25)
+
+- "Configure switches" works only over SSH, with the switches checked in the list. The console option was
+  removed: it only reached the switch on the cable and ignored the checked ones, which was confusing for an
+  inventory or a push. The console is still used by Restore, Factory reset and Update IOS.
+
 ## 1.1.0 (2026-11-25)
 
 - New section "Locate IP": finds the switch and port where an IP or MAC address is connected. It reads the

@@ -29,7 +29,7 @@ internal sealed class AboutPage : Page
             ("Restore from backup", "Applies the backup of a failed switch to its replacement. If the model is the same it applies it as is; otherwise it remaps the interfaces and converts between IOS-XE and classic IOS. Generates the DRP record of the procedure."),
             ("Factory reset", "Backs up the configuration, keeps the IOS image, deletes keys, vlan.dat and startup-config, and reloads without saving. Generates the erase record."),
             ("Update IOS", "Queries the version over the console or SSH and loads the new image from a USB drive, over the console (Xmodem) or over SSH (SCP), with MD5 verification, reload and change record."),
-            ("Configure switches", "CSV switch inventory, a query that documents each one and a push of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH as a sweep or over the console to one, with a prior backup, verification and record."),
+            ("Configure switches", "CSV switch inventory, a query that documents each one and a push of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH to the checked switches, with a prior backup, verification and record."),
             ("Locate IP", "Finds the switch and port where an IP or MAC address is connected: ARP of the gateway switch, then the MAC tables switch by switch over SSH (read only, layer 2)."),
         })
         {

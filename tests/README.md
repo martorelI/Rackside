@@ -20,7 +20,7 @@ Everything generated goes to `tests/out/dotnet` (ignored by git).
 | `RestorePushSnapshotTests` | restore of the backups in `fixtures/backups` on simulated targets (configuration, change report, interface mapping, mode) and the push preview, lines per switch and validation messages |
 | `ConfigureSnapshotTests`, `UpgradeSnapshotTests`, `RecordsSnapshotTests` | switch document, push verification, inventory import, update plans and HTML records |
 | `SecurityFilterTests`, `PushPlannerTests`, `SecretMaskerTests` | security filter, push validation, masked secrets |
-| `Operations/` | each operation end to end: restore (`FakeCatalyst`), factory reset (`FakeResetConsole`), configure over SSH and console (`sim/configure.py`), update IOS by USB, Xmodem and SCP (`sim/console_upgrade.py`, `sim/console_xmodem_2960.py`, `sim/console_scp.py` + `sim/ssh_bridge.py`; `Category=Slow`) |
+| `Operations/` | each operation end to end: restore (`FakeCatalyst`), factory reset (`FakeResetConsole`), configure over SSH, with a rejected line in Spanish (`sim/configure.py`), update IOS by USB, Xmodem and SCP (`sim/console_upgrade.py`, `sim/console_xmodem_2960.py`, `sim/console_scp.py` + `sim/ssh_bridge.py`; `Category=Slow`) |
 | `Transport/` | console session, Xmodem, SSH fingerprint policy and store, SSH and SCP against the simulators |
 | `LocateTests`, `Operations/LocateOperationTests` | MAC/ARP parsing and hop decision; the trace end to end against `sim/locate.py` (4 switches, one per loopback address): hops, unmanaged switch, ARP refresh with ping, unreachable switch, unknown switch MAC, read-only commands |
 | `SettingsTests` | creation of `settings.json`, custom and invalid values, broken JSON, saving the language |

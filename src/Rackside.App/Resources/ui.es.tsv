@@ -8,9 +8,9 @@ Accept new SSH fingerprints without asking (only switches with none saved)	Acept
 Save with write memory if there were no failures	Guardar con write memory si no hubo fallas
 Save even with failures	Guardar aun con fallas
 Continue the sweep after a failed switch	Continuar el barrido después de un switch fallido
-Documents your switches and pushes common parameters over SSH (sweep) or over the console.	Documenta tus switches y plancha parámetros comunes por SSH (barrido) o por consola.
+Documents your switches and pushes common parameters over SSH to the checked switches.	Documenta tus switches y plancha parámetros comunes por SSH en los switches marcados.
 1. Switches	1. Switches
-3. Connection and save	3. Conexión y guardado
+3. Sweep and save	3. Barrido y guardado
 4. Preview	4. Vista previa
 Open record	Abrir registro
 Sel	Sel
@@ -19,7 +19,7 @@ new	nuevo
 Remove selected	Quitar seleccionados
 Uncheck all	Desmarcar todos
 Printable inventory	Inventario imprimible
-Check (Sel) the switches for the SSH sweep. Over the console the switch on the cable is used and added by its hostname.	Marca (Sel) los switches del barrido por SSH. Por consola se usa el switch del cable y se agrega por su hostname.
+Check (Sel) the switches to query or push: they are reached over SSH with the IP and SSH port of each row.	Marca (Sel) los switches a consultar o planchar: se accede a ellos por SSH con la IP y el puerto SSH de cada renglón.
 Remove {0} switch(es) from the list?	¿Quitar {0} switch(es) de la lista?
 Imported: {0} added, {1} updated, {2} without IP skipped.	Importados: {0} agregados, {1} actualizados, {2} sin IP omitidos.
 Apply this group	Aplicar este grupo

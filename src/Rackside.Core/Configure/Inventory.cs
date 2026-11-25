@@ -21,7 +21,7 @@ public sealed class InventoryRow
 
 public sealed record ImportResult(int Added, int Updated, int Skipped);
 
-/// <summary>A switch the operation connects to: from the list (SSH) or the one on the console cable (Row = null).</summary>
+/// <summary>A switch of the list the operation connects to over SSH (Row = null only for a switch outside the list).</summary>
 public sealed record ConfTarget(InventoryRow? Row, string Name, string IP, int Port);
 
 /// <summary>The switch list of "Configure switches".</summary>
@@ -131,14 +131,10 @@ public sealed class Inventory
         File.WriteAllText(path, sb.ToString(), new UTF8Encoding(true));
     }
 
-    /// <summary>Switches it will connect to: the selected ones (SSH) or the one on the cable (console).</summary>
-    public IReadOnlyList<ConfTarget> Targets(bool overSsh, string portCom, Translator t)
+    /// <summary>Switches it will connect to over SSH: the checked ones.</summary>
+    public IReadOnlyList<ConfTarget> Targets(Translator t)
     {
         ArgumentNullException.ThrowIfNull(t);
-        if (!overSsh)
-        {
-            return [new ConfTarget(null, Ci.F(t.T("Console {0}"), portCom), string.Empty, 0)];
-        }
         var list = new List<ConfTarget>();
         var problems = new List<string>();
         var seen = new Dictionary<string, string>(StringComparer.OrdinalIgnoreCase);
@@ -183,7 +179,7 @@ public sealed class Inventory
         }
         if (list.Count == 0)
         {
-            throw new FormatException(t.T("Check in tab 1 (Sel column) the switches to connect to. \"Check all\" for a sweep or \"Only the selected one\" for one."));
+            throw new FormatException(t.T("Check in tab 1 (Sel column) the switches to connect to over SSH."));
         }
         return list;
     }

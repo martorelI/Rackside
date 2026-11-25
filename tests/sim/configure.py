@@ -3,7 +3,7 @@ SIM_DIR = _os.environ.get('SIM_DIR') or _os.path.join(_os.path.dirname(_os.path.
 _os.makedirs(SIM_DIR, exist_ok=True)
 def _path(n): return _os.path.join(SIM_DIR, n)
 # Cisco switch simulator (classic IOS and IOS-XE) for "Configure switches".
-# SSH mode: several switches on ports 2241.. (paramiko). pty mode: one switch on a serial console.
+# SSH mode: several switches on ports PORT_BASE.. (paramiko). pty mode: one switch on a serial console (transport tests).
 import os, sys, socket, threading, select, re, time, hashlib, json
 import paramiko
 

@@ -105,7 +105,7 @@ internal static class PushScenarios
         var p = Parameters();
         var masker = Masker(p);
         var t = Translator.English;
-        var opt = new PushRunOptions(t.T("SSH (sweep of the checked switches)"), OverSsh: true, Save: true, SaveWithErrors: false);
+        var opt = new PushRunOptions(t.T("SSH (sweep of the checked switches)"), Save: true, SaveWithErrors: false);
         return PushPlanner.Preview(p, opt, t, masker);
     }
 }

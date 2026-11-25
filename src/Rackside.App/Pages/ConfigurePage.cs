@@ -20,7 +20,6 @@ internal sealed class ConfigurePage : Page
     private readonly Tabs tabs = new();
     private readonly LogView log = new();
     private readonly TextBox preview = Make.Area(readOnly: true, mono: true);
-    private readonly ConnectionCard conn;
     private readonly CheckBox trustNew = Make.Check(S("Accept new SSH fingerprints without asking (only switches with none saved)"));
     private readonly CheckBox save = Make.Check(S("Save with write memory if there were no failures"), true);
     private readonly CheckBox saveWithErrors = Make.Check(S("Save even with failures"));
@@ -36,11 +35,10 @@ internal sealed class ConfigurePage : Page
     private string recordPath = string.Empty;
     private string lastUser = string.Empty;
 
-    public ConfigurePage(MainForm shell) : base(shell, S("Configure switches"), S("Documents your switches and pushes common parameters over SSH (sweep) or over the console."))
+    public ConfigurePage(MainForm shell) : base(shell, S("Configure switches"), S("Documents your switches and pushes common parameters over SSH to the checked switches."))
     {
         op = new ConfigureOperation(new ConfigurePaths(App.Paths.Inventory, App.Paths.InventoryCsv, App.Paths.Fingerprints), App.T, new SecretMasker(), shell.Operator());
         op.Log.Line += log.Append;
-        conn = new ConnectionCard(App, allowSsh: true, withLogin: false);
         folder = new PathField(App.Paths.Pushes, folder: true);
         if (File.Exists(App.Paths.InventoryCsv))
         {
@@ -56,7 +54,7 @@ internal sealed class ConfigurePage : Page
 
         tabs.Add(S("1. Switches"), BuildInventory());
         tabs.Add(S("2. Parameters"), BuildParameters());
-        tabs.Add(S("3. Connection and save"), BuildOptions());
+        tabs.Add(S("3. Sweep and save"), BuildOptions());
         tabs.Add(S("4. Preview"), preview);
         tabs.Add(S("Log"), log);
         tabs.Changed += (_, _) =>
@@ -132,7 +130,7 @@ internal sealed class ConfigurePage : Page
             Make.Secondary(S("Printable inventory"), (_, _) => InventoryDocument()));
         bar.Dock = DockStyle.Top;
         bar.Padding = new Padding(0, 0, 0, 10);
-        var note = Make.Note(S("Check (Sel) the switches for the SSH sweep. Over the console the switch on the cable is used and added by its hostname."));
+        var note = Make.Note(S("Check (Sel) the switches to query or push: they are reached over SSH with the IP and SSH port of each row."));
         note.Dock = DockStyle.Bottom;
         panel.Controls.Add(grid);
         panel.Controls.Add(bar);
@@ -371,7 +369,6 @@ internal sealed class ConfigurePage : Page
     private Control BuildOptions()
     {
         var list = new CardList();
-        list.Add(conn);
         var o = list.Add(new Card(S("Sweep and save")));
         foreach (var c in new[] { trustNew, save, saveWithErrors, keepGoing })
         {
@@ -389,7 +386,7 @@ internal sealed class ConfigurePage : Page
 
     private ConfigureOptions Options() => new()
     {
-        OverSsh = conn.OverSsh, ConsoleMedium = conn.Medium, PortCom = conn.PortCom, BaudRate = conn.BaudRate, TrustNew = trustNew.Checked,
+        TrustNew = trustNew.Checked,
         Save = save.Checked, SaveWithErrors = saveWithErrors.Checked, Continue = keepGoing.Checked, FolderRecord = folder.Value,
         Ticket = ticket.Text.Trim(), Responsible = responsible.Text.Trim(),
     };
@@ -403,7 +400,7 @@ internal sealed class ConfigurePage : Page
             IReadOnlyList<ConfTarget>? targets = null;
             try
             {
-                targets = op.Inventory.Targets(opt.OverSsh, opt.PortCom, App.T);
+                targets = op.Inventory.Targets(App.T);
             }
             catch (FormatException)
             {
@@ -436,7 +433,7 @@ internal sealed class ConfigurePage : Page
         IReadOnlyList<ConfTarget> targets;
         try
         {
-            targets = op.Inventory.Targets(opt.OverSsh, opt.PortCom, App.T);
+            targets = op.Inventory.Targets(App.T);
         }
         catch (FormatException ex)
         {
@@ -444,8 +441,8 @@ internal sealed class ConfigurePage : Page
             Dialogs.Error(FindForm(), ex.Message);
             return;
         }
-        var who = opt.OverSsh ? string.Format(CultureInfo.CurrentCulture, App.T.T("{0} switch(es) over SSH"), targets.Count) : App.T.T("the console switch ") + opt.PortCom;
-        var cred = AskCredentials(App.T.T("Credentials to query"), string.Format(CultureInfo.CurrentCulture, App.T.T("{0} will be queried: version, LLDP, CDP, VTP, STP and the running-config (read only)."), who), opt.OverSsh);
+        var who = string.Format(CultureInfo.CurrentCulture, App.T.T("{0} switch(es) over SSH"), targets.Count);
+        var cred = AskCredentials(App.T.T("Credentials to query"), string.Format(CultureInfo.CurrentCulture, App.T.T("{0} will be queried: version, LLDP, CDP, VTP, STP and the running-config (read only)."), who), true);
         if (cred is null)
         {
             return;
@@ -485,9 +482,8 @@ internal sealed class ConfigurePage : Page
             Shell.SetStatus(App.T.T("Push cancelled."), null);
             return;
         }
-        var opt = prepared.Options;
-        var who = opt.OverSsh ? string.Format(CultureInfo.CurrentCulture, App.T.T("the {0} checked switch(es)"), prepared.Targets.Count) : App.T.T("the console switch ") + opt.PortCom;
-        var cred = AskCredentials(App.T.T("Credentials for the push"), string.Format(CultureInfo.CurrentCulture, App.T.T("User with privilege 15 (or with enable) on {0}."), who), opt.OverSsh);
+        var who = string.Format(CultureInfo.CurrentCulture, App.T.T("the {0} checked switch(es)"), prepared.Targets.Count);
+        var cred = AskCredentials(App.T.T("Credentials for the push"), string.Format(CultureInfo.CurrentCulture, App.T.T("User with privilege 15 (or with enable) on {0}."), who), true);
         if (cred is null)
         {
             Shell.SetStatus(App.T.T("Push cancelled."), null);

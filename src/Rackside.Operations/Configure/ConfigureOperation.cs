@@ -12,21 +12,9 @@ using Rackside.Transport.Ssh;
 
 namespace Rackside.Operations.Configure;
 
-/// <summary>Connection and save options of "Configure switches".</summary>
+/// <summary>Sweep and save options of "Configure switches" (always over SSH, to the checked switches).</summary>
 public sealed record ConfigureOptions
 {
-    public bool OverSsh { get; init; } = true;
-
-    /// <summary>"USB" or "serial" (only for the texts).</summary>
-    public string ConsoleMedium { get; init; } = "USB";
-
-    public string PortCom { get; init; } = string.Empty;
-
-    public int BaudRate { get; init; } = 9600;
-
-    /// <summary>Simulator pty instead of a real COM port (tests only).</summary>
-    public bool Pty { get; init; }
-
     /// <summary>"Accept new fingerprints" in a sweep (only when nothing is saved for that switch).</summary>
     public bool TrustNew { get; init; }
 
@@ -43,14 +31,14 @@ public sealed record ConfigureOptions
 
     public string Responsible { get; init; } = string.Empty;
 
-    public string ConnectionText(Translator t)
+    public static string ConnectionText(Translator t)
     {
         ArgumentNullException.ThrowIfNull(t);
-        return OverSsh ? t.T("SSH (sweep of the checked switches)") : Ci.F(t.T("{0} console {1} at {2} baud"), ConsoleMedium, PortCom, BaudRate);
+        return t.T("SSH (sweep of the checked switches)");
     }
 
     public PushRunOptions PreviewOptions(Translator t, IReadOnlyList<ConfTarget>? targets) =>
-        new(ConnectionText(t), OverSsh, Save, SaveWithErrors, targets?.Select(d => new PushTarget(d.Name, d.IP, d.Port)).ToList());
+        new(ConnectionText(t), Save, SaveWithErrors, targets?.Select(d => new PushTarget(d.Name, d.IP, d.Port)).ToList());
 }
 
 /// <summary>Where the data of "Configure switches" lives (Inventory/, the fingerprints).</summary>
@@ -90,16 +78,12 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
 
     private SwitchConnection Connect(ConfigureOptions opt, Credentials cred, ConfTarget target, string folder)
     {
-        if (opt.OverSsh)
+        if (!SwitchConnection.TcpOpen(target.IP, target.Port, 4000))
         {
-            if (!SwitchConnection.TcpOpen(target.IP, target.Port, 4000))
-            {
-                throw new SwitchException(Ci.F(t.T("No response at {0}:{1} (powered off, no network, ACL or SSH disabled)."), target.IP, target.Port));
-            }
-            var request = new FingerprintRequest(target.IP, target.Port) { TrustFirstUse = opt.TrustNew, Hostname = target.Name };
-            return SwitchConnection.OverSsh(request, cred, folder, new FingerprintStore(paths.Fingerprints), t, masker, ui, Log, Cancellation);
+            throw new SwitchException(Ci.F(t.T("No response at {0}:{1} (powered off, no network, ACL or SSH disabled)."), target.IP, target.Port));
         }
-        return SwitchConnection.OverConsole(opt.PortCom, opt.BaudRate, opt.Pty, cred, folder, t, masker, Cancellation);
+        var request = new FingerprintRequest(target.IP, target.Port) { TrustFirstUse = opt.TrustNew, Hostname = target.Name };
+        return SwitchConnection.OverSsh(request, cred, folder, new FingerprintStore(paths.Fingerprints), t, masker, ui, Log, Cancellation);
     }
 
     /// <summary>Reads the connected switch and documents it. Changes nothing.</summary>
@@ -111,21 +95,9 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
         return SwitchDocument.Build(version, outs[0], outs[1], outs[2], outs[3], running, outs[4], c.Hostname, t);
     }
 
-    /// <summary>Copies what was documented to the row (the target's or, over the console, the hostname's).</summary>
+    /// <summary>Copies what was documented to the switch's row.</summary>
     private void UpdateRow(InventoryRow? row, SwitchDocument? doc, string state)
     {
-        if (row is null && doc is not null)
-        {
-            row = Inventory.Rows.FirstOrDefault(f => Ci.Eq(f["Name"], doc.Hostname) || Ci.Eq(f["Hostname"], doc.Hostname) || (doc.IPManagement.Length > 0 && f["IP"] == doc.IPManagement));
-            if (row is null && doc.Hostname.Length > 0)
-            {
-                row = new InventoryRow();
-                row["Name"] = doc.Hostname;
-                row["IP"] = doc.IPManagement;
-                Inventory.Rows.Add(row);
-                Log.Info(Ci.F(t.T("{0} was not in the list: it was added{1}."), doc.Hostname, doc.IPManagement.Length > 0 ? t.T(" with IP ") + doc.IPManagement : t.T(" without IP (enter it for SSH)")));
-            }
-        }
         if (row is null)
         {
             return;
@@ -148,18 +120,18 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
 
     private void RegisterCredentials(Credentials cred) => masker.Register(cred.Password, cred.Enable);
 
-    /// <summary>Documents the selected switches (or the console one): changes nothing on them. Returns (ok, failed).</summary>
+    /// <summary>Documents the checked switches over SSH: changes nothing on them. Returns (ok, failed).</summary>
     public (int Ok, int Failed) Query(ConfigureOptions opt, Credentials cred)
     {
         ArgumentNullException.ThrowIfNull(opt);
         ArgumentNullException.ThrowIfNull(cred);
         RegisterCredentials(cred);
-        var targets = Inventory.Targets(opt.OverSsh, opt.PortCom, t);
+        var targets = Inventory.Targets(t);
         var folder = Path.Combine(paths.InventoryFolder, "Queries", "QUERY_" + Now("yyyyMMdd_HHmmss"));
         Directory.CreateDirectory(folder);
         Log.Paths.Clear();
         Log.Paths.Add(Path.Combine(folder, "log.txt"));
-        Log.Info(Ci.F(t.T("===== Query of {0} switch(es) via {1} ====="), targets.Count, opt.ConnectionText(t)));
+        Log.Info(Ci.F(t.T("===== Query of {0} switch(es) via {1} ====="), targets.Count, ConfigureOptions.ConnectionText(t)));
         int ok = 0, bad = 0, n = 0;
         foreach (var d in targets)
         {
@@ -217,24 +189,16 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
         {
             throw new FormatException(t.T("Enter the evidence folder (tab 4)."));
         }
-        var targets = Inventory.Targets(opt.OverSsh, opt.PortCom, t);
+        var targets = Inventory.Targets(t);
         var view = PushPlanner.Preview(p, opt.PreviewOptions(t, targets), t, masker, extraAllowed);
 
         var groups = string.Join(", ", PushPlanner.Groups(p, t));
-        string who;
-        if (opt.OverSsh)
+        var names = string.Join(", ", targets.Take(12).Select(x => x.Name));
+        if (targets.Count > 12)
         {
-            var names = string.Join(", ", targets.Take(12).Select(x => x.Name));
-            if (targets.Count > 12)
-            {
-                names += Ci.F(t.T(" and {0} more"), targets.Count - 12);
-            }
-            who = Ci.F(t.T("{0} switch(es) over SSH: {1}"), targets.Count, names);
+            names += Ci.F(t.T(" and {0} more"), targets.Count - 12);
         }
-        else
-        {
-            who = Ci.F(t.T("the switch connected to console {0}"), opt.PortCom);
-        }
+        var who = Ci.F(t.T("{0} switch(es) over SSH: {1}"), targets.Count, names);
         var txt = Ci.F(t.T("These groups will be pushed:{0}  {1}{0}{0}to {2}.{0}{0}Save: {3}.{0}Each switch's running-config is backed up first in its evidence folder."),
             "\r\n", groups, who, opt.Save ? t.T("yes, with write memory if there were no failures") : "no");
         var risks = PushPlanner.Risks(p, t);
@@ -401,7 +365,7 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
         Log.Paths.Clear();
         Log.Paths.Add(Path.Combine(folder, "log.txt"));
         WriteCrlf(Path.Combine(folder, "parameters.txt"), prepared.Preview);
-        Log.Info(Ci.F(t.T("===== Push: {0} to {1} target(s) via {2} ====="), groups, targets.Count, opt.ConnectionText(t)));
+        Log.Info(Ci.F(t.T("===== Push: {0} to {1} target(s) via {2} ====="), groups, targets.Count, ConfigureOptions.ConnectionText(t)));
         Log.Info(Ci.F(t.T("Switch user: {0}. Evidence: {1}"), cred.User, folder));
 
         var results = new List<SwitchResult>();
@@ -424,7 +388,7 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
             }
             ui.Status(Ci.F("[{0}/{1}] {2}...", n, targets.Count, d.Name), 100 * (n - 1) / targets.Count);
             SetRowStatus(d.Row, t.T("Pushing..."));
-            var sub = Path.Combine(folder, Inventory.SafeName(d.IP.Length > 0 ? Ci.F("{0}_{1}", d.Name, d.IP) : "console"));
+            var sub = Path.Combine(folder, Inventory.SafeName(Ci.F("{0}_{1}", d.Name, d.IP)));
             var r = PushOne(p, opt, cred, d, sub, extraAllowed);
             results.Add(r);
             var stateTxt = r.Result is PushOutcome.Successful or PushOutcome.SuccessfulWithNotes or PushOutcome.WithFailures
@@ -458,7 +422,7 @@ public sealed class ConfigureOperation(ConfigurePaths paths, Translator t, Secre
         }
         var summary = string.Join(", ", results.GroupBy(x => x.Result.Code()).OrderBy(g => g.Key, Ci.SortComparer).Select(g => Ci.F("{0}: {1}", t.T(g.Key), g.Count())));
         var save = opt.Save ? (opt.SaveWithErrors ? t.T("Yes, even with failures") : t.T("Yes, only if there were no failures")) : t.T("No");
-        var run = new PushRun(opt.Ticket, opt.Responsible, Environment.UserName, Environment.MachineName, start, end, opt.ConnectionText(t), cred.User,
+        var run = new PushRun(opt.Ticket, opt.Responsible, Environment.UserName, Environment.MachineName, start, end, ConfigureOptions.ConnectionText(t), cred.User,
             groups, save, prepared.Preview, results, summary, folder);
         run.RecordPath = PushRecord(run);
         ui.Status(Ci.F(t.T("Push finished. {0}"), summary), 100);

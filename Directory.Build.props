@@ -10,6 +10,6 @@
     <Authors>Jose Martorell</Authors>
     <Product>Rackside</Product>
     <Copyright>Jose Martorell</Copyright>
-    <VersionPrefix>1.1.0</VersionPrefix>
+    <VersionPrefix>1.1.1</VersionPrefix>
   </PropertyGroup>
 </Project>

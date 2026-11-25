@@ -8,7 +8,7 @@ over the console cable (serial or USB) and over SSH. The interface is available 
 | Restore from backup | Applies the backup of a failed switch to its replacement. If the model changes, it remaps the interfaces and converts between IOS-XE and classic IOS. Filters dangerous commands and generates a DRP record. |
 | Factory reset | Backs up, erases the configuration, keys and vlan.dat, keeps the IOS image and reloads without saving. Erase record. |
 | Update IOS | Queries the version and loads the new image from a USB drive in the switch, over the console (Xmodem) or over SSH (SCP), with MD5 verification, reload and change record. |
-| Configure switches | CSV inventory, a query that documents each switch and a "push" of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH as a sweep or over the console. Prior backup, verification and record. |
+| Configure switches | CSV inventory, a query that documents each switch and a "push" of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH to the checked switches. Prior backup, verification and record. |
 | Locate IP | Finds the switch and port where an IP or MAC address is connected: the ARP of the gateway switch gives the MAC, then the MAC tables are followed switch by switch over SSH (read only, layer 2, no CDP/LLDP). |
 | Settings | Language (English / Spanish). Everything else is configured in `Settings\settings.json`. |
 

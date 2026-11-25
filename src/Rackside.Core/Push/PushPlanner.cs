@@ -11,7 +11,7 @@ namespace Rackside.Core.Push;
 public sealed record PushTarget(string Name, string IP, int Port);
 
 /// <summary>How the push connects and saves (the part of the options the preview shows).</summary>
-public sealed record PushRunOptions(string ConnectionText, bool OverSsh, bool Save, bool SaveWithErrors, IReadOnlyList<PushTarget>? Targets = null);
+public sealed record PushRunOptions(string ConnectionText, bool Save, bool SaveWithErrors, IReadOnlyList<PushTarget>? Targets = null);
 
 /// <summary>Additional commands after the restore filter and the push rules.</summary>
 public sealed record FilteredExtra(IReadOnlyList<ConfigBlock> Blocks, IReadOnlyList<ReportItem> Report);
@@ -633,15 +633,8 @@ public static class PushPlanner
         Line(sb, Ci.F(t.T("Connection : {0}"), opt.ConnectionText));
         if (opt.Targets is not null)
         {
-            if (opt.OverSsh)
-            {
-                Line(sb, Ci.F(t.T("Switches   : {0}"), opt.Targets.Count));
-                foreach (var d in opt.Targets) { Line(sb, Ci.F("           {0} ({1}{2})", d.Name, d.IP, d.Port != 22 ? ":" + d.Port.ToString(CultureInfo.InvariantCulture) : string.Empty)); }
-            }
-            else
-            {
-                Line(sb, t.T("Switch     : the one connected to the console cable"));
-            }
+            Line(sb, Ci.F(t.T("Switches   : {0}"), opt.Targets.Count));
+            foreach (var d in opt.Targets) { Line(sb, Ci.F("           {0} ({1}{2})", d.Name, d.IP, d.Port != 22 ? ":" + d.Port.ToString(CultureInfo.InvariantCulture) : string.Empty)); }
         }
         Line(sb, Ci.F(t.T("Groups     : {0}"), string.Join(", ", Groups(p, t))));
         Line(sb, Ci.F(t.T("Save       : {0}"), opt.Save ? (opt.SaveWithErrors ? t.T("yes, even with failures") : t.T("yes, only if there were no failures")) : t.T("no (stays only in the running-config)")));

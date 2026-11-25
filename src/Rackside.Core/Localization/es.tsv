@@ -630,9 +630,8 @@ The CSV has no IP column (IP, Direccion or Address). Columns found: {0}	El CSV n
 {0}: invalid IP "{1}"	{0}: IP invalida "{1}"
 {0}: IP {1} is repeated (also {2})	{0}: la IP {1} esta repetida (tambien {2})
 Fix the switch list (tab 1):{0}{1}	Corrige la lista de switches (pestana 1):{0}{1}
-Check in tab 1 (Sel column) the switches to connect to. "Check all" for a sweep or "Only the selected one" for one.	Marca en la pestana 1 (columna Sel) los switches a los que se conectara. "Marcar todos" para un barrido o "Solo el seleccionado" para uno.
+Check in tab 1 (Sel column) the switches to connect to over SSH.	Marca en la pestana 1 (columna Sel) los switches a los que conectarse por SSH.
 SSH (sweep of the checked switches)	SSH (barrido de los switches marcados)
-{0} console {1} at {2} baud	Consola {0} {1} a {2} baudios
 Cancel	Cancelar
 No response at {0}:{1} (powered off, no network, ACL or SSH disabled).	Sin respuesta en {0}:{1} (apagado, sin red, ACL o SSH deshabilitado).
 The running-config came out incomplete; not continuing.	La running-config salio incompleta; no se continua.
@@ -649,13 +648,9 @@ traps to {0}	traps a {0}
 {0} (summer {1})	{0} (verano {1})
 {0}{1}level {2}	{0}{1}nivel {2}
 vty: default transport	vty: transporte por defecto
-{0} was not in the list: it was added{1}.	{0} no estaba en la lista: se agrego{1}.
- with IP 	 con la IP 
- without IP (enter it for SSH)	 sin IP (capturala para SSH)
 Credentials to query	Credenciales para consultar
 {0} will be queried: version, LLDP, CDP, VTP, STP and the running-config (read only).	Se consultara {0}: version, LLDP, CDP, VTP, STP y la running-config (solo lectura).
 {0} switch(es) over SSH	{0} switch(es) por SSH
-the console switch 	el switch de la consola 
 ===== Query of {0} switch(es) via {1} =====	===== Consulta de {0} switch(es) por {1} =====
 NOT QUERIED (stopped)	NO CONSULTADO (detenido)
 Querying {0} ({1} of {2})...	Consultando {0} ({1} de {2})...
@@ -747,7 +742,6 @@ Decided on each switch, with its running-config:	Se decide en cada switch, con s
 PUSH PREVIEW (passwords and communities are shown as ********)	VISTA PREVIA DEL PLANCHADO (contrasenas y comunidades se muestran como ********)
 Connection : {0}	Conexion : {0}
 Switches   : {0}	Switches : {0}
-Switch     : the one connected to the console cable	Switch   : el conectado al cable de consola
 Groups     : {0}	Grupos   : {0}
 Save       : {0}	Guardar  : {0}
 yes, even with failures	si, aunque haya fallas
@@ -802,7 +796,6 @@ Did not confirm [OK]	No confirmo [OK]
  (stopped in the middle of the apply: part stayed in the running-config and was NOT saved; check it or reload without saving to revert)	 (se detuvo a mitad de la aplicacion: parte quedo en la running-config y NO se guardo; revisa o reinicia sin guardar para revertir)
  and {0} more	 y {0} mas
 {0} switch(es) over SSH: {1}	{0} switch(es) por SSH: {1}
-the switch connected to console {0}	el switch conectado a la consola {0}
 These groups will be pushed:{0}  {1}{0}{0}to {2}.{0}{0}Save: {3}.{0}Each switch's running-config is backed up first in its evidence folder.	Se van a planchar estos grupos:{0}  {1}{0}{0}en {2}.{0}{0}Guardar: {3}.{0}La running-config de cada switch se respalda antes en su carpeta de evidencias.
 yes, with write memory if there were no failures	si, con write memory si no hubo fallas
 {0}{0}WARNING:{0}- {1}{0}{0}Continue?	{0}{0}ATENCION:{0}- {1}{0}{0}Continuar?
@@ -897,7 +890,7 @@ Restore from backup	Restaurar desde respaldo
 Applies the backup of a failed switch to its replacement. If the model is the same it applies it as is; otherwise it remaps the interfaces and converts between IOS-XE and classic IOS. Generates the DRP record of the procedure.	Aplica el respaldo de un switch danado a su reemplazo. Si el modelo es el mismo lo aplica tal cual; si no, remapea las interfaces y convierte entre IOS-XE e IOS clasico. Genera el registro DRP del procedimiento.
 Backs up the configuration, keeps the IOS image, deletes keys, vlan.dat and startup-config, and reloads without saving. Generates the erase record.	Respalda la configuracion, conserva la imagen IOS, borra llaves, vlan.dat y startup-config, y reinicia sin guardar. Genera el registro del borrado.
 Queries the version over the console or SSH and loads the new image from a USB drive, over the console (Xmodem) or over SSH (SCP), with MD5 verification, reload and change record.	Consulta la version por consola o SSH y carga la imagen nueva desde una USB, por la consola (Xmodem) o por SSH (SCP), con verificacion MD5, reinicio y registro del cambio.
-CSV switch inventory, a query that documents each one and a push of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH as a sweep or over the console to one, with a prior backup, verification and record.	Inventario de switches en CSV, consulta que documenta cada uno y planchado de parametros comunes (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, servicios, STP, usuarios) por SSH en barrido o por consola en uno, con respaldo previo, verificacion y registro.
+CSV switch inventory, a query that documents each one and a push of common parameters (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, services, STP, users) over SSH to the checked switches, with a prior backup, verification and record.	Inventario de switches en CSV, consulta que documenta cada uno y planchado de parametros comunes (LLDP/CDP, banners, VTP, SNMP, NTP, syslog, DNS, SSH, servicios, STP, usuarios) por SSH en los switches marcados, con respaldo previo, verificacion y registro.
 Cisco, Catalyst, IOS and IOS-XE are trademarks of Cisco Systems, Inc. This tool is independent: it is not affiliated with, sponsored or endorsed by Cisco. The trademarks are mentioned only to indicate which devices it is compatible with.	Cisco, Catalyst, IOS e IOS-XE son marcas de Cisco Systems, Inc. Esta herramienta es independiente: no esta afiliada, patrocinada ni respaldada por Cisco. Las marcas se mencionan solo para indicar con que equipos es compatible.
 Data folder: {0}	Carpeta de datos: {0}
 Subfolders: {0}, {1}, {2}, {3}, {4}, {5}, {6}	Subcarpetas: {0}, {1}, {2}, {3}, {4}, {5}, {6}
@@ -1023,7 +1016,6 @@ enable with type 8/9 hash	enable con hash tipo 8/9
 Target switch is NOT at factory defaults: {0}	Switch destino NO esta de fabrica: {0}
 Send {0} via Xmodem to flash: (estimated {1:hh\:mm}).	Enviar {0} por Xmodem a flash: (estimado {1:hh\:mm}).
 Serial is very slow: ~{0:hh\:mm} at {1} baud. Do not disconnect the cable.	Por serial tarda mucho: ~{0:hh\:mm} a {1} baudios. No desconectes el cable.
-Console {0}	Consola {0}
 DIRECT	DIRECTO
 CONVERT	CONVERTIR
 Compatibility: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (classic IOS) and Catalyst 9200 / 9200L (IOS-XE).	Compatibilidad: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (IOS clasico) y Catalyst 9200 / 9200L (IOS-XE).

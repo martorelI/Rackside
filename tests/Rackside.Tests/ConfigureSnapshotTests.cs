@@ -71,15 +71,13 @@ public class ConfigureSnapshotTests
     {
         var inv = new Inventory();
         inv.Import(RepoPaths.Combine("tests", "fixtures", "configure", "inventory_import.csv"), Translator.English);
-        Assert.Throws<FormatException>(() => inv.Targets(true, "COM3", Translator.English));
+        Assert.Throws<FormatException>(() => inv.Targets(Translator.English));
         inv.Rows.ForEach(f => f.Selected = true);
         inv.Rows[1]["Port"] = "99999";
-        var ex = Assert.Throws<FormatException>(() => inv.Targets(true, "COM3", Translator.English));
+        var ex = Assert.Throws<FormatException>(() => inv.Targets(Translator.English));
         Assert.Contains("SW-B: invalid SSH port \"99999\"", ex.Message, StringComparison.Ordinal);
         inv.Rows[1]["Port"] = "2222";
-        Assert.Equal(["SW-A renamed", "SW-B", "10.0.0.13"], inv.Targets(true, "COM3", Translator.English).Select(x => x.Name));
-        var console = Assert.Single(inv.Targets(false, "COM3", Translator.English));
-        Assert.Null(console.Row);
-        Assert.Equal("Console COM3", console.Name);
+        Assert.Equal(["SW-A renamed", "SW-B", "10.0.0.13"], inv.Targets(Translator.English).Select(x => x.Name));
+        Assert.All(inv.Targets(Translator.English), x => Assert.NotNull(x.Row));
     }
 }

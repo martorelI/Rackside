@@ -11,7 +11,7 @@ using Rackside.Transport.Ssh;
 namespace Rackside.Tests.Operations;
 
 /// <summary>
-/// Query and push by SSH and by console against sim/configure.py:
+/// Query and push over SSH against sim/configure.py:
 /// SW01 IOS (2361), SW02 IOS-XE (2362), SW03 with a fingerprint different from the saved one (2363), a non-Cisco
 /// HP (2364), a port with no server (2365) and an invalid IP.
 /// </summary>
@@ -59,7 +59,7 @@ public sealed class ConfigureOperationTests
         new FingerprintStore(paths.Fingerprints).Save("127.0.0.1:" + P(2), "ssh-rsa", "SHA256:AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", "SW03", "X", "test");
         op.Inventory.Rows.ForEach(f => f.Selected = true);
         var cred = new Credentials("admin", "Pa55w0rd!", "En4ble");
-        var opt = new ConfigureOptions { OverSsh = true, TrustNew = true, Save = true, Continue = true, FolderRecord = Path.Combine(sim.Dir, "Pushes"), Ticket = "CHG-TEST-1", Responsible = "operator" };
+        var opt = new ConfigureOptions { TrustNew = true, Save = true, Continue = true, FolderRecord = Path.Combine(sim.Dir, "Pushes"), Ticket = "CHG-TEST-1", Responsible = "operator" };
         var ex = Assert.Throws<FormatException>(() => op.Query(opt, cred));
         Assert.Contains("300.1.1.1", ex.Message, StringComparison.Ordinal);
         op.Inventory.Rows.Single(f => f["Name"] == "BAD").Selected = false;
@@ -105,18 +105,23 @@ public sealed class ConfigureOperationTests
     }
 
     [SkippableFact]
-    public void Query_and_push_over_the_console_with_a_rejected_line()
+    public void A_rejected_line_leaves_the_switch_with_failures_and_unsaved_in_spanish()
     {
-        Skip.IfNot(Simulator.CanRunPty, "requires Linux or WSL (pty) and Python");
-        using var sim = Simulator.Start("configure.py", ["pty"], new Dictionary<string, string> { ["PTYFILE"] = "{dir}/pty.txt" }, waitFile: "{dir}/pty.txt");
+        Skip.If(Simulator.Python is null, "requires Python with paramiko");
+        const int Base2 = 2366;
+        using var sim = Simulator.Start("configure.py", ["ssh"], new Dictionary<string, string> { ["PORT_BASE"] = Base2.ToString(CultureInfo.InvariantCulture) }, waitPort: Base2 + 3, seconds: 60);
         var t = Translator.Spanish;
         var paths = new ConfigurePaths(Path.Combine(sim.Dir, "Inventory"), Path.Combine(sim.Dir, "Inventory", "switches.csv"), Path.Combine(sim.Dir, "ssh_fingerprints.csv"));
         var op = new ConfigureOperation(paths, t, new SecretMasker(), new FakeOperator());
-        var opt = new ConfigureOptions { OverSsh = false, PortCom = sim.ReadFile("pty.txt"), Pty = true, Save = true, FolderRecord = Path.Combine(sim.Dir, "Pushes") };
+        var row = new Rackside.Core.Configure.InventoryRow { Selected = true };
+        row["Name"] = "SW01";
+        row["IP"] = "127.0.0.1";
+        row["Port"] = Base2.ToString(CultureInfo.InvariantCulture);
+        op.Inventory.Rows.Add(row);
+        var opt = new ConfigureOptions { TrustNew = true, Save = true, FolderRecord = Path.Combine(sim.Dir, "Pushes") };
         var cred = new Credentials("admin", "Pa55w0rd!", "En4ble");
         Assert.Equal((1, 0), op.Query(opt, cred));
-        var sw = Assert.Single(op.Inventory.Rows, f => f["Name"] == "SW09");
-        Assert.Equal("WS-C2960X-24PD-L", sw["Model"]);
+        Assert.Equal("WS-C2960X-48FPD-L", row["Model"]);
 
         var p = new PushParameters
         {
@@ -128,8 +133,8 @@ public sealed class ConfigureOperationTests
         var run = op.Push(op.PreparePush(p, opt), cred);
         var r = Assert.Single(run.Results);
         Assert.Equal(PushOutcome.WithFailures, r.Result);
-        Assert.Contains(t.T("WITH FAILURES"), sw["Status"], StringComparison.Ordinal);
-        var s = State(sim, "SW09");
+        Assert.Contains(t.T("WITH FAILURES"), row["Status"], StringComparison.Ordinal);
+        var s = State(sim, "SW01");
         Assert.False(s.GetProperty("saved").GetBoolean());
         Assert.True(s.GetProperty("lldp").GetBoolean() && !s.GetProperty("cdp").GetBoolean());
         Assert.DoesNotContain(Secrets, x => Evidence(run.Folder).Contains(x, StringComparison.Ordinal));
