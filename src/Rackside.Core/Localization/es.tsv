@@ -1027,3 +1027,44 @@ Console {0}	Consola {0}
 DIRECT	DIRECTO
 CONVERT	CONVERTIR
 Compatibility: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (classic IOS) and Catalyst 9200 / 9200L (IOS-XE).	Compatibilidad: Catalyst 2960 / 2960-S / 2960-X / 2960-XR (IOS clasico) y Catalyst 9200 / 9200L (IOS-XE).
+{0} did not accept "{1}" (is it a Cisco switch?).	{0} no acepto "{1}" (es un switch Cisco?).
+Enter an IPv4 address (10.1.2.3) or a MAC address (aabb.ccdd.eeff, aa:bb:cc:dd:ee:ff or aa-bb-cc-dd-ee-ff).	Escribe una direccion IPv4 (10.1.2.3) o una MAC (aabb.ccdd.eeff, aa:bb:cc:dd:ee:ff o aa-bb-cc-dd-ee-ff).
+The switch list is empty: add the switches in "Configure switches" (tab 1) and save the list.	La lista de switches esta vacia: agregalos en "Configurar switches" (pestana 1) y guarda la lista.
+===== Locate {0} starting at {1} ({2}), {3} switch(es) in the list =====	===== Localizar {0} desde {1} ({2}), {3} switch(es) en la lista =====
+Connecting to {0}...	Conectando a {0}...
+Could not write {0}: {1}	No se pudo escribir {0}: {1}
+===== {0}: {1}	===== {0}: {1}
+{0}: reading the ARP table...	{0}: leyendo la tabla ARP...
+{0}: pinging {1} to refresh the ARP table...	{0}: haciendo ping a {1} para refrescar la tabla ARP...
+Management MAC unknown for {0}: not in the ARP table of {1}.	MAC de gestion desconocida de {0}: no esta en la tabla ARP de {1}.
+Management MAC unknown for {0} (not in the ARP table of {1}): a port toward them looks like the device's own port. "Refresh the ARP" pings them.	MAC de gestion desconocida de {0} (no esta en la tabla ARP de {1}): un puerto hacia ellos parece el puerto del equipo. "Refrescar el ARP" les hace ping.
+ARP of {0}: {1} -> MAC {2} ({3})	ARP de {0}: {1} -> MAC {2} ({3})
+{0} is not in the ARP table of {1}: it is not on a VLAN routed by that switch, it has not talked recently or it is off. Check "Refresh the ARP" or start at the switch that is its gateway.	{0} no esta en la tabla ARP de {1}: no esta en una VLAN que enrute ese switch, no ha hablado recientemente o esta apagado. Marca "Refrescar el ARP" o empieza en el switch que es su gateway.
+MAC {0} entered directly: it is not in the ARP table of {1} (the ARP is only used to know the switches).	MAC {0} escrita directamente: no esta en la tabla ARP de {1} (el ARP solo se usa para conocer los switches).
+{0} is the management address of the switch {1} ({2}).	{0} es la direccion de gestion del switch {1} ({2}).
+{0}: reading the MAC table...	{0}: leyendo la tabla MAC...
+{0}: the MAC is not in the table; pinging {1} so it is learned again...	{0}: la MAC no esta en la tabla; haciendo ping a {1} para que se aprenda de nuevo...
+MAC on {0}, VLAN {1}: connected there ({2} MAC(s) on the port)	MAC en {0}, VLAN {1}: conectado ahi ({2} MAC(s) en el puerto)
+{0} is on {1} ({2}), port {3}, VLAN {4}.	{0} esta en {1} ({2}), puerto {3}, VLAN {4}.
+{0} MACs are learned on {1}: there may be an IP phone with a PC, an access point, or a switch that is not in the list (or whose MAC is unknown).	Hay {0} MACs aprendidas en {1}: puede haber un telefono IP con una PC, un access point, o un switch que no esta en la lista (o cuya MAC se desconoce).
+{0} is a trunk: there is probably a switch behind it that is not in the list or whose MAC is unknown.	{0} es un trunk: probablemente hay detras un switch que no esta en la lista o cuya MAC se desconoce.
+{0} is a port-channel: the device is behind one of its member ports (show etherchannel summary).	{0} es un port-channel: el equipo esta detras de uno de sus puertos miembro (show etherchannel summary).
+MAC on {0}, VLAN {1} -> behind it: {2}	MAC en {0}, VLAN {1} -> detras: {2}
+On {0} the MAC points back to switches already queried ({1}): the tables may be changing (a loop or a device that moves). Try again.	En {0} la MAC apunta de regreso a switches ya consultados ({1}): las tablas pueden estar cambiando (un loop o un equipo que se mueve). Intenta de nuevo.
+The MAC is not in its table	La MAC no esta en su tabla
+MAC {0} is not in the MAC table of {1} (it ages out after about 5 minutes without traffic). Check "Refresh the ARP" so the pings generate traffic, and try again.	La MAC {0} no esta en la tabla MAC de {1} (se borra tras unos 5 minutos sin trafico). Marca "Refrescar el ARP" para que los pings generen trafico e intenta de nuevo.
+Could not be queried: {0}	No se pudo consultar: {0}
+The MAC is behind port {0} of {1}, but the switches behind it could not be queried or do not have it in their table.	La MAC esta detras del puerto {0} de {1}, pero los switches detras no se pudieron consultar o no la tienen en su tabla.
+The trace went through more switches than the list has: the tables may be changing. Try again.	El rastreo paso por mas switches de los que tiene la lista: las tablas pueden estar cambiando. Intenta de nuevo.
+Path:	Ruta:
+Notes:	Notas:
+Evidence: {0}	Evidencias: {0}
+Searched	Buscado
+Switch	Switch
+Port	Puerto
+Port status	Estado del puerto
+FOUND	ENCONTRADO
+SWITCH OF THE LIST	SWITCH DE LA LISTA
+NOT IN ARP	NO ESTA EN EL ARP
+NOT IN MAC TABLE	NO ESTA EN LA TABLA MAC
+INCOMPLETE	INCOMPLETO

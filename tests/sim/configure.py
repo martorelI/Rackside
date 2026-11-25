@@ -306,6 +306,9 @@ class Session:
                 if o is None:
                     self.send_data("                ^\r\n% Invalid input detected at '^' marker.\r\n\r\n" + self.prompt()); return
                 self.send_data(o.replace('\n', '\r\n') + '\r\n' + self.prompt()); return
+            o = self.sw.exec_other(l) if hasattr(self.sw, 'exec_other') else None   # other exec commands (locate.py: ping)
+            if o is not None:
+                self.send_data(o.replace('\n', '\r\n') + '\r\n' + self.prompt()); return
             self.send_data("% Invalid input detected at '^' marker.\r\n\r\n" + self.prompt()); return
         m = re.match(r'^banner (login|motd|exec) (\S)$', l)
         if m:
