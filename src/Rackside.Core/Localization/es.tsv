@@ -1039,7 +1039,6 @@ MAC {0} entered directly: it is not in the ARP table of {1} (the ARP is only use
 MAC on {0}, VLAN {1}: connected there ({2} MAC(s) on the port)	MAC en {0}, VLAN {1}: conectado ahi ({2} MAC(s) en el puerto)
 {0} is on {1} ({2}), port {3}, VLAN {4}.	{0} esta en {1} ({2}), puerto {3}, VLAN {4}.
 {0} MACs are learned on {1}: there may be an IP phone with a PC, an access point, or a switch that is not in the list (or whose MAC is unknown).	Hay {0} MACs aprendidas en {1}: puede haber un telefono IP con una PC, un access point, o un switch que no esta en la lista (o cuya MAC se desconoce).
-{0} is a trunk: there is probably a switch behind it that is not in the list or whose MAC is unknown.	{0} es un trunk: probablemente hay detras un switch que no esta en la lista o cuya MAC se desconoce.
 {0} is a port-channel: the device is behind one of its member ports (show etherchannel summary).	{0} es un port-channel: el equipo esta detras de uno de sus puertos miembro (show etherchannel summary).
 MAC on {0}, VLAN {1} -> behind it: {2}	MAC en {0}, VLAN {1} -> detras: {2}
 On {0} the MAC points back to switches already queried ({1}): the tables may be changing (a loop or a device that moves). Try again.	En {0} la MAC apunta de regreso a switches ya consultados ({1}): las tablas pueden estar cambiando (un loop o un equipo que se mueve). Intenta de nuevo.
@@ -1060,3 +1059,10 @@ SWITCH OF THE LIST	SWITCH DE LA LISTA
 NOT IN ARP	NO ESTA EN EL ARP
 NOT IN MAC TABLE	NO ESTA EN LA TABLA MAC
 INCOMPLETE	INCOMPLETO
+
+{0}: {1} looks like an uplink ({2} MACs) but no switch of the list is learned there; pinging the {3} switch(es) of the list missing from its MAC table so they are learned again...	{0}: {1} parece un uplink ({2} MACs) pero no hay ningun switch de la lista aprendido ahi; haciendo ping a los {3} switch(es) de la lista que faltan en su tabla MAC para que se aprendan de nuevo...
+{0}: ping {1} ({2})...	{0}: ping a {1} ({2})...
+MAC on {0}, VLAN {1}: {2} MAC(s) on the port and no switch of the list behind it	MAC en {0}, VLAN {1}: {2} MAC(s) en el puerto y ningun switch de la lista detras
+{0} is behind port {1} of {2} ({3} MACs learned there{4}), but no switch of the list is learned on that port: the switch behind it is not in the list, does not answer ping or is managed out of band (its MAC is not in the data VLANs).	{0} esta detras del puerto {1} de {2} ({3} MACs aprendidas ahi{4}), pero ningun switch de la lista esta aprendido en ese puerto: el switch de atras no esta en la lista, no responde ping o se administra fuera de banda (su MAC no esta en las VLANs de datos).
+, trunk	, trunk
+BEHIND A TRUNK	DETRAS DE UN TRUNK

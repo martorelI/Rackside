@@ -16,20 +16,21 @@ public sealed class LocateOperationTests
 {
     private static readonly Credentials Cred = new("admin", "Pa55w0rd!", string.Empty);
 
-    private static (LocateOperation Op, IReadOnlyList<ConfTarget> Switches) Setup(Simulator sim, int @base, Translator t, int acc2Port = -1)
+    private static (LocateOperation Op, IReadOnlyList<ConfTarget> Switches) Setup(Simulator sim, int @base, Translator t, int acc2Port = -1, string without = "")
     {
         var inv = new Inventory();
         var csv = Path.Combine(sim.Dir, "switches.csv");
         var p = (int offset) => (@base + offset).ToString(CultureInfo.InvariantCulture);
-        File.WriteAllLines(csv, ["Name,IP,Port", $"CORE,127.0.0.11,{p(0)}", $"ACC1,127.0.0.12,{p(1)}",
-            $"ACC2,127.0.0.13,{(acc2Port > 0 ? acc2Port.ToString(CultureInfo.InvariantCulture) : p(2))}", $"ACC3,127.0.0.14,{p(3)}", "NO-IP,,22"]);
+        string[] rows = ["Name,IP,Port", $"CORE,127.0.0.11,{p(0)}", $"ACC1,127.0.0.12,{p(1)}",
+            $"ACC2,127.0.0.13,{(acc2Port > 0 ? acc2Port.ToString(CultureInfo.InvariantCulture) : p(2))}", $"ACC3,127.0.0.14,{p(3)}", "NO-IP,,22"];
+        File.WriteAllLines(csv, rows.Where(r => without.Length == 0 || !r.StartsWith(without + ",", StringComparison.Ordinal)));
         inv.Import(csv, t);
         var op = new LocateOperation(new LocatePaths(Path.Combine(sim.Dir, "Locate"), Path.Combine(sim.Dir, "ssh_fingerprints.csv")), t, new SecretMasker(), new FakeOperator());
         return (op, inv.AllWithIp());
     }
 
-    private static Simulator Start(int @base, string arpMissing = "") =>
-        Simulator.Start("locate.py", [], new Dictionary<string, string> { ["PORT_BASE"] = @base.ToString(CultureInfo.InvariantCulture), ["ARP_MISSING"] = arpMissing },
+    private static Simulator Start(int @base, string arpMissing = "", string aged = "") =>
+        Simulator.Start("locate.py", [], new Dictionary<string, string> { ["PORT_BASE"] = @base.ToString(CultureInfo.InvariantCulture), ["ARP_MISSING"] = arpMissing, ["AGED"] = aged },
             waitFile: "{dir}/ready.txt", seconds: 60);
 
     private static LocateResult Run(LocateOperation op, IReadOnlyList<ConfTarget> switches, string target, bool refresh = false) =>
@@ -107,17 +108,40 @@ public sealed class LocateOperationTests
         Assert.Equal(("ACC3", "Gi1/0/7"), (r.Switch, r.Port));
         Assert.Contains(r.Notes, n => n.StartsWith("ACC2: Could not be queried", StringComparison.Ordinal));
 
-        // ACC3 missing from the ARP and no refresh: the port toward it looks like the device's port, and it says so.
+        // ACC3 missing from the ARP and no refresh: the trail ends on the ACC2 trunk toward it, and it does not say "found".
         using var sim2 = Start(Base + 10, arpMissing: "ACC3");
         (op, switches) = Setup(sim2, Base + 10, t);
         r = Run(op, switches, "10.20.30.40");
-        Assert.Equal(("ACC2", "Gi1/0/48"), (r.Switch, r.Port));
+        Assert.Equal((LocateOutcome.BehindTrunk, "ACC2", "Gi1/0/48"), (r.Outcome, r.Switch, r.Port));
+        Assert.Contains("no switch of the list is learned on that port", r.Detail, StringComparison.Ordinal);
         Assert.Contains(r.Notes, n => n.StartsWith("Management MAC unknown for ACC3", StringComparison.Ordinal));
-        Assert.Contains(r.Notes, n => n.StartsWith("2 MACs are learned on Gi1/0/48", StringComparison.Ordinal));
-        Assert.Contains(r.Notes, n => n.StartsWith("Gi1/0/48 is a trunk", StringComparison.Ordinal));
 
         // With the refresh the ACC3 MAC is learned and the trace reaches the real port.
         r = Run(op, switches, "10.20.30.40", refresh: true);
         Assert.Equal(("ACC3", "Gi1/0/7"), (r.Switch, r.Port));
+    }
+
+    [SkippableFact]
+    public void A_switch_mac_that_aged_out_is_learned_again_with_a_ping()
+    {
+        Skip.If(Simulator.Python is null, "requires Python with paramiko");
+        const int Base = 2401;
+        using var sim = Start(Base, aged: "ACC3");
+        var t = Translator.English;
+
+        // ACC2 no longer has the ACC3 MAC: its trunk Gi1/0/48 looks like the end, so it pings the switches missing
+        // from its table, learns ACC3 again and goes on.
+        var (op, switches) = Setup(sim, Base, t);
+        var r = Run(op, switches, "10.20.30.40");
+        Assert.Equal((LocateOutcome.Found, "ACC3", "Gi1/0/7"), (r.Outcome, r.Switch, r.Port));
+        Assert.Equal(["CORE", "ACC2", "ACC3"], r.Hops.Select(h => h.Switch));
+        Assert.Contains("ACC2: Gi1/0/48 looks like an uplink", File.ReadAllText(Path.Combine(r.Folder, "log.txt")), StringComparison.Ordinal);
+
+        // A switch that is not in the list: the trail ends on the trunk toward it.
+        (op, switches) = Setup(sim, Base, t, without: "ACC3");
+        r = Run(op, switches, "10.20.30.40");
+        Assert.Equal((LocateOutcome.BehindTrunk, "ACC2", "Gi1/0/48"), (r.Outcome, r.Switch, r.Port));
+        Assert.Contains("trunk", r.PortStatus, StringComparison.Ordinal);
+        Assert.Contains(", trunk)", r.Detail, StringComparison.Ordinal);
     }
 }

@@ -30,6 +30,9 @@ public enum LocateOutcome
 {
     Found,
     IsSwitch,
+
+    /// <summary>The trail ends on an uplink (trunk or many MACs) with no switch of the list behind it.</summary>
+    BehindTrunk,
     NotInArp,
     NotInMacTable,
     Incomplete,
@@ -42,6 +45,7 @@ public static class LocateOutcomeExtensions
     {
         LocateOutcome.Found => "FOUND",
         LocateOutcome.IsSwitch => "SWITCH OF THE LIST",
+        LocateOutcome.BehindTrunk => "BEHIND A TRUNK",
         LocateOutcome.NotInArp => "NOT IN ARP",
         LocateOutcome.NotInMacTable => "NOT IN MAC TABLE",
         _ => "INCOMPLETE",
@@ -308,31 +312,51 @@ public sealed class LocateOperation(LocatePaths paths, Translator t, SecretMaske
                 table = LocateParser.MacTable(Run(conn, "show mac address-table", 180));
                 d = LocateTracer.Decide(table, r.Mac, known, visited, current.Name);
             }
+            var status = d.Kind == HopKind.Edge ? PortStatus(conn, d.Port) : string.Empty;
+            if (d.Kind == HopKind.Edge && LocateTracer.LooksLikeUplink(d.MacsOnPort, status))
+            {
+                // An uplink with no switch of the list learned on it: their management MACs may have aged out of this
+                // table (about 5 minutes without traffic). Pinging them from here makes this switch learn them again.
+                var absent = LocateTracer.Absent(table, known, visited, current.Name).Select(n => switches.First(s => Ci.Eq(s.Name, n))).ToList();
+                if (absent.Count > 0)
+                {
+                    Log.Info(Ci.F(t.T("{0}: {1} looks like an uplink ({2} MACs) but no switch of the list is learned there; pinging the {3} switch(es) of the list missing from its MAC table so they are learned again..."),
+                        current.Name, d.Port, d.MacsOnPort, absent.Count));
+                    foreach (var s in absent)
+                    {
+                        Cancellation.ThrowIfCancellationRequested();
+                        ui.Status(Ci.F(t.T("{0}: ping {1} ({2})..."), current.Name, s.Name, s.IP), null);
+                        Run(conn, Ci.F("ping {0} repeat 2 timeout 1", s.IP), 30);
+                    }
+                    table = LocateParser.MacTable(Run(conn, "show mac address-table", 180));
+                    d = LocateTracer.Decide(table, r.Mac, known, visited, current.Name);
+                    status = d.Kind == HopKind.Edge ? PortStatus(conn, d.Port) : string.Empty;
+                }
+            }
             switch (d.Kind)
             {
+                case HopKind.Edge when LocateTracer.LooksLikeUplink(d.MacsOnPort, status):
+                {
+                    var detail = Ci.F(t.T("MAC on {0}, VLAN {1}: {2} MAC(s) on the port and no switch of the list behind it"), d.Port, d.Vlan, d.MacsOnPort);
+                    r.Hops.Add(new LocateHop(current.Name, current.IP, d.Port, d.Vlan, detail));
+                    Log.Warn(Ci.F("{0}: {1}", current.Name, detail));
+                    SetPlace(r, current, d, status);
+                    r.Outcome = LocateOutcome.BehindTrunk;
+                    r.Detail = Ci.F(t.T("{0} is behind port {1} of {2} ({3} MACs learned there{4}), but no switch of the list is learned on that port: the switch behind it is not in the list, does not answer ping or is managed out of band (its MAC is not in the data VLANs)."),
+                        r.Ip.Length > 0 ? r.Ip : r.Mac, d.Port, current.Name, d.MacsOnPort, Ci.IsMatch(status, "\\strunk(\\s|$)") ? t.T(", trunk") : string.Empty);
+                    return;
+                }
                 case HopKind.Edge:
                 {
                     var detail = Ci.F(t.T("MAC on {0}, VLAN {1}: connected there ({2} MAC(s) on the port)"), d.Port, d.Vlan, d.MacsOnPort);
                     r.Hops.Add(new LocateHop(current.Name, current.IP, d.Port, d.Vlan, detail));
                     Log.Ok(Ci.F("{0}: {1}", current.Name, detail));
+                    SetPlace(r, current, d, status);
                     r.Outcome = LocateOutcome.Found;
-                    r.Switch = current.Name;
-                    r.SwitchIP = current.IP;
-                    r.Port = d.Port;
-                    r.MacsOnPort = d.MacsOnPort;
-                    if (r.Vlan.Length == 0)
-                    {
-                        r.Vlan = d.Vlan;
-                    }
                     r.Detail = Ci.F(t.T("{0} is on {1} ({2}), port {3}, VLAN {4}."), r.Ip.Length > 0 ? r.Ip : r.Mac, current.Name, current.IP, d.Port, d.Vlan);
-                    r.PortStatus = PortStatus(conn, d.Port);
                     if (d.MacsOnPort > 1)
                     {
                         r.Notes.Add(Ci.F(t.T("{0} MACs are learned on {1}: there may be an IP phone with a PC, an access point, or a switch that is not in the list (or whose MAC is unknown)."), d.MacsOnPort, d.Port));
-                    }
-                    if (Ci.IsMatch(r.PortStatus, "\\strunk\\s"))
-                    {
-                        r.Notes.Add(Ci.F(t.T("{0} is a trunk: there is probably a switch behind it that is not in the list or whose MAC is unknown."), d.Port));
                     }
                     if (Ci.IsMatch(d.Port, "^Po"))
                     {
@@ -403,6 +427,19 @@ public sealed class LocateOperation(LocatePaths paths, Translator t, SecretMaske
         }
         r.Outcome = LocateOutcome.Incomplete;
         r.Detail = t.T("The trace went through more switches than the list has: the tables may be changing. Try again.");
+    }
+
+    private static void SetPlace(LocateResult r, ConfTarget sw, HopDecision d, string status)
+    {
+        r.Switch = sw.Name;
+        r.SwitchIP = sw.IP;
+        r.Port = d.Port;
+        r.MacsOnPort = d.MacsOnPort;
+        r.PortStatus = status;
+        if (r.Vlan.Length == 0)
+        {
+            r.Vlan = d.Vlan;
+        }
     }
 
     /// <summary>The "show interfaces &lt;port&gt; status" line of the port (empty if the switch does not answer it).</summary>

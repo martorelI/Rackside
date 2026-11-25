@@ -50,4 +50,24 @@ public static class LocateTracer
         var candidates = neighbors.Where(n => !visited.Contains(n)).ToList();
         return new HopDecision(HopKind.Uplink, hit.Port, hit.Vlan, macs, neighbors, candidates);
     }
+
+    /// <summary>From this many MACs on a port, it is taken as an uplink even if it is not a trunk.</summary>
+    public const int UplinkMacs = 10;
+
+    /// <summary>
+    /// A port where the MAC is learned with no known switch behind it, but that looks like an uplink: a trunk
+    /// ("show interfaces ... status" says trunk) or many MACs. Then a switch is probably behind it whose
+    /// management MAC aged out of the table (or is not in the list).
+    /// </summary>
+    public static bool LooksLikeUplink(int macsOnPort, string portStatusLine) =>
+        macsOnPort >= UplinkMacs || Ci.IsMatch(portStatusLine ?? string.Empty, "\\strunk(\\s|$)");
+
+    /// <summary>The known switches (not visited, not <paramref name="self"/>) whose MAC is nowhere in the table.</summary>
+    public static IReadOnlyList<string> Absent(IReadOnlyList<MacEntry> table, IReadOnlyList<KnownSwitch> known, IReadOnlySet<string> visited, string self)
+    {
+        ArgumentNullException.ThrowIfNull(table);
+        ArgumentNullException.ThrowIfNull(known);
+        ArgumentNullException.ThrowIfNull(visited);
+        return known.Where(k => !Ci.Eq(k.Name, self) && !visited.Contains(k.Name) && table.All(e => e.Mac != k.Mac)).Select(k => k.Name).ToList();
+    }
 }

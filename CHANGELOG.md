@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.1.2 (2026-11-25)
+
+- Locate IP: when the trail reaches a port that looks like an uplink (a trunk, or 10 MACs or more) with no
+  switch of the list learned on it, the switches of the list missing from that switch's MAC table are pinged
+  from it (their management MAC may have aged out after ~5 minutes without traffic), the table is read again
+  and the trace goes on. If there is still no switch behind it, the result is "BEHIND A TRUNK" (switch and
+  port where the trail ends, and the likely causes) instead of "FOUND".
+
 ## 1.1.1 (2026-11-25)
 
 - "Configure switches" works only over SSH, with the switches checked in the list. The console option was

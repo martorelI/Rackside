@@ -11,7 +11,8 @@
 #    `- Gi1/0/24: 10.20.30.50 (printer, VLAN 30)
 #
 # Environment: PORT_BASE (CORE on PORT_BASE, ACC1 +1, ACC2 +2, ACC3 +3), ARP_MISSING (switch names missing
-# from the CORE ARP until they are pinged). Writes ready.txt when every switch listens.
+# from the CORE ARP until they are pinged), AGED (switch names whose management MAC aged out of the MAC tables
+# of the access switches until they are pinged). Writes ready.txt when every switch listens.
 import os, re, socket, sys, threading
 import configure as cfg
 import paramiko
@@ -26,6 +27,7 @@ class Net:
         self.hosts = []            # dict: ip, mac, sw, port, vlan, name, awake
         self.extra = []            # (switch, port, vlan, mac): devices without IP behind a port
         self.arp_missing = set(n for n in os.environ.get('ARP_MISSING', '').split(',') if n)
+        self.aged = set(n for n in os.environ.get('AGED', '').split(',') if n)
         self.lock = threading.Lock()
 
     def add_switch(self, sw):
@@ -54,7 +56,7 @@ class Net:
     def mac_table(self, here):
         rows = [('All', '0100.0ccc.cccc', 'STATIC', 'CPU'), ('All', '0180.c200.0000', 'STATIC', 'CPU')]
         for name, s in self.switches.items():
-            if name != here.host:
+            if name != here.host and not (name in self.aged and here.host != GATEWAY):
                 rows.append(('1', s.mac, 'DYNAMIC', self.toward(here.host, name)))
         with self.lock:
             for h in self.hosts:
@@ -93,6 +95,7 @@ class Net:
             for name, s in self.switches.items():
                 if s.ip == ip:
                     self.arp_missing.discard(name)
+                    self.aged.discard(name)
 
     def port_status(self, here, port):
         names = {(h['sw'], h['port']): (h['name'], h['vlan']) for h in self.hosts}

@@ -127,4 +127,19 @@ public class LocateTests
     [InlineData("ping 10.20.30.40", false)]
     [InlineData("write memory", false)]
     public void Only_read_only_commands_are_sent(string command, bool allowed) => Assert.Equal(allowed, LocateOperation.IsReadOnly(command));
+
+    [Theory]
+    [InlineData(3, "Gi1/0/48  Uplink             connected    trunk      a-full a-1000 10/100/1000BaseTX", true)]
+    [InlineData(380, "", true)]
+    [InlineData(10, "", true)]
+    [InlineData(3, "Gi1/0/7   PC-Accounting      connected    20         a-full a-1000 10/100/1000BaseTX", false)]
+    public void An_edge_port_that_looks_like_an_uplink(int macs, string status, bool expected) => Assert.Equal(expected, LocateTracer.LooksLikeUplink(macs, status));
+
+    [Fact]
+    public void Absent_switches_are_the_ones_missing_from_the_table()
+    {
+        var table = Core.Where(e => e.Mac != "00aa.0000.0014").ToList();
+        Assert.Equal(["ACC3"], LocateTracer.Absent(table, Known, new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "CORE" }, "CORE"));
+        Assert.Empty(LocateTracer.Absent(table, Known, new HashSet<string>(StringComparer.OrdinalIgnoreCase) { "ACC3" }, "CORE"));
+    }
 }
