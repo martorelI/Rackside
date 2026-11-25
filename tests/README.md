@@ -22,6 +22,7 @@ Everything generated goes to `tests/out/dotnet` (ignored by git).
 | `SecurityFilterTests`, `PushPlannerTests`, `SecretMaskerTests` | security filter, push validation, masked secrets |
 | `Operations/` | each operation end to end: restore (`FakeCatalyst`), factory reset (`FakeResetConsole`), configure over SSH and console (`sim/configure.py`), update IOS by USB, Xmodem and SCP (`sim/console_upgrade.py`, `sim/console_xmodem_2960.py`, `sim/console_scp.py` + `sim/ssh_bridge.py`; `Category=Slow`) |
 | `Transport/` | console session, Xmodem, SSH fingerprint policy and store, SSH and SCP against the simulators |
+| `LocateTests`, `Operations/LocateOperationTests` | MAC/ARP parsing and hop decision; the trace end to end against `sim/locate.py` (4 switches, one per loopback address): hops, unmanaged switch, ARP refresh with ping, unreachable switch, unknown switch MAC, read-only commands |
 | `SettingsTests` | creation of `settings.json`, custom and invalid values, broken JSON, saving the language |
 | `CoreTextsTests`, `AppTextsTests`, `TranslatorTests` | every text has Spanish (or is in `fixtures/untranslated.txt`), the tables keep only used texts, the same `{n}` placeholders and HTML |
 

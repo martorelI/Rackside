@@ -136,3 +136,20 @@ Platform	Plataforma
 Serial	Serie
 Status	Estado
 Date	Fecha
+Locate IP	Localizar IP
+Finds the switch and port where an IP or MAC address is connected, following the ARP and MAC tables (read only).	Encuentra el switch y el puerto donde está conectada una dirección IP o MAC, siguiendo las tablas ARP y MAC (solo lectura).
+What to locate	Qué localizar
+IP or MAC address	Dirección IP o MAC
+Start switch	Switch inicial
+Start at the switch that is the gateway of that VLAN (usually the core): its ARP table gives the MAC of the address and of the other switches. From there the MAC tables are followed switch by switch.	Empieza en el switch que es el gateway de esa VLAN (normalmente el core): su tabla ARP da la MAC de la dirección y de los demás switches. De ahí se siguen las tablas MAC switch por switch.
+Refresh the ARP: ping from the start switch the addresses missing from it (the searched one and the switches)	Refrescar el ARP: hacer ping desde el switch inicial a las direcciones que le falten (la buscada y los switches)
+Only show commands are sent (and the pings, if checked), over SSH to the switches of the list in "Configure switches". Layer 2 only: no CDP or LLDP.	Solo se envían comandos show (y los pings, si los marcas), por SSH a los switches de la lista de "Configurar switches". Solo capa 2: sin CDP ni LLDP.
+1. Locate	1. Localizar
+Locate	Localizar
+Reload the switch list	Recargar la lista de switches
+Open folder	Abrir carpeta
+{0} switch(es) in the list ({1}).	{0} switch(es) en la lista ({1}).
+Choose the start switch.	Elige el switch inicial.
+Credentials to locate	Credenciales para localizar
+Read only (show commands) on {0} and on the switches along the path.	Solo lectura (comandos show) en {0} y en los switches del camino.
+Finds the switch and port where an IP or MAC address is connected: ARP of the gateway switch, then the MAC tables switch by switch over SSH (read only, layer 2).	Encuentra el switch y el puerto donde está conectada una dirección IP o MAC: el ARP del switch gateway y luego las tablas MAC switch por switch por SSH (solo lectura, capa 2).

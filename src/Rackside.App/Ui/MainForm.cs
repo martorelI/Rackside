@@ -69,6 +69,7 @@ internal sealed class MainForm : Form
         AddPage("⭯", S("Factory reset"), new ResetPage(this));
         AddPage("⬆", S("Update IOS"), new UpgradePage(this));
         AddPage("⚙", S("Configure switches"), new ConfigurePage(this));
+        AddPage("◎", S("Locate IP"), new LocatePage(this));
         AddPage("☰", S("Settings"), new SettingsPage(this));
         AddPage("ⓘ", S("About"), new AboutPage(this));
         Show(0);
