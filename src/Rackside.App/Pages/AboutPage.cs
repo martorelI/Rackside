@@ -47,8 +47,22 @@ internal sealed class AboutPage : Page
         data.Add(Make.Note(S("They contain backups, transcripts and records with network data: protecting them (permissions, encryption, backup) is the operator's responsibility."), Theme.Danger));
         data.Add(Make.Secondary(S("Open the data folder"), (_, _) => { Directory.CreateDirectory(p.Data); OpenPath(p.Data); }));
 
+        var license = list.Add(new Card(S("License")));
+        license.Add(Make.Note(F("Copyright (C) 2026 {0}", AppInfo.Author), Theme.TextColor));
+        license.Add(Make.Note(S("Rackside is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 (GPL-3.0) as published by the Free Software Foundation.")));
+        license.Add(Make.Note(S("It is distributed WITHOUT ANY WARRANTY, without even the implied warranty of merchantability or fitness for a particular purpose: test the changes in a lab first. See the license for details."), Theme.Danger));
+        license.Add(Link(F("Source code: {0}", AppInfo.Repository), AppInfo.Repository));
+        license.Add(Link(S("GNU General Public License v3 (full text)"), AppInfo.LicenseUrl));
+
         var marks = list.Add(new Card(S("Trademarks")));
         marks.Add(Make.Note(S("Cisco, Catalyst, IOS and IOS-XE are trademarks of Cisco Systems, Inc. This tool is independent: it is not affiliated with, sponsored or endorsed by Cisco. The trademarks are mentioned only to indicate which devices it is compatible with.")));
         SetBody(list);
+    }
+
+    private static LinkLabel Link(string text, string url)
+    {
+        var link = new LinkLabel { Text = text, AutoSize = true, LinkColor = Theme.Accent, Margin = new Padding(0, 4, 0, 0) };
+        link.LinkClicked += (_, _) => Process.Start(new ProcessStartInfo(url) { UseShellExecute = true });
+        return link;
     }
 }

@@ -7,6 +7,11 @@ public static class AppInfo
     public const string Author = "José Martorell";
     public const string SupportEmail = "support@martorell.mx";
 
+    /// <summary>Where the source code is published (GPL-3.0: the source must be available to whoever gets the program).</summary>
+    public const string Repository = "https://github.com/martorelI/Rackside";
+
+    public const string LicenseUrl = "https://www.gnu.org/licenses/gpl-3.0.html";
+
     /// <summary>Shown in the records and About; keep it equal to VersionPrefix in Directory.Build.props (a test checks it).</summary>
-    public const string Version = "1.1.2";
+    public const string Version = "1.1.3";
 }

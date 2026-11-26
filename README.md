@@ -65,4 +65,18 @@ support@martorell.mx
 
 ## Author
 
-Jose Martorell. License: to be defined (all rights reserved in the meantime).
+Jose Martorell.
+
+## License
+
+Copyright (C) 2026 Jose Martorell.
+
+Rackside is free software: you can redistribute it and/or modify it under the terms of the GNU General
+Public License version 3 (GPL-3.0) as published by the Free Software Foundation. It is distributed WITHOUT
+ANY WARRANTY; see [LICENSE](LICENSE) for the full text. Test any change in a lab before using it on a
+production network.
+
+## Contributing
+
+Bug reports and ideas are welcome as issues. Code contributions are accepted only with a contributor
+agreement that lets the author also offer Rackside under other licenses; open an issue first to discuss it.

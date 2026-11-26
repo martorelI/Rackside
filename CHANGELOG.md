@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.1.3 (2026-11-26)
+
+- Rackside is now free software under the GNU General Public License version 3 (GPL-3.0): `LICENSE` file,
+  license section in the README and in "About" (with the link to the source code and the license text).
+
 ## 1.1.2 (2026-11-25)
 
 - Locate IP: when the trail reaches a port that looks like an uplink (a trunk, or 10 MACs or more) with no

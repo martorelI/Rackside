@@ -153,3 +153,9 @@ Choose the start switch.	Elige el switch inicial.
 Credentials to locate	Credenciales para localizar
 Read only (show commands) on {0} and on the switches along the path.	Solo lectura (comandos show) en {0} y en los switches del camino.
 Finds the switch and port where an IP or MAC address is connected: ARP of the gateway switch, then the MAC tables switch by switch over SSH (read only, layer 2).	Encuentra el switch y el puerto donde está conectada una dirección IP o MAC: el ARP del switch gateway y luego las tablas MAC switch por switch por SSH (solo lectura, capa 2).
+License	Licencia
+Copyright (C) 2026 {0}	Copyright (C) 2026 {0}
+Rackside is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License version 3 (GPL-3.0) as published by the Free Software Foundation.	Rackside es software libre: puedes redistribuirlo y/o modificarlo bajo los términos de la Licencia Pública General de GNU versión 3 (GPL-3.0), publicada por la Free Software Foundation.
+It is distributed WITHOUT ANY WARRANTY, without even the implied warranty of merchantability or fitness for a particular purpose: test the changes in a lab first. See the license for details.	Se distribuye SIN NINGUNA GARANTÍA, ni siquiera la garantía implícita de comerciabilidad o de idoneidad para un propósito particular: prueba los cambios primero en un laboratorio. Consulta la licencia para más detalles.
+Source code: {0}	Código fuente: {0}
+GNU General Public License v3 (full text)	Licencia Pública General de GNU v3 (texto completo)
